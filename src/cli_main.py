@@ -1,11 +1,12 @@
 import click
 
-@click.command()
-def firstRunText():
+@click.group()
+def app_cli():
+    # Main group for the app cli 
+    pass
 
-    click.secho('Welcome to the Am-I-better? setup.', fg='yellow')
-    click.echo('Please answer a few questions to continue')
 
 
 if __name__ == '__main__':
-    firstRunText()
+    # something should happen here
+    pass

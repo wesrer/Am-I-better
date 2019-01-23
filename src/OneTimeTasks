@@ -1,0 +1,39 @@
+import SavedData
+import datetime
+import json
+
+class OneTimeTasks:
+    def __init__(self):
+        self.oneTimeTasks = SavedData.getOneTimeTasks()
+
+    # FIXME: add more properties, because these are clearly not enough
+    def addOneTimeTask(self, taskString, priority=0, completeBy = False):
+       
+        # By default, all tasks need to be completed by 24 hours of initializing them
+        if (completeBy == False):
+            completeBy = datetime.datetime.now() + datetime.timedelta(hours = 24)
+        else:
+            #FIXME : convert the input to a valid datetime
+            completeBy = completeBy
+        
+        # make a JSON object to append to the existing list
+        #TODO: define uniqueID
+        self.oneTimeTasks[uniqueID] = {
+            "taskString" : taskString,
+            "assignedDate" : datetime.now.today(),
+            "completeBy" : completeBy,
+            "priority" : priority,
+            "assignedOnTime" : datetime.datetime.now(),
+        }
+
+    def getOneTimeTasks(self):
+        return self.oneTimeTasks
+
+    def saveOneTimeTasks(self):
+        dataInJSON = json.dumps(self.oneTimeTasks, ensure_ascii=False)
+
+    def sortByPriority(self):
+        # TODO
+        sortedByPriority = 0
+        
+        return sortedByPriority

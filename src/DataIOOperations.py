@@ -27,7 +27,7 @@ class DataIOOperations:
 
     # save
     def saveAsFile(self, taskStatus, taskType, dictionaryToSave):
-        fileAddress = self.dataDirectory / taskStatus / taskType + '.json'
+        fileAddress = self.dataDirectory / taskStatus / (taskType + ".json")
 
         with open(fileAddress, 'w') as writefile:
             json.dump(
@@ -42,9 +42,9 @@ class DataIOOperations:
 
     def initializeIDs(self):
         return {
-            "oneTimeTasks" : "1",
-            "habits" : "1",
-            "longTermProjects": "1"
+            "oneTimeTasks" : "0",
+            "habits" : "0",
+            "longTermProjects": "0"
 
         }
 

@@ -1,36 +1,40 @@
-import SavedData
+import DataIOOperations
 import datetime
 import json
 
+#TODO: write on close app operations - save the last used uniqueID
 class OneTimeTasks:
     def __init__(self):
-        self.oneTimeTasks = SavedData.getOneTimeTasks()
+        self.DataIOOperationsObject = DataIOOperations.DataIOOperations() 
+        self.oneTimeTasks = self.DataIOOperationsObject.getOneTimeTasks()
+        self.lastUniqueID = self.DataIOOperationsObject.readOneTimeTasksLastUniqueID()
 
     # FIXME: add more properties, because these are clearly not enough
+    # FIXME: figure out how to take customized completeBy input
     def addOneTimeTask(self, taskString, priority=0, completeBy = False):
-       
+
+        self.lastUniqueID += 1
+
         # By default, all tasks need to be completed by 24 hours of initializing them
         if (completeBy == False):
             completeBy = datetime.datetime.now() + datetime.timedelta(hours = 24)
-        else:
-            #FIXME : convert the input to a valid datetime
-            completeBy = completeBy
+        
+        # formatting the string
+        completeBy = completeBy.strftime("%c")
         
         # make a JSON object to append to the existing list
-        #TODO: define uniqueID
-        self.oneTimeTasks[uniqueID] = {
+        self.oneTimeTasks[self.lastUniqueID] = {
             "taskString" : taskString,
-            "assignedDate" : datetime.now.today(),
+            "assignedOn" : (datetime.datetime.now()).strftime("%c"),
             "completeBy" : completeBy,
             "priority" : priority,
-            "assignedOnTime" : datetime.datetime.now(),
         }
 
     def getOneTimeTasks(self):
         return self.oneTimeTasks
 
     def saveOneTimeTasks(self):
-        dataInJSON = json.dumps(self.oneTimeTasks, ensure_ascii=False)
+        print(self.DataIOOperationsObject.saveOneTimeTasks(self.oneTimeTasks))
 
     def sortByPriority(self):
         # TODO

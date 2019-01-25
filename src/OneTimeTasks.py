@@ -4,9 +4,11 @@ import taskFunctions
 
 class OneTimeTasks:
     def __init__(self):
-        self.DataIOOperationsObject = DataIOOperations.DataIOOperations() 
+        self.DataIOOperationsObject = DataIOOperations.DataIOOperations()
+        self.taskFunctionsObject = taskFunctions.taskFunctions()
         # FIXME: replace this with an actual file
         self.activeOneTimeTasks = {}
+        self.completedOneTimeTasks = []
         # self.completedOneTimeTasks = self.DataIOOperationsObject.getTasks('completed', 'oneTimeTasks')
         # self.activeOneTimeTasks = self.DataIOOperationsObject.getTasks('active', 'oneTimeTasks')
 
@@ -17,26 +19,13 @@ class OneTimeTasks:
     def addOneTimeTask(self, taskString, priority=0, completeBy = False):
         self.lastUniqueID += 1
 
-        # By default, all tasks need to be completed by 24 hours of initializing them
-        if not completeBy:
-            completeBy = datetime.datetime.now() + datetime.timedelta(hours = 24)
-        
-        # formatting the string
-        completeBy = completeBy.strftime("%c")
-        
-        # make a JSON object to append to the existing list
-        self.activeOneTimeTasks[self.lastUniqueID] = {
-            "taskString" : taskString,
-            "assignedOn" : (datetime.datetime.now()).strftime("%c"),
-            "completeBy" : completeBy,
-            "priority" : priority,
-        }
-
-        print(self.activeOneTimeTasks)
+        self.activeOneTimeTasks[self.lastUniqueID] = self.taskFunctionsObject.addTasks(
+                                                        taskString, "oneTimeTasks", priority, completeBy)
 
     # TODO: write this function
-    def markTaskAsCompleted(self):
-        pass
+    def markTaskAsCompleted(self, idToMarkAsCompleted):
+        self.completedOneTimeTasks.append(self.activeOneTimeTasks[idToMarkAsCompleted])
+        del self.activeOneTimeTasks[idToMarkAsCompleted]
 
     def getActiveOneTimeTasks(self):
         return self.activeOneTimeTasks

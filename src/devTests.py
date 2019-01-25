@@ -13,9 +13,16 @@ def testOneTimeTasks():
     dataIOOperationsObject.initializeIDs()
     dataIOOperationsObject.writeUniqueIDs()
     oneTimeTaskObject.addOneTimeTask("test Python code")
+    oneTimeTaskObject.addOneTimeTask("Write some more code")
+    print(oneTimeTaskObject.getActiveOneTimeTasks())
+    print()
+    oneTimeTaskObject.markTaskAsCompleted(1)
+    print(oneTimeTaskObject.getActiveOneTimeTasks())
+    print()
+    print(oneTimeTaskObject.getCompletedOneTimeTasks())
+    oneTimeTaskObject.saveCompletedOneTimeTasks()
     oneTimeTaskObject.saveActiveOneTimeTasks()
 
-    
 
 if __name__ == "__main__":
     testOneTimeTasks()

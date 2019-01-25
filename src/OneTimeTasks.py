@@ -1,8 +1,6 @@
 import DataIOOperations
 import datetime
 
-
-# TODO: write on close app operations - save the last used uniqueID
 class OneTimeTasks:
     def __init__(self):
         self.DataIOOperationsObject = DataIOOperations.DataIOOperations() 
@@ -35,6 +33,10 @@ class OneTimeTasks:
 
         print(self.activeOneTimeTasks)
 
+    # TODO: write this function
+    def markTaskAsCompleted(self):
+        pass
+
     def getActiveOneTimeTasks(self):
         return self.activeOneTimeTasks
 
@@ -42,6 +44,7 @@ class OneTimeTasks:
         return self.completedOneTimeTasks
 
     def saveActiveOneTimeTasks(self):
+        self.DataIOOperationsObject.updateUniqueIDs('oneTimeTasks', self.lastUniqueID)
         self.DataIOOperationsObject.saveAsFile('active', 'oneTimeTasks', self.activeOneTimeTasks)
 
     def saveCompletedOneTimeTasks(self):

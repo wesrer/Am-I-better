@@ -6,11 +6,12 @@ class OneTimeTasks:
     def __init__(self):
         self.DataIOOperationsObject = DataIOOperations.DataIOOperations()
         self.taskFunctionsObject = taskFunctions.taskFunctions()
+
         # FIXME: replace this with an actual file
-        self.activeOneTimeTasks = {}
-        self.completedOneTimeTasks = []
-        # self.completedOneTimeTasks = self.DataIOOperationsObject.getTasks('completed', 'oneTimeTasks')
-        # self.activeOneTimeTasks = self.DataIOOperationsObject.getTasks('active', 'oneTimeTasks')
+        # self.activeOneTimeTasks = {}
+        # self.completedOneTimeTasks = []
+        self.completedOneTimeTasks = self.DataIOOperationsObject.getTasks('completed', 'oneTimeTasks')
+        self.activeOneTimeTasks = self.DataIOOperationsObject.getTasks('active', 'oneTimeTasks')
 
         self.lastUniqueID = int(self.DataIOOperationsObject.getUniqueIDs('oneTimeTasks'))
 

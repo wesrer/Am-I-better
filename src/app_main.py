@@ -14,8 +14,6 @@ class App:
         self.OneTimeTasksObject.saveActiveOneTimeTasks()
         self.OneTimeTasksObject.saveCompletedOneTimeTasks()
 
-
-
         self.DataIOOperationsObject.writeUniqueIDs()
 
 

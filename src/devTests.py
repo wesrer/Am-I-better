@@ -10,8 +10,6 @@ def testOneTimeTasks():
     oneTimeTaskObject = OneTimeTasks.OneTimeTasks()
 
     # operations
-    dataIOOperationsObject.initializeIDs()
-    dataIOOperationsObject.writeUniqueIDs()
     oneTimeTaskObject.addOneTimeTask("test Python code")
     oneTimeTaskObject.addOneTimeTask("Write some more code")
     print(oneTimeTaskObject.getActiveOneTimeTasks())
@@ -20,9 +18,7 @@ def testOneTimeTasks():
     print(oneTimeTaskObject.getActiveOneTimeTasks())
     print()
     print(oneTimeTaskObject.getCompletedOneTimeTasks())
-    oneTimeTaskObject.saveCompletedOneTimeTasks()
-    oneTimeTaskObject.saveActiveOneTimeTasks()
-
+    appObject.onCloseOperations()
 
 if __name__ == "__main__":
     testOneTimeTasks()

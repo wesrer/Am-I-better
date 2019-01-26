@@ -35,10 +35,12 @@ class OneTimeTasks:
         return self.completedOneTimeTasks
 
     def saveActiveOneTimeTasks(self):
+        print("saving active one time tasks")
         self.DataIOOperationsObject.updateUniqueIDs('oneTimeTasks', self.lastUniqueID)
         self.DataIOOperationsObject.saveAsFile('active', 'oneTimeTasks', self.activeOneTimeTasks)
 
     def saveCompletedOneTimeTasks(self):
+        print("saving completed one time tasks")
         self.DataIOOperationsObject.saveAsFile('completed', 'oneTimeTasks', self.completedOneTimeTasks)
 
     def sortByPriority(self):

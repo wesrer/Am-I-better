@@ -18,7 +18,7 @@ class DataIOOperations:
     #   inside the data directory and returns it
 
     def getTasks(self, taskStatus, taskType):
-        pathAddress = self.dataDirectory / taskStatus / taskType
+        pathAddress = self.dataDirectory / taskStatus / (taskType + ".json")
 
         # FIXME: this needs to be a read from a JSON file
         with pathAddress.open() as f:
@@ -68,10 +68,14 @@ class DataIOOperations:
         self.uniqueIDs[taskType] = newID
 
     def writeUniqueIDs(self):
+        print("writing updated IDs")
         with open(self.uniqueIDsFile, 'w') as idfile:
-            json.dump(self.uniqueIDs,
-                      idfile,
+            dataToWrite = json.dumps(self.uniqueIDs,
                       sort_keys=True,
                       indent=4,
                       ensure_ascii=False)
+            idfile.write(dataToWrite)
+            idfile.close()
+
+
 

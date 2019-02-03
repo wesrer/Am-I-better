@@ -24,6 +24,10 @@ class DataIOOperations:
         with pathAddress.open() as f:
             data = json.load(f)
 
+        print("got this data")
+        print(data)
+        print()
+
         return data
 
     # FUNCTION PARAMETERS:
@@ -39,6 +43,10 @@ class DataIOOperations:
     def saveAsFile(self, taskStatus, taskType, dictionaryToSave):
         fileAddress = self.dataDirectory / taskStatus / (taskType + ".json")
         #fileAddress.unlink()
+
+        print("trying to save this dict")
+        print(dictionaryToSave)
+        print()
 
         with open(fileAddress, 'w') as writefile:
             json.dump(
@@ -69,6 +77,10 @@ class DataIOOperations:
         self.uniqueIDs[taskType] = newID
 
     def writeUniqueIDs(self):
+
+        print("unique IDs at write unique IDS")
+        print(self.uniqueIDs)
+        print()
         with open(self.uniqueIDsFile, 'w') as idfile:
             dataToWrite = json.dumps(self.uniqueIDs,
                       sort_keys=True,

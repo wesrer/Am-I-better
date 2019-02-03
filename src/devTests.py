@@ -5,17 +5,16 @@ import app_main
 
 def testOneTimeTasks():
     # definitions
-    dataIOOperationsObject = DataIOOperations.DataIOOperations()
-    oneTimeTaskObject = OneTimeTasks.OneTimeTasks()
-    appObject = app_main.App(oneTimeTaskObject, dataIOOperationsObject)
+    appObject = app_main.App()
 
 
     # operations
-    oneTimeTaskObject.addOneTimeTask("test Python code")
-    oneTimeTaskObject.addOneTimeTask("Write some more code")
-    #print(oneTimeTaskObject.getActiveOneTimeTasks())
-    #print()
-    oneTimeTaskObject.markTaskAsCompleted(1)
+    oneTimeTaskObject.addOneTimeTask("Fix this shit bug")
+    # oneTimeTaskObject.addOneTimeTask("Code for 4 hours")
+    # oneTimeTaskObject.addOneTimeTask("Study Japanese for 2 hours")
+    # print(oneTimeTaskObject.getActiveOneTimeTasks())
+    # print()
+    # oneTimeTaskObject.markTaskAsCompleted(1)
     # print(oneTimeTaskObject.getActiveOneTimeTasks())
     # print()
     # print(oneTimeTaskObject.getCompletedOneTimeTasks())

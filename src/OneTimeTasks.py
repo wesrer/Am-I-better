@@ -3,9 +3,9 @@ import datetime
 import taskFunctions
 
 class OneTimeTasks:
-    def __init__(self):
-        self.DataIOOperationsObject = DataIOOperations.DataIOOperations()
-        self.taskFunctionsObject = taskFunctions.taskFunctions()
+    def __init__(self, dataIOOperationsObject, taskFunctionsObject):
+        self.DataIOOperationsObject = dataIOOperationsObject
+        self.taskFunctionsObject = taskFunctionsObject
 
         # FIXME: replace this with an actual file
         # self.activeOneTimeTasks = {}
@@ -25,8 +25,12 @@ class OneTimeTasks:
 
     # TODO: write this function
     def markTaskAsCompleted(self, idToMarkAsCompleted):
+        print(self.completedOneTimeTasks)
         self.completedOneTimeTasks.append(self.activeOneTimeTasks[idToMarkAsCompleted])
         del self.activeOneTimeTasks[idToMarkAsCompleted]
+
+    def getLastUniqueID(self):
+        return self.lastUniqueID
 
     def getActiveOneTimeTasks(self):
         return self.activeOneTimeTasks

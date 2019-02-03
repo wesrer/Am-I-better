@@ -2,9 +2,7 @@ import datetime
 
 class taskFunctions:
     def __init__(self):
-
         pass
-
 
     def addTasks(self,
                  taskString,

@@ -1,4 +1,3 @@
-
 import DataIOOperations
 import taskFunctions
 import OneTimeTasks
@@ -10,6 +9,10 @@ class App:
         self.taskFunctionsObject = taskFunctions.taskFunctions()
         self.OneTimeTasksObject = OneTimeTasks.OneTimeTasks(self.DataIOOperationsObject,
                                                             self.taskFunctionsObject)
+
+    def getOneTimeTaskObject(self):
+        return self.OneTimeTasksObject
+
 
     def onCloseOperations(self):
 

@@ -1,26 +1,22 @@
-import DataIOOperations
-import datetime
-import taskFunctions
-
 class OneTimeTasks:
     def __init__(self, dataIOOperationsObject, taskFunctionsObject):
         self.DataIOOperationsObject = dataIOOperationsObject
         self.taskFunctionsObject = taskFunctionsObject
 
-        # FIXME: replace this with an actual file
-        # self.activeOneTimeTasks = {}
-        # self.completedOneTimeTasks = []
         self.completedOneTimeTasks = self.DataIOOperationsObject.getTasks('completed', 'oneTimeTasks')
         self.activeOneTimeTasks = self.DataIOOperationsObject.getTasks('active', 'oneTimeTasks')
 
         self.lastUniqueID = int(self.DataIOOperationsObject.getUniqueIDs('oneTimeTasks'))
+        print('The lastUniqueID found was')
+        print(self.lastUniqueID)
+        print()
 
     # FIXME: add more properties, because these are clearly not enough
     # FIXME: figure out how to take customized completeBy input
     def addOneTimeTask(self, taskString, priority=0, completeBy = False):
         self.lastUniqueID += 1
 
-        self.activeOneTimeTasks[self.lastUniqueID] = self.taskFunctionsObject.addTasks(
+        self.activeOneTimeTasks[str(self.lastUniqueID)] = self.taskFunctionsObject.addTasks(
                                                         taskString, "oneTimeTasks", priority, completeBy)
 
     # TODO: write this function

@@ -6,8 +6,7 @@ class DataIOOperations:
         self.currentDirectory = Path('.')
         self.dataDirectory = self.currentDirectory / '..' / 'data'
         self.uniqueIDsFile = self.dataDirectory / 'uniqueIDs.json'
-        self.uniqueIDs = self.initializeIDs()
-        # self.uniqueIDs = self.readUniqueIDs()
+        self.uniqueIDs = self.readUniqueIDs()
 
     # FUNCTION PARAMETERS:
     #   - taskStatus - "active" or "completed"
@@ -42,7 +41,6 @@ class DataIOOperations:
 
     def saveAsFile(self, taskStatus, taskType, dictionaryToSave):
         fileAddress = self.dataDirectory / taskStatus / (taskType + ".json")
-        #fileAddress.unlink()
 
         print("trying to save this dict")
         print(dictionaryToSave)
@@ -56,17 +54,13 @@ class DataIOOperations:
                 indent=4,
                 ensure_ascii=False)
 
-    def initializeIDs(self):
-        return {
-            "oneTimeTasks" : "0",
-            "habits" : "0",
-            "longTermProjects": "0"
-        }
-
     def readUniqueIDs(self):
-        # FIXME: this needs to be a read from a JSON file
         with self.uniqueIDsFile.open() as f:
             data = json.load(f)
+
+        print('Unique IDs read was')
+        print(data)
+        print()
 
         return data
 
@@ -74,7 +68,7 @@ class DataIOOperations:
         return self.uniqueIDs[taskType]
 
     def updateUniqueIDs(self, taskType, newID):
-        self.uniqueIDs[taskType] = newID
+        self.uniqueIDs[taskType] = str(newID)
 
     def writeUniqueIDs(self):
 

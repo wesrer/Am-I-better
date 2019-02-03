@@ -6,42 +6,45 @@ class OneTimeTasks:
         self.completedOneTimeTasks = self.DataIOOperationsObject.getTasks('completed', 'oneTimeTasks')
         self.activeOneTimeTasks = self.DataIOOperationsObject.getTasks('active', 'oneTimeTasks')
 
-        self.lastUniqueID = int(self.DataIOOperationsObject.getUniqueIDs('oneTimeTasks'))
-        print('The lastUniqueID found was')
-        print(self.lastUniqueID)
-        print()
+        self.lastActiveUniqueID = int(self.DataIOOperationsObject.getUniqueIDs('oneTimeTasks'))
+        self.lastCompletedUniqueID = int(self.DataIOOperationsObject.getUniqueIDs('completedOneTimeTasks'))
+
+
 
     # FIXME: add more properties, because these are clearly not enough
     # FIXME: figure out how to take customized completeBy input
     def addOneTimeTask(self, taskString, priority=0, completeBy = False):
-        self.lastUniqueID += 1
+        self.lastActiveUniqueID += 1
 
-        self.activeOneTimeTasks[str(self.lastUniqueID)] = self.taskFunctionsObject.addTasks(
+        self.activeOneTimeTasks[str(self.lastActiveUniqueID)] = self.taskFunctionsObject.addTasks(
                                                         taskString, "oneTimeTasks", priority, completeBy)
 
-    # TODO: write this function
     def markTaskAsCompleted(self, idToMarkAsCompleted):
-        print(self.completedOneTimeTasks)
-        self.completedOneTimeTasks.append(self.activeOneTimeTasks[idToMarkAsCompleted])
-        del self.activeOneTimeTasks[idToMarkAsCompleted]
+        self.lastCompletedUniqueID += 1
 
-    def getLastUniqueID(self):
-        return self.lastUniqueID
+        self.completedOneTimeTasks[str(self.lastCompletedUniqueID)] = self.activeOneTimeTasks[str(idToMarkAsCompleted)]
+
+        del self.activeOneTimeTasks[str(idToMarkAsCompleted)]
+
+    def saveActiveOneTimeTasks(self):
+        self.DataIOOperationsObject.saveAsFile('active', 'oneTimeTasks', self.activeOneTimeTasks)
+
+    def saveCompletedOneTimeTasks(self):
+        self.DataIOOperationsObject.saveAsFile('completed', 'oneTimeTasks', self.completedOneTimeTasks)
+
+    # TODO
+    def sortByPriority(self):
+        sortedByPriority = 0
+        return sortedByPriority
+
+    def updateIDs(self):
+        self.DataIOOperationsObject.updateUniqueIDs("oneTimeTasks", self.lastActiveUniqueID)
+        self.DataIOOperationsObject.updateUniqueIDs("completedOneTimeTasks", self.lastCompletedUniqueID)
+
+    # GET operations
 
     def getActiveOneTimeTasks(self):
         return self.activeOneTimeTasks
 
     def getCompletedOneTimeTasks(self):
         return self.completedOneTimeTasks
-
-    def saveActiveOneTimeTasks(self):
-        self.DataIOOperationsObject.updateUniqueIDs('oneTimeTasks', self.lastUniqueID)
-        self.DataIOOperationsObject.saveAsFile('active', 'oneTimeTasks', self.activeOneTimeTasks)
-
-    def saveCompletedOneTimeTasks(self):
-        self.DataIOOperationsObject.saveAsFile('completed', 'oneTimeTasks', self.completedOneTimeTasks)
-
-    def sortByPriority(self):
-        # TODO
-        sortedByPriority = 0
-        return sortedByPriority

@@ -23,10 +23,6 @@ class DataIOOperations:
         with pathAddress.open() as f:
             data = json.load(f)
 
-        print("got this data")
-        print(data)
-        print()
-
         return data
 
     # FUNCTION PARAMETERS:
@@ -58,10 +54,6 @@ class DataIOOperations:
         with self.uniqueIDsFile.open() as f:
             data = json.load(f)
 
-        print('Unique IDs read was')
-        print(data)
-        print()
-
         return data
 
     def getUniqueIDs(self, taskType):
@@ -72,9 +64,6 @@ class DataIOOperations:
 
     def writeUniqueIDs(self):
 
-        print("unique IDs at write unique IDS")
-        print(self.uniqueIDs)
-        print()
         with open(self.uniqueIDsFile, 'w') as idfile:
             dataToWrite = json.dumps(self.uniqueIDs,
                       sort_keys=True,

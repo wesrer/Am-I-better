@@ -38,6 +38,7 @@ class DataIOOperations:
 
     def saveAsFile(self, taskStatus, taskType, dictionaryToSave):
         fileAddress = self.dataDirectory / taskStatus / (taskType + ".json")
+        #fileAddress.unlink()
 
         with open(fileAddress, 'w') as writefile:
             json.dump(
@@ -68,7 +69,6 @@ class DataIOOperations:
         self.uniqueIDs[taskType] = newID
 
     def writeUniqueIDs(self):
-        print("writing updated IDs")
         with open(self.uniqueIDsFile, 'w') as idfile:
             dataToWrite = json.dumps(self.uniqueIDs,
                       sort_keys=True,

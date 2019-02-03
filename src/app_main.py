@@ -3,10 +3,10 @@ import DataIOOperations
 import OneTimeTasks
 
 class App:
-    def __init__(self):
+    def __init__(self, oneTimeTaskObject, dataIOOperationsObject):
         self.dailyTasks = []
-        self.DataIOOperationsObject = DataIOOperations.DataIOOperations()
-        self.OneTimeTasksObject = OneTimeTasks.OneTimeTasks()
+        self.DataIOOperationsObject = dataIOOperationsObject
+        self.OneTimeTasksObject = oneTimeTaskObject
 
     def onCloseOperations(self):
 

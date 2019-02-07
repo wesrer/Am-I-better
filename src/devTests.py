@@ -1,4 +1,5 @@
 import app_main
+from pathlib import Path
 
 def testOneTimeTasks():
     # definitions
@@ -14,11 +15,17 @@ def testOneTimeTasks():
     # oneTimeTaskObject.addOneTimeTask("")
     # print(oneTimeTaskObject.getActiveOneTimeTasks())
     # print()
-    oneTimeTaskObject.markTaskAsCompleted(2)
+    # oneTimeTaskObject.markTaskAsCompleted(1)
+    oneTimeTaskObject.addOneTimeTask("Test the new feature")
     # print(oneTimeTaskObject.getActiveOneTimeTasks())
     # print()
     # print(oneTimeTaskObject.getCompletedOneTimeTasks())
     appObject.onCloseOperations()
+
+
+def reInitializeData():
+    pass
+
 
 if __name__ == "__main__":
     testOneTimeTasks()

@@ -10,17 +10,15 @@ class App:
         self.OneTimeTasksObject = OneTimeTasks.OneTimeTasks(self.DataIOOperationsObject,
                                                             self.taskFunctionsObject)
 
+    def onStartOperations(self):
+        pass
+
     def onCloseOperations(self):
         # TODO: have to do this for all the kinds of operations
         self.OneTimeTasksObject.saveActiveOneTimeTasks()
         self.OneTimeTasksObject.saveCompletedOneTimeTasks()
 
-        self.updateAllUniqueIDs()
         self.DataIOOperationsObject.writeUniqueIDs()
-
-    def updateAllUniqueIDs(self):
-        # TODO: do this for all the Task Types
-        self.OneTimeTasksObject.updateIDs()
 
     # GET operations
     def getOneTimeTaskObject(self):

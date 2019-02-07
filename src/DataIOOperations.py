@@ -1,6 +1,7 @@
 from pathlib import Path 
 import json
 
+
 class DataIOOperations:
     def __init__(self):
         self.currentDirectory = Path('.')
@@ -35,6 +36,8 @@ class DataIOOperations:
     #   saves a python dictionary to a ' < taskType >.json' file in directory
     #   < taskStatus >
 
+
+
     def saveAsFile(self, taskStatus, taskType, dictionaryToSave):
         fileAddress = self.dataDirectory / taskStatus / (taskType + ".json")
 
@@ -50,14 +53,29 @@ class DataIOOperations:
                 indent=4,
                 ensure_ascii=False)
 
+
     def readUniqueIDs(self):
         with self.uniqueIDsFile.open() as f:
             data = json.load(f)
 
         return data
 
-    def getUniqueIDs(self, taskType):
-        return self.uniqueIDs[taskType]
+    def tempSanityCheck(self):
+        print(len(self.uniqueIDs['completedOneTimeTasks']["available"]))
+
+    # returns a new ID for the task being created
+    def getNewUniqueIDForTask(self, taskType):
+        if len(self.uniqueIDs[taskType]["available"]) == 0:
+            newUniqueID = self.uniqueIDs[taskType]["next"]
+
+            self.uniqueIDs[taskType]["next"] = str(int(newUniqueID) + 1)
+        else:
+            newUniqueID = self.uniqueIDs[taskType]["available"].pop(0)
+
+        return int(newUniqueID)
+
+    def markIDAsAvailable(self, taskType, idToMarkAsAvailable):
+        self.uniqueIDs[taskType]["available"].append(str(idToMarkAsAvailable))
 
     def updateUniqueIDs(self, taskType, newID):
         self.uniqueIDs[taskType] = str(newID)

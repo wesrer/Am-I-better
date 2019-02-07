@@ -1,1 +1,8 @@
-[]
+{
+    "1": {
+        "assignedOn": "Thu Feb  7 15:26:02 2019",
+        "completeBy": "Fri Feb  8 15:26:02 2019",
+        "priority": 0,
+        "taskString": "Code for 4 hours"
+    }
+}

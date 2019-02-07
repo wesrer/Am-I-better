@@ -1,5 +1,24 @@
 {
-    "habits": "0",
-    "longTermProjects": "0",
-    "oneTimeTasks": "0"
+    "completedLongTermProjectsSubTasks": {},
+    "completedOneTimeTasks": {
+        "available": [],
+        "next": "2"
+    },
+    "habits": {
+        "available": [],
+        "next": "0"
+    },
+    "inactiveHabits": {
+        "available": [],
+        "next": "0"
+    },
+    "longTermProjects": {
+        "available": [],
+        "next": "0"
+    },
+    "longTermProjectsSubTasks": {},
+    "oneTimeTasks": {
+        "available": [],
+        "next": "6"
+    }
 }

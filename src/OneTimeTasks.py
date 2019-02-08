@@ -28,28 +28,28 @@ class OneTimeTasks:
         uniqueID = self.DataIOOperationsObject.getNewUniqueIDForTask('oneTimeTasks')
 
         self.activeOneTimeTasks[str(uniqueID)] = \
-            self.taskFunctionsObject.addTasks(taskString=taskString,
-                                              taskType="oneTimeTasks",
-                                              priority=priority,
-                                              completeBy=completeBy)
+            self.taskFunctionsObject.add_tasks(task_string=taskString,
+                                               task_type="oneTimeTasks",
+                                               priority=priority,
+                                               complete_by=completeBy)
 
     def markTaskAsCompleted(self,
                             idToMarkAsCompleted: int) -> None:
 
         self.activeOneTimeTasks, self.completedOneTimeTasks = \
-            self.taskFunctionsObject.markTaskAsCompleted(idToMarkAsCompleted=idToMarkAsCompleted,
-                                                         activeDictionary=self.activeOneTimeTasks,
-                                                         completedDictionary=self.completedOneTimeTasks,
-                                                         taskType="oneTimeTasks",
-                                                         completedTaskType="completedOneTimeTasks")
+            self.taskFunctionsObject.mark_task_as_completed(id_to_mark_as_completed=idToMarkAsCompleted,
+                                                            active_dictionary=self.activeOneTimeTasks,
+                                                            completed_dictionary=self.completedOneTimeTasks,
+                                                            task_type="oneTimeTasks",
+                                                            completed_task_type="completedOneTimeTasks")
 
     def deleteTask(self,
                    idToDelete: int) -> None:
 
         self.activeOneTimeTasks = \
-            self.taskFunctionsObject.deleteTask(idToDelete=idToDelete,
-                                                activeDictionary=self.activeOneTimeTasks,
-                                                taskType='oneTimeTasks')
+            self.taskFunctionsObject.delete_task(id_to_delete=idToDelete,
+                                                 active_dictionary=self.activeOneTimeTasks,
+                                                 task_type='oneTimeTasks')
 
     def saveActiveOneTimeTasks(self) -> None:
 

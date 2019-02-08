@@ -1,8 +1,14 @@
 import datetime
 
+from typing import List, Dict
+
+# Type Hints for Type Checking
+StringList = List[str]
+StringDict = Dict[str,str]
+
 class taskFunctions:
-    def __init__(self):
-        pass
+    def __init__(self, dataIOOperationsObject):
+        self.DataIOOperationsObject = dataIOOperationsObject
 
     def addTasks(self,
                  taskString,
@@ -31,3 +37,29 @@ class taskFunctions:
             dataDict["refreshRate"] = refreshRate
 
         return dataDict
+
+    # Moves Task From Active Dictionary to Completed Dictionary
+    # and adjusts ids to reflect this task
+    # returns the new Active Dictionary and Completed Dictionary
+    def markTaskAsCompleted(self,
+                            idToMarkAsCompleted: int,
+                            activeDictionary: StringDict,
+                            completedDictionary,
+                            taskType,
+                            completedTaskType):
+        uniqueID = self.DataIOOperationsObject.getNewUniqueIDForTask(completedTaskType)
+
+        completedDictionary[uniqueID] = activeDictionary[str(idToMarkAsCompleted)]
+
+        self.DataIOOperationsObject.markIDAsAvailable(taskType, idToMarkAsCompleted)
+
+        del activeDictionary[str(idToMarkAsCompleted)]
+
+        return activeDictionary, completedDictionary
+
+    def deleteTask(self, idToDelete, activeDictionary, taskType):
+        del activeDictionary[str(idToDelete)]
+
+        self.DataIOOperationsObject.markIDAsAvailable(taskType, idToDelete)
+
+        return activeDictionary

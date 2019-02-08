@@ -16,17 +16,18 @@ class OneTimeTasks:
                                                         taskString, "oneTimeTasks", priority, completeBy)
 
     def markTaskAsCompleted(self, idToMarkAsCompleted):
-        uniqueID = self.DataIOOperationsObject.getNewUniqueIDForTask('completedOneTimeTasks')
+        self.activeOneTimeTasks, self.completedOneTimeTasks = \
+            self.taskFunctionsObject.markTaskAsCompleted(idToMarkAsCompleted=idToMarkAsCompleted,
+                                                         activeDictionary=self.activeOneTimeTasks,
+                                                         completedDictionary=self.completedOneTimeTasks,
+                                                         taskType="oneTimeTasks",
+                                                         completedTaskType="completedOneTimeTasks")
 
-        self.completedOneTimeTasks[uniqueID] = self.activeOneTimeTasks[str(idToMarkAsCompleted)]
-        self.DataIOOperationsObject.markIDAsAvailable('oneTimeTasks', idToMarkAsCompleted)
-
-        del self.activeOneTimeTasks[str(idToMarkAsCompleted)]
-
-
-    # TODO: the empty id can be reused so make sure that it is
     def deleteTask(self, idToDelete):
-        del self.activeOneTimeTasks[str(idToDelete)]
+        self.activeOneTimeTasks = \
+            self.taskFunctionsObject.deleteTask(idToDelete=idToDelete,
+                                                activeDictionary=self.activeOneTimeTasks,
+                                                taskType='oneTimeTasks')
 
     def saveActiveOneTimeTasks(self):
         self.DataIOOperationsObject.saveAsFile('active', 'oneTimeTasks', self.activeOneTimeTasks)

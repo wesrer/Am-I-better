@@ -1,12 +1,24 @@
 # TODOs:
 
+
+
 ## Features
 
-- Implement being able to reuse old IDs
+### Urgent
+
+- Implement priorities 
 - Implement a CLI
-- Different colors based on different priorities
 - Implement long term projects
+    - Figure out how to add subtasks to large projects
 - Implement habits
+    - Figure out how to refresh tasks
+
+### Semi-Urgent
+
+- Different colors based on different priorities
+
+### Someday?
+
 - Implement graphical visualization for your progress on long term projects
 - Implement graphical visualization to track your habit completion success rate
 
@@ -14,3 +26,7 @@
 
 
 ## Testing
+
+## Completed
+
+- Implement being able to reuse old IDs

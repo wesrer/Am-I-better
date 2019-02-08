@@ -6,7 +6,7 @@ class App:
     def __init__(self):
         self.dailyTasks = []
         self.DataIOOperationsObject = DataIOOperations.DataIOOperations()
-        self.taskFunctionsObject = taskFunctions.taskFunctions()
+        self.taskFunctionsObject = taskFunctions.taskFunctions(self.DataIOOperationsObject)
         self.OneTimeTasksObject = OneTimeTasks.OneTimeTasks(self.DataIOOperationsObject,
                                                             self.taskFunctionsObject)
 

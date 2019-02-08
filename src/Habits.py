@@ -1,20 +1,26 @@
+
+# TODO: figure out how to refresh tasks
 class Habits:
     def __init__(self, dataIOOperationsObject, taskFunctionsObject):
         self.DataIOOperationsObject = dataIOOperationsObject;
-        self.taskFunctions = taskFunctionsObject
+        self.TaskFunctionsObject = taskFunctionsObject
 
         self.activeHabits = self.DataIOOperationsObject.getTasks('active', 'habits')
         self.inactiveHabits = self.DataIOOperationsObject.getTasks('inactive', 'habits')
 
-        self.lastActiveUniqueID = int(self.DataIOOperationsObject.getUniqueIDs('habits'))
-        self.lastInactiveUniqueID = int(self.DataIOOperationsObject.getUniqueIDs('inactiveHabits'))
+    def addHabit(self, habitString, priority=0, refreshRate=1):
+        unqiueID = self.DataIOOperationsObject.getNewUniqueIDForTask('habits')
 
-    def addHabit(self, habitString, priority=0):
-        pass
+        self.activeHabits[str(unqiueID)] = \
+            self.TaskFunctionsObject.addTasks(taskString=habitString,
+                                              taskType="habits",
+                                              priority=priority,
+                                              refreshRate=refreshRate)
+
 
     # FIXME: reuse the
     def markHabitAsInactive(self, idToMarkAsInactive):
-        uniqueID =
+        uniqueID = self.DataIOOperationsObject.getN
 
         self.inactiveHabits[str(self.lastInactiveUniqueID)] = self.activeHabits[str(idToMarkAsInactive)]
 
@@ -24,4 +30,10 @@ class Habits:
         del
 
 
-    def markHabitAs
+    def markHabitAsInactive(self, idToMarkAsInactive):
+        self.activeHabits, self.inactiveHabits = \
+            self.TaskFunctionsObject.markTaskAsCompleted(idToMarkAsCompleted=idToMarkAsInactive,
+                                                         activeDictionary=self.activeHabits,
+                                                         completedDictionary=self.inactiveHabits,
+                                                         taskType="habits",
+                                                         completedTaskType="inactiveHabits")

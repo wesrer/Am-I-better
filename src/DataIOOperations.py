@@ -1,6 +1,11 @@
 from pathlib import Path 
 import json
 
+from typing import List, Dict
+
+# Type Hints for Type Checking
+StringList = List[str]
+StringDict = Dict[str,str]
 
 class DataIOOperations:
     def __init__(self):
@@ -17,7 +22,9 @@ class DataIOOperations:
     #   reads the JSON file '< taskType >.json' from directory < taskStatus >
     #   inside the data directory and returns it
 
-    def getTasks(self, taskStatus, taskType):
+    def getTasks(self,
+                 taskStatus: str,
+                 taskType: str) -> StringDict:
         pathAddress = self.dataDirectory / taskStatus / (taskType + ".json")
 
         # FIXME: this needs to be a read from a JSON file
@@ -36,9 +43,10 @@ class DataIOOperations:
     #   saves a python dictionary to a ' < taskType >.json' file in directory
     #   < taskStatus >
 
-
-
-    def saveAsFile(self, taskStatus, taskType, dictionaryToSave):
+    def saveAsFile(self,
+                   taskStatus: str,
+                   taskType: str,
+                   dictionaryToSave: StringDict) -> None:
         fileAddress = self.dataDirectory / taskStatus / (taskType + ".json")
 
         print("trying to save this dict")
@@ -54,17 +62,14 @@ class DataIOOperations:
                 ensure_ascii=False)
 
 
-    def readUniqueIDs(self):
+    def readUniqueIDs(self) -> StringDict:
         with self.uniqueIDsFile.open() as f:
             data = json.load(f)
-
         return data
 
-    def tempSanityCheck(self):
-        print(len(self.uniqueIDs['completedOneTimeTasks']["available"]))
-
     # returns a new ID for the task being created
-    def getNewUniqueIDForTask(self, taskType):
+    def getNewUniqueIDForTask(self,
+                              taskType: str) -> int:
         if len(self.uniqueIDs[taskType]["available"]) == 0:
             newUniqueID = self.uniqueIDs[taskType]["next"]
 
@@ -74,14 +79,17 @@ class DataIOOperations:
 
         return int(newUniqueID)
 
-    def markIDAsAvailable(self, taskType, idToMarkAsAvailable):
+    def markIDAsAvailable(self,
+                          taskType: str,
+                          idToMarkAsAvailable: int) -> None:
         self.uniqueIDs[taskType]["available"].append(str(idToMarkAsAvailable))
 
-    def updateUniqueIDs(self, taskType, newID):
+    def updateUniqueIDs(self,
+                        taskType: str,
+                        newID: int) -> None:
         self.uniqueIDs[taskType] = str(newID)
 
-    def writeUniqueIDs(self):
-
+    def writeUniqueIDs(self) -> None:
         with open(self.uniqueIDsFile, 'w') as idfile:
             dataToWrite = json.dumps(self.uniqueIDs,
                       sort_keys=True,

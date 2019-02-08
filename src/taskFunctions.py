@@ -7,15 +7,16 @@ StringList = List[str]
 StringDict = Dict[str,str]
 
 class taskFunctions:
+    # TODO: figure out how to Type Cast Custom Objects
     def __init__(self, dataIOOperationsObject):
         self.DataIOOperationsObject = dataIOOperationsObject
 
     def addTasks(self,
-                 taskString,
-                 taskType,
-                 priority=0,
-                 completeBy=False,
-                 refreshRate=0):
+                 taskString: str,
+                 taskType: str,
+                 priority: int = 0,
+                 completeBy: bool = False,
+                 refreshRate: int = 0):
 
         # By default, all tasks need to be completed by 24 hours of initializing them
         if not taskType == 'habits' and not completeBy:
@@ -40,13 +41,13 @@ class taskFunctions:
 
     # Moves Task From Active Dictionary to Completed Dictionary
     # and adjusts ids to reflect this task
-    # returns the new Active Dictionary and Completed Dictionary
+
     def markTaskAsCompleted(self,
                             idToMarkAsCompleted: int,
                             activeDictionary: StringDict,
-                            completedDictionary,
-                            taskType,
-                            completedTaskType):
+                            completedDictionary: StringDict,
+                            taskType: str,
+                            completedTaskType: str) -> [StringDict, StringDict]:
         uniqueID = self.DataIOOperationsObject.getNewUniqueIDForTask(completedTaskType)
 
         completedDictionary[uniqueID] = activeDictionary[str(idToMarkAsCompleted)]
@@ -57,7 +58,10 @@ class taskFunctions:
 
         return activeDictionary, completedDictionary
 
-    def deleteTask(self, idToDelete, activeDictionary, taskType):
+    def deleteTask(self,
+                   idToDelete: int,
+                   activeDictionary: StringDict,
+                   taskType: str) -> StringDict:
         del activeDictionary[str(idToDelete)]
 
         self.DataIOOperationsObject.markIDAsAvailable(taskType, idToDelete)

@@ -1,20 +1,22 @@
 from typing import List, Dict
 
+# TODO: figure out how to Type Cast Custom Objects
 # Custom Type Hints for Type Checking
 StringList = List[str]
 StringDict = Dict[str,str]
 
 class OneTimeTasks:
-    # TODO: figure out how to Type Cast Custom Objects
     def __init__(self,
                  dataIOOperationsObject,
-                 taskFunctionsObject):
+                 taskFunctionsObject,
+                 activeOneTimeTasks: StringDict,
+                 completedOneTimeTasks: StringDict):
+
         self.DataIOOperationsObject = dataIOOperationsObject
         self.taskFunctionsObject = taskFunctionsObject
 
-        self.completedOneTimeTasks = self.DataIOOperationsObject.getTasks('completed', 'oneTimeTasks')
-        self.activeOneTimeTasks = self.DataIOOperationsObject.getTasks('active', 'oneTimeTasks')
-
+        self.completedOneTimeTasks = completedOneTimeTasks
+        self.activeOneTimeTasks = activeOneTimeTasks
 
     # FIXME: add more properties, because these are clearly not enough
     # FIXME: figure out how to take customized completeBy input

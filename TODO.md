@@ -30,3 +30,5 @@
 ## Completed
 
 - Implement being able to reuse old IDs
+- Implemented the basics of oneTimeTasks
+- Implemented the basics of Habits

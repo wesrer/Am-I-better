@@ -24,12 +24,17 @@ class DataIOOperations:
 
     def getTasks(self,
                  taskStatus: str,
-                 taskType: str) -> StringDict:
+                 taskType: str,
+                 childTaskType: str = "None",
+                 parentTaskID: int = 0) -> StringDict:
+
         pathAddress = self.dataDirectory / taskStatus / (taskType + ".json")
 
-        # FIXME: this needs to be a read from a JSON file
         with pathAddress.open() as f:
             data = json.load(f)
+
+        if childTaskType != "None":
+            data = data[parentTaskID][childTaskType]
 
         return data
 

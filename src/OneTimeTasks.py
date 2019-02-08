@@ -1,6 +1,6 @@
 from typing import List, Dict
 
-# Type Hints for Type Checking
+# Custom Type Hints for Type Checking
 StringList = List[str]
 StringDict = Dict[str,str]
 
@@ -44,10 +44,14 @@ class OneTimeTasks:
                                                 taskType='oneTimeTasks')
 
     def saveActiveOneTimeTasks(self) -> None:
-        self.DataIOOperationsObject.saveAsFile('active', 'oneTimeTasks', self.activeOneTimeTasks)
+        self.DataIOOperationsObject.saveAsFile(taskStatus='active',
+                                               taskType='oneTimeTasks',
+                                               dictionaryToSave=self.activeOneTimeTasks)
 
     def saveCompletedOneTimeTasks(self) -> None:
-        self.DataIOOperationsObject.saveAsFile('completed', 'oneTimeTasks', self.completedOneTimeTasks)
+        self.DataIOOperationsObject.saveAsFile(taskStatus='completed',
+                                               taskType='oneTimeTasks',
+                                               dictionaryToSave=self.completedOneTimeTasks)
 
     # TODO: implement priorities
     def sortByPriority(self) -> StringDict:
@@ -55,7 +59,6 @@ class OneTimeTasks:
         return sortedByPriority
 
     # GET operations
-
     def getActiveOneTimeTasks(self) -> StringDict:
         return self.activeOneTimeTasks
 

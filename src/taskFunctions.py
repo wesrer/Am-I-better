@@ -2,7 +2,7 @@ import datetime
 
 from typing import List, Dict
 
-# Type Hints for Type Checking
+# Custom Type Hints for Type Checking
 StringList = List[str]
 StringDict = Dict[str,str]
 

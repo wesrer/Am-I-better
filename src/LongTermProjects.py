@@ -4,41 +4,39 @@
 #   outer long term project association.
 
 # FIXME: EVERYTHING!
+
+
 class LongTermProjects:
     def __init__(self,
-                 dataIOOperationsObject,
-                 taskFunctionsObject):
-        self.DataIOOperationsObject = dataIOOperationsObject
-        self.TaskFunctionsObject = dataIOOperationsObject
-
-
+                 data_io_operations_object,
+                 task_functions_object):
+        self.DataIOOperationsObject = data_io_operations_object
+        self.TaskFunctionsObject = task_functions_object
 
     # Every long term project
-    def addLongTermProject(self):
+    def add_long_term_project(self):
         pass
 
-
-    def addSubTaskToLongTermProject(self,
-                                    longTermProjectID: int,
-                                    taskString: str,
-                                    ) -> None:
+    def add_sub_task_to_long_term_project(self,
+                                          long_term_project_id: int,
+                                          task_string: str,
+                                          ) -> None:
         pass
-
 
     # TODO: add a check that doesn't let a project with incomplete subtasks to be
     #       marked as completed
-    def markLongTermProjectAsCompleted(self, idToMarkAsCompleted: int) -> None:
+    def mark_long_term_project_as_completed(self, id_to_mark_as_completed: int) -> None:
         pass
 
-    def deleteLongTermProject(self, idToDelete: int) -> None:
+    def delete_long_term_project(self, id_to_delete: int) -> None:
         pass
 
-    def markSubTaskAsCompleted(self,
-                               longTermProjectID: int,
-                               subTaskID: int) -> None:
+    def mark_sub_task_as_completed(self,
+                                   long_term_project_id: int,
+                                   sub_task_id: int) -> None:
         pass
 
-    def deleteSubTask(self,
-                      longTermProjectID: int,
-                      subTaskID: int) -> None:
+    def delete_sub_task(self,
+                        long_term_project_id: int,
+                        sub_task_id: int) -> None:
         pass

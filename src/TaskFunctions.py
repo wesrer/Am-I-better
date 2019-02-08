@@ -4,7 +4,7 @@ from typing import List, Dict
 
 # Custom Type Hints for Type Checking
 StringList = List[str]
-StringDict = Dict[str,str]
+StringDict = Dict[str, str]
 
 
 class TaskFunctions:
@@ -52,16 +52,16 @@ class TaskFunctions:
                                parent_id: int,
                                has_children: bool = False) -> [StringDict, StringDict]:
 
-        unique_id = self.DataIOOperationsObject.getNewUniqueIDForTask(taskType=completed_task_type,
-                                                                      parentID=parent_id,
-                                                                      hasChildren=has_children)
+        unique_id = self.DataIOOperationsObject.get_new_unique_id_for_task(task_type=completed_task_type,
+                                                                           parent_id=parent_id,
+                                                                           has_children=has_children)
 
         completed_dictionary[unique_id] = active_dictionary[str(id_to_mark_as_completed)]
 
-        self.DataIOOperationsObject.markIDAsAvailable(taskType=task_type,
-                                                      parentID=parent_id,
-                                                      hasChildren=has_children,
-                                                      idToMarkAsCompleted=id_to_mark_as_completed)
+        self.DataIOOperationsObject.mark_id_as_available(task_type=task_type,
+                                                         parent_id=parent_id,
+                                                         has_children=has_children,
+                                                         idToMarkAsCompleted=id_to_mark_as_completed)
 
         del active_dictionary[str(id_to_mark_as_completed)]
 
@@ -79,9 +79,9 @@ class TaskFunctions:
 
         del active_dictionary[str(id_to_delete)]
 
-        self.DataIOOperationsObject.markIDAsAvailable(taskType=task_type,
-                                                      idToMarkAsAvailable=id_to_delete,
-                                                      hasChildren=has_children,
-                                                      parentID=parent_id)
+        self.DataIOOperationsObject.mark_id_as_available(task_type=task_type,
+                                                         id_to_mark_as_available=id_to_delete,
+                                                         has_children=has_children,
+                                                         parent_id=parent_id)
 
         return active_dictionary

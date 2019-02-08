@@ -3,43 +3,44 @@ from taskFunctions import taskFunctions
 from oneTimeTasks import OneTimeTasks
 from habits import Habits
 
+
 class App:
     def __init__(self):
         self.dailyTasks = []
         self.DataIOOperationsObject = DataIOOperations()
         self.TaskFunctionsObject = taskFunctions(self.DataIOOperationsObject)
 
-        self.MainOneTimeTasksObject = self.initializeMainOneTimeTasksObject()
+        self.MainOneTimeTasksObject = self.initialize_main_one_time_tasks_object()
         self.HabitsObject = Habits(self.DataIOOperationsObject,
                                    self.TaskFunctionsObject)
 
-    def onStartOperations(self):
+    def on_start_operations(self):
         pass
 
     # This is the Class Level Initialization of One Time Tasks
     # There can also be long term tasks level initialization of oneTimeTasks
-    def initializeMainOneTimeTasksObject(self):
-        completedOneTimeTasks = \
-            self.DataIOOperationsObject.getTasks(taskStatus='completed',
-                                                 taskType='oneTimeTasks')
-        activeOneTimeTasks = \
-            self.DataIOOperationsObject.getTasks(taskStatus='active',
-                                                 taskType='oneTimeTasks')
+    def initialize_main_one_time_tasks_object(self):
+        completed_one_time_tasks = \
+            self.DataIOOperationsObject.get_tasks(task_status='completed',
+                                                  task_type='oneTimeTasks')
+        active_one_time_tasks = \
+            self.DataIOOperationsObject.get_tasks(task_status='active',
+                                                  task_type='oneTimeTasks')
 
         return OneTimeTasks(self.DataIOOperationsObject,
                             self.TaskFunctionsObject,
-                            activeOneTimeTasks,
-                            completedOneTimeTasks)
+                            active_one_time_tasks,
+                            completed_one_time_tasks)
 
-    def onCloseOperations(self):
+    def on_close_operations(self):
         # TODO: have to do this for all the kinds of operations
-        self.OneTimeTasksObject.saveActiveOneTimeTasks()
-        self.OneTimeTasksObject.saveCompletedOneTimeTasks()
+        self.OneTimeTasksObject.save_active_one_time_tasks()
+        self.OneTimeTasksObject.save_completed_one_time_tasks()
 
-        self.DataIOOperationsObject.writeUniqueIDs()
+        self.DataIOOperationsObject.write_unique_ids()
 
     # GET operations
-    def getOneTimeTaskObject(self):
+    def get_one_time_task_object(self):
         return self.OneTimeTasksObject
 
 

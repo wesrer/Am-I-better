@@ -15,55 +15,55 @@ class Habits:
         self.TaskFunctionsObject = task_functions_object
 
         self.activeHabits = \
-            self.DataIOOperationsObject.getTasks(taskStatus='active',
-                                                 taskType='habits')
+            self.DataIOOperationsObject.get_tasks(task_status='active',
+                                                  task_type='habits')
         self.inactiveHabits = \
-            self.DataIOOperationsObject.getTasks(taskStatus='inactive',
-                                                 taskType='habits')
+            self.DataIOOperationsObject.get_tasks(task_status='inactive',
+                                                  task_type='habits')
 
     def add_habit(self,
                   habit_string: str,
                   priority: int = 0,
                   refresh_rate: int = 1) -> None:
 
-        unqiueID = self.DataIOOperationsObject.getNewUniqueIDForTask(taskType='habits')
+        unqiue_id = self.DataIOOperationsObject.get_new_unique_id_for_task(task_type='habits')
 
-        self.activeHabits[str(unqiueID)] = \
+        self.activeHabits[str(unqiue_id)] = \
             self.TaskFunctionsObject.add_tasks(task_string=habit_string,
                                                task_type="habits",
                                                priority=priority,
                                                refresh_rate=refresh_rate)
 
-    def deleteHabit(self,
-                    idToDelete: int) -> None:
+    def delete_habit(self,
+                     id_to_delete: int) -> None:
         self.activeHabits = \
-            self.TaskFunctionsObject.delete_task(id_to_delete=idToDelete,
+            self.TaskFunctionsObject.delete_task(id_to_delete=id_to_delete,
                                                  active_dictionary=self.activeHabits,
                                                  task_type="habits")
 
-    def markHabitAsInactive(self,
-                            idToMarkAsInactive: int) -> None:
+    def mark_habit_as_inactive(self,
+                               id_to_mark_as_inactive: int) -> None:
         self.activeHabits, self.inactiveHabits = \
-            self.TaskFunctionsObject.mark_task_as_completed(id_to_mark_as_completed=idToMarkAsInactive,
+            self.TaskFunctionsObject.mark_task_as_completed(id_to_mark_as_completed=id_to_mark_as_inactive,
                                                             active_dictionary=self.activeHabits,
                                                             completed_dictionary=self.inactiveHabits,
                                                             task_type="habits",
                                                             completed_task_type="inactiveHabits")
 
-    def saveActiveHabits(self) -> None:
-        self.DataIOOperationsObject.saveAsFile(taskStatus='active',
-                                               taskType='habits',
-                                               dictionaryToSave=self.activeHabits)
+    def save_active_habits(self) -> None:
+        self.DataIOOperationsObject.save_as_file(task_status='active',
+                                                 task_type='habits',
+                                                 dictionary_to_save=self.activeHabits)
 
-    def saveInactiveHabits(self) -> None:
-        self.DataIOOperationsObject.saveAsFile(taskStatus='inactive',
-                                               taskType='habits',
-                                               dictionaryToSave=self.inactiveHabits)
+    def save_inactive_habits(self) -> None:
+        self.DataIOOperationsObject.save_as_file(task_status='inactive',
+                                                 task_type='habits',
+                                                 dictionary_to_save=self.inactiveHabits)
 
     # GET operations
 
-    def getActiveHabits(self) -> StringDict:
+    def get_active_habits(self) -> StringDict:
         return self.activeHabits
 
-    def getInactiveHabits(self) -> StringDict:
+    def get_inactive_habits(self) -> StringDict:
         return self.inactiveHabits

@@ -4,7 +4,7 @@ from pathlib import Path
 def testOneTimeTasks():
     # definitions
     appObject = app_main.App()
-    oneTimeTaskObject = appObject.getOneTimeTaskObject()
+    oneTimeTaskObject = appObject.get_one_time_task_object()
 
     # operations
     # oneTimeTaskObject.addOneTimeTask("Fix This Shit Bug")
@@ -16,11 +16,11 @@ def testOneTimeTasks():
     # print(oneTimeTaskObject.getActiveOneTimeTasks())
     # print()
     # oneTimeTaskObject.markTaskAsCompleted(1)
-    oneTimeTaskObject.addOneTimeTask("Test the new feature")
+    oneTimeTaskObject.add_one_time_task("Test the new feature")
     # print(oneTimeTaskObject.getActiveOneTimeTasks())
     # print()
     # print(oneTimeTaskObject.getCompletedOneTimeTasks())
-    appObject.onCloseOperations()
+    appObject.on_close_operations()
 
 
 def reInitializeData():

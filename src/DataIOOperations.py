@@ -54,17 +54,12 @@ class DataIOOperations:
                    dictionaryToSave: StringDict) -> None:
         fileAddress = self.dataDirectory / taskStatus / (taskType + ".json")
 
-        print("trying to save this dict")
-        print(dictionaryToSave)
-        print()
-
         with open(fileAddress, 'w') as writefile:
-            json.dump(
-                dictionaryToSave,
-                writefile,
-                sort_keys=True,
-                indent=4,
-                ensure_ascii=False)
+            json.dump(dictionaryToSave,
+                      writefile,
+                      sort_keys=True,
+                      indent=4,
+                      ensure_ascii=False)
 
 
     def readUniqueIDs(self) -> StringDict:
@@ -74,20 +69,63 @@ class DataIOOperations:
 
     # returns a new ID for the task being created
     def getNewUniqueIDForTask(self,
-                              taskType: str) -> int:
-        if len(self.uniqueIDs[taskType]["available"]) == 0:
-            newUniqueID = self.uniqueIDs[taskType]["next"]
+                              taskType: str,
+                              parentID: int,
+                              hasChildren: bool = False) -> int:
 
-            self.uniqueIDs[taskType]["next"] = str(int(newUniqueID) + 1)
+        # The dictionary has ID content at differing depths,
+        # based on whether the taskType can have Children or not
+
+        # NOTE: Current case only handles depth of 0 and 1
+        # Will need to be reimplemented if any other depths
+        # are present in the data structure
+        if hasChildren:
+            parentDictionary = self.uniqueIDs[taskType][parentID]
         else:
-            newUniqueID = self.uniqueIDs[taskType]["available"].pop(0)
+            parentDictionary = self.uniqueIDs[taskType]
+
+        # send the next available ID, which is either an old ID that can
+        # be recycled, or a newly generated ID
+        if len(self.uniqueIDs[taskType]["available"]) == 0:
+            newUniqueID = parentDictionary["next"]
+
+            parentDictionary["next"] = str(int(newUniqueID) + 1)
+        else:
+            newUniqueID = parentDictionary["available"].pop(0)
 
         return int(newUniqueID)
 
+    # FUNCTION PARAMETERS:
+    #   taskType - "oneTimeTasks"
+    #
+    # FUNCTION PURPOSE: Recycles old IDs
+
     def markIDAsAvailable(self,
                           taskType: str,
-                          idToMarkAsAvailable: int) -> None:
-        self.uniqueIDs[taskType]["available"].append(str(idToMarkAsAvailable))
+                          parentID: int,
+                          idToMarkAsAvailable: int,
+                          hasChildren: bool = False,) -> None:
+
+        # The dictionary has ID content at differing depths,
+        # based on whether the taskType can have Children or not
+
+        if hasChildren:
+            parentID = self.uniqueIDs[taskType][parentID]
+        else:
+            parentID = self.uniqueIDs[taskType]
+
+        parentID["available"].append(str(idToMarkAsAvailable))
+
+    # sets up the data structure for tasks and subtasks that need their own
+    # independent ID scheme
+    def initializeNewIDSlots(self,
+                             parentID: int,
+                             parentTaskType: str) -> None:
+
+        self.uniqueIDs[parentTaskType][parentID] = {
+            "available": [],
+            "next": 0
+        }
 
     def updateUniqueIDs(self,
                         taskType: str,
@@ -97,9 +135,9 @@ class DataIOOperations:
     def writeUniqueIDs(self) -> None:
         with open(self.uniqueIDsFile, 'w') as idfile:
             dataToWrite = json.dumps(self.uniqueIDs,
-                      sort_keys=True,
-                      indent=4,
-                      ensure_ascii=False)
+                                     sort_keys=True,
+                                     indent=4,
+                                     ensure_ascii=False)
             idfile.write(dataToWrite)
             idfile.close()
 

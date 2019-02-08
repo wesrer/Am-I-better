@@ -26,7 +26,7 @@ class Habits:
                  priority: int = 0,
                  refreshRate: int = 1) -> None:
 
-        unqiueID = self.DataIOOperationsObject.getNewUniqueIDForTask('habits')
+        unqiueID = self.DataIOOperationsObject.getNewUniqueIDForTask(taskType='habits')
 
         self.activeHabits[str(unqiueID)] = \
             self.TaskFunctionsObject.addTasks(taskString=habitString,

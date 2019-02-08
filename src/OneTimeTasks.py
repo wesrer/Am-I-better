@@ -24,13 +24,18 @@ class OneTimeTasks:
                        taskString: str,
                        priority: int = 0,
                        completeBy: bool = False) -> None:
+
         uniqueID = self.DataIOOperationsObject.getNewUniqueIDForTask('oneTimeTasks')
 
-        self.activeOneTimeTasks[str(uniqueID)] = self.taskFunctionsObject.addTasks(
-                                                        taskString, "oneTimeTasks", priority, completeBy)
+        self.activeOneTimeTasks[str(uniqueID)] = \
+            self.taskFunctionsObject.addTasks(taskString=taskString,
+                                              taskType="oneTimeTasks",
+                                              priority=priority,
+                                              completeBy=completeBy)
 
     def markTaskAsCompleted(self,
                             idToMarkAsCompleted: int) -> None:
+
         self.activeOneTimeTasks, self.completedOneTimeTasks = \
             self.taskFunctionsObject.markTaskAsCompleted(idToMarkAsCompleted=idToMarkAsCompleted,
                                                          activeDictionary=self.activeOneTimeTasks,
@@ -40,23 +45,27 @@ class OneTimeTasks:
 
     def deleteTask(self,
                    idToDelete: int) -> None:
+
         self.activeOneTimeTasks = \
             self.taskFunctionsObject.deleteTask(idToDelete=idToDelete,
                                                 activeDictionary=self.activeOneTimeTasks,
                                                 taskType='oneTimeTasks')
 
     def saveActiveOneTimeTasks(self) -> None:
+
         self.DataIOOperationsObject.saveAsFile(taskStatus='active',
                                                taskType='oneTimeTasks',
                                                dictionaryToSave=self.activeOneTimeTasks)
 
     def saveCompletedOneTimeTasks(self) -> None:
+
         self.DataIOOperationsObject.saveAsFile(taskStatus='completed',
                                                taskType='oneTimeTasks',
                                                dictionaryToSave=self.completedOneTimeTasks)
 
     # TODO: implement priorities
     def sortByPriority(self) -> StringDict:
+
         sortedByPriority = 0
         return sortedByPriority
 

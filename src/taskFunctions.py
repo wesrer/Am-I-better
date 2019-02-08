@@ -47,12 +47,21 @@ class taskFunctions:
                             activeDictionary: StringDict,
                             completedDictionary: StringDict,
                             taskType: str,
-                            completedTaskType: str) -> [StringDict, StringDict]:
-        uniqueID = self.DataIOOperationsObject.getNewUniqueIDForTask(completedTaskType)
+                            completedTaskType: str,
+                            parentID: int,
+                            hasChildren: bool = False) -> [StringDict, StringDict]:
+
+
+        uniqueID = self.DataIOOperationsObject.getNewUniqueIDForTask(taskType=completedTaskType,
+                                                                     parentID=parentID,
+                                                                     hasChildren=hasChildren)
 
         completedDictionary[uniqueID] = activeDictionary[str(idToMarkAsCompleted)]
 
-        self.DataIOOperationsObject.markIDAsAvailable(taskType, idToMarkAsCompleted)
+        self.DataIOOperationsObject.markIDAsAvailable(taskType=taskType,
+                                                      parentID=parentID,
+                                                      hasChildren=hasChildren,
+                                                      idToMarkAsCompleted=idToMarkAsCompleted)
 
         del activeDictionary[str(idToMarkAsCompleted)]
 
@@ -61,9 +70,15 @@ class taskFunctions:
     def deleteTask(self,
                    idToDelete: int,
                    activeDictionary: StringDict,
-                   taskType: str) -> StringDict:
+                   taskType: str,
+                   parentID: int,
+                   hasChildren: bool = False) -> StringDict:
+
         del activeDictionary[str(idToDelete)]
 
-        self.DataIOOperationsObject.markIDAsAvailable(taskType, idToDelete)
+        self.DataIOOperationsObject.markIDAsAvailable(taskType=taskType,
+                                                      idToMarkAsAvailable=idToDelete,
+                                                      hasChildren=hasChildren,
+                                                      parentID=parentID)
 
         return activeDictionary

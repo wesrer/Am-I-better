@@ -1,0 +1,40 @@
+{
+  "time": {
+    "oneTimeTasks": {
+      "years": "0",
+      "months": "0",
+      "weeks": "0",
+      "days": "0",
+      "hours": "24",
+      "minutes": "0",
+      "seconds": "0"
+  },
+    "habits": {
+      "years": "0",
+      "months": "0",
+      "weeks": "0",
+      "days": "0",
+      "hours": "24",
+      "minutes": "0",
+      "seconds": "0",
+  },
+    "longTermProjects": {
+      "years": "1",
+      "months": "0",
+      "weeks": "0",
+      "days": "0",
+      "hours": "0",
+      "minutes": "0",
+      "seconds": "0"
+  },
+    "longTermProjectsSubTasks": {
+      "years": "0",
+      "months": "0",
+      "weeks": "0",
+      "days": "0",
+      "hours": "24",
+      "minutes": "0",
+      "seconds": "0"
+  }
+}
+}

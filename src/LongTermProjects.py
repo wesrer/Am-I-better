@@ -9,13 +9,25 @@
 class LongTermProjects:
     def __init__(self,
                  data_io_operations_object,
-                 task_functions_object):
+                 task_functions_object,
+                 active_long_term_projects,
+                 completed_long_term_projects):
         self.DataIOOperationsObject = data_io_operations_object
         self.TaskFunctionsObject = task_functions_object
 
+        self.activeLongTermProjecs = active_long_term_projects
+        self.completedLongTermProjects = completed_long_term_projects
+
     # Every long term project
-    def add_long_term_project(self):
-        pass
+    def add_long_term_project(self,
+                              project_string,
+                              priority: int = 0,
+                              complete_by: bool = False):
+        unique_id = self.DataIOOperationsObject.get_new_unique_id_for_task(task_type="longTermProjects")
+
+        self.activeLongTermProjecs[str(unique_id)] = \
+            self.taskFunctions
+
 
     def add_sub_task_to_long_term_project(self,
                                           long_term_project_id: int,

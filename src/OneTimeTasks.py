@@ -19,16 +19,24 @@ class OneTimeTasks:
         self.completedOneTimeTasks = completed_one_time_tasks
         self.activeOneTimeTasks = active_one_time_tasks
 
-    # FIXME: add more properties, because these are clearly not enough
+        self.defaultTimeValues = \
+            self.DataIOOperationsObject.get_default_values("time", "oneTimeTasks")
+
     # FIXME: figure out how to take customized completeBy input
     def add_one_time_task(self,
                           task_string: str,
                           priority: int = 0,
-                          complete_by: bool = False) -> None:
+                          complete_by: str = "defaultValue") -> None:
 
-        uniqueID = self.DataIOOperationsObject.get_new_unique_id_for_task('oneTimeTasks')
+        unique_id = self.DataIOOperationsObject.get_new_unique_id_for_task('oneTimeTasks')
 
-        self.activeOneTimeTasks[str(uniqueID)] = \
+        if complete_by == "defaultValue":
+            complete_by = self.defaultTimeValues
+        else:
+            complete_by = \
+                self.taskFunctionsObject.convert_time_string_to_dictionary(complete_by)
+
+        self.activeOneTimeTasks[str(unique_id)] = \
             self.taskFunctionsObject.add_tasks(task_string=task_string,
                                                task_type="oneTimeTasks",
                                                priority=priority,

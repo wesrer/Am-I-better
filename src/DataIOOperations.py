@@ -13,7 +13,9 @@ class DataIOOperations:
         self.currentDirectory = Path('.')
         self.dataDirectory = self.currentDirectory / '..' / 'data'
         self.uniqueIDsFile = self.dataDirectory / 'uniqueIDs.json'
+        self.defaultValuesFile = self.dataDirectory / 'defaultValues.json'
         self.uniqueIDs = self.read_unique_ids()
+        self.defaultValues = self.read_default_values()
 
     # FUNCTION PARAMETERS:
     #   - taskStatus - "active" or "completed"
@@ -63,9 +65,9 @@ class DataIOOperations:
                       ensure_ascii=False)
 
     # FUNCTION PARAMETERS:
-    #   task_type: "oneTimeTasks" or "habits" or "longTermProjects"
-    #   parent_id: The ID of the task if it has sub-tasks
-    #   has_children: indicates whether the task type can have sub-tasks
+    #   - task_type: "oneTimeTasks" or "habits" or "longTermProjects"
+    #   - parent_id: The ID of the task if it has sub-tasks
+    #   - has_children: indicates whether the task type can have sub-tasks
     #
     # FUNCTION PURPOSE:
     #   returns a new ID for the task being created
@@ -97,11 +99,11 @@ class DataIOOperations:
         return int(new_unique_id)
 
     # FUNCTION PARAMETERS:
-    #   task_type - "oneTimeTasks" or "habits" or "longTermProjects"
-    #   parent_id - only applies when the taskType can have sub-tasks("longTermProjects")
+    #   - task_type - "oneTimeTasks" or "habits" or "longTermProjects"
+    #   - parent_id - only applies when the taskType can have sub-tasks("longTermProjects")
     #              in which case the task has to be identified with an id
-    #   id_to_mark_as_available - the ID to recycle
-    #   has_children - can the task type have sub-tasks
+    #   - id_to_mark_as_available - the ID to recycle
+    #   - has_children - can the task type have sub-tasks
     #
     # FUNCTION PURPOSE:
     #   Recycles old IDs
@@ -123,8 +125,8 @@ class DataIOOperations:
         parent_id["available"].append(str(id_to_mark_as_available))
 
     # FUNCTION PARAMETERS:
-    #   task_id - the id which has to be initialized
-    #   task_type - usually just "longTermProjects"
+    #   - task_id - the id which has to be initialized
+    #   - task_type - usually just "longTermProjects"
     #
     # FUNCTION PURPOSE:
     #   Sets up the data structure for tasks and sub-tasks that need their own
@@ -141,6 +143,40 @@ class DataIOOperations:
             "available": [],
             "next": 0
         }
+
+    # FUNCTION PARAMETERS:
+    #   None
+    #
+    # FUNCTION PURPOSE:
+    #   Reads the default values dictionary from a json file
+
+    def read_default_values(self) -> StringDict:
+        with self.defaultValuesFile.open() as f:
+            data = json.load(f)
+
+        return data
+
+    # FUNCTION PARAMETERS:
+    #   None
+    #
+    # FUNCTION PURPOSE:
+    #   Writes the default values dictionary to a json file
+
+    def write_default_values(self) -> None:
+
+        with open(self.defaultValuesFile, 'w') as idfile:
+            data_to_write = json.dumps(self.defaultValues,
+                                       sort_keys=True,
+                                       indent=4,
+                                       ensure_ascii=False)
+
+            idfile.write(data_to_write)
+            idfile.close()
+
+    def get_default_values(self,
+                           defualt_value_type: str,
+                           default_identifier_string: str) -> str:
+        return self.defaultValues[defualt_value_type][default_identifier_string]
 
     # FUNCTION PARAMETERS:
     #   None

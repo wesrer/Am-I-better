@@ -19,6 +19,7 @@
 
 ### Someday?
 
+- Refactor the ID operations into their own File
 - Implement graphical visualization for your progress on long term projects
 - Implement graphical visualization to track your habit completion success rate
 

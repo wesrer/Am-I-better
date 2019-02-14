@@ -12,8 +12,10 @@ class TaskFunctions:
     def __init__(self, data_io_operations_object):
         self.DataIOOperationsObject = data_io_operations_object
 
+    # FIXME: implement this
     def convert_time_string_to_dictionary(self,
                                                time_string: str) -> StringDict:
+        pass
 
     # FUNCTION PARAMETERS:
     #   - task_String: The actual task that the user wants to do
@@ -24,6 +26,7 @@ class TaskFunctions:
     #
     # FUNCTION PURPOSE: Add tasks to the three primary categories of active tasks
 
+    # TODO: add the custom default values implementation
     # TODO: figure out how the refresh rate works
     def add_tasks(self,
                   task_string: str,

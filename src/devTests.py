@@ -7,15 +7,15 @@ def testOneTimeTasks():
     oneTimeTaskObject = appObject.get_one_time_task_object()
 
     # operations
-    # oneTimeTaskObject.addOneTimeTask("Fix This Shit Bug")
-    # oneTimeTaskObject.addOneTimeTask("Code for 4 hours")
-    # oneTimeTaskObject.addOneTimeTask("Study Japanese for 2 hours")
-    # oneTimeTaskObject.addOneTimeTask("Drink some Honey Tea")
-    # oneTimeTaskObject.addOneTimeTask("Drink some Hot Chocolate")
+    oneTimeTaskObject.addOneTimeTask("Fix This Shit Bug")
+    oneTimeTaskObject.addOneTimeTask("Code for 4 hours")
+    oneTimeTaskObject.addOneTimeTask("Study Japanese for 2 hours")
+    oneTimeTaskObject.addOneTimeTask("Drink some Honey Tea")
+    oneTimeTaskObject.addOneTimeTask("Drink some Hot Chocolate")
     # oneTimeTaskObject.addOneTimeTask("")
     # print(oneTimeTaskObject.getActiveOneTimeTasks())
     # print()
-    # oneTimeTaskObject.markTaskAsCompleted(1)
+    oneTimeTaskObject.markTaskAsCompleted(1)
     oneTimeTaskObject.add_one_time_task("Test the new feature")
     # print(oneTimeTaskObject.getActiveOneTimeTasks())
     # print()
@@ -25,7 +25,6 @@ def testOneTimeTasks():
 
 def reInitializeData():
     pass
-
 
 if __name__ == "__main__":
     testOneTimeTasks()

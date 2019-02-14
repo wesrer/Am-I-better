@@ -1,5 +1,5 @@
 from DataIOOperations import DataIOOperations
-from taskFunctions import taskFunctions
+from TaskFunctions import TaskFunctions
 from oneTimeTasks import OneTimeTasks
 from habits import Habits
 

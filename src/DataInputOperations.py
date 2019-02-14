@@ -5,10 +5,10 @@ from typing import List, Dict
 
 # Type Hints for Type Checking
 StringList = List[str]
-StringDict = Dict[str,str]
+StringDict = Dict[str, str]
 
 
-class DataIOOperations:
+class DataInputOperations:
     def __init__(self):
         self.currentDirectory = Path('.')
         self.dataDirectory = self.currentDirectory / '..' / 'data'

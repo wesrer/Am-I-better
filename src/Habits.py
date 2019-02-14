@@ -21,7 +21,7 @@ class Habits:
             self.DataIOOperationsObject.get_tasks(task_status='inactive',
                                                   task_type='habits')
 
-    # TODO: add the default values implementation
+    # FIXME: add the custom default values implementation
     def add_habit(self,
                   habit_string: str,
                   priority: int = 0,

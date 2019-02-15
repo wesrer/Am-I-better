@@ -1,4 +1,6 @@
-from DataIOOperations import DataIOOperations
+from DictionaryOperations import DictionaryOperations
+from DataInputOperations import DataInputOperations
+from DataOutputOperations import DataOutputOperations
 from TaskFunctions import TaskFunctions
 from oneTimeTasks import OneTimeTasks
 from habits import Habits
@@ -7,10 +9,19 @@ from habits import Habits
 class App:
     def __init__(self):
         self.dailyTasks = []
-        self.DataIOOperationsObject = DataIOOperations()
-        self.TaskFunctionsObject = taskFunctions(self.DataIOOperationsObject)
+
+        self.DictionaryOperationsObject = DictionaryOperations()
+
+        self.DataInputOperationsObject = DataInputOperations()
+
+        self.DataOutputOperationsObject =\
+            DataOutputOperations(self.DictionaryOperationsObject)
+
+        self.TaskFunctionsObject = \
+            TaskFunctions(self.DataIOOperationsObject)
 
         self.MainOneTimeTasksObject = self.initialize_main_one_time_tasks_object()
+
         self.HabitsObject = Habits(self.DataIOOperationsObject,
                                    self.TaskFunctionsObject)
 

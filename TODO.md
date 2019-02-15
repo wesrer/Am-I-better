@@ -1,12 +1,19 @@
 # TODOs:
 
-
-
 ## Features
+
+- CLI
+- custom datetime
+- custom priorities
+
+## Dev
+
+- Testing Framework
 
 ### Urgent
 
-- Implement priorities 
+- Implement a testing framework
+- Implement priorities
 - Implement a CLI
 - Implement long term projects
     - Figure out how to add subtasks to large projects
@@ -16,6 +23,7 @@
 ### Semi-Urgent
 
 - Different colors based on different priorities
+- Better Directory Structure (Group similar modules?) 
 
 ### Someday?
 
@@ -27,6 +35,8 @@
 
 
 ## Testing
+
+- Test if dictionary operations is working
 
 ## Completed
 

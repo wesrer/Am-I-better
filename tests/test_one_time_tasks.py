@@ -1,5 +1,9 @@
 from src import one_time_tasks
+from src import data_input_operations
+from src import data_output_operations
+from src import task_functions
 from pathlib import Path
+
 
 class TestOneTimeTasks:
     def read_test_data(self,
@@ -8,7 +12,14 @@ class TestOneTimeTasks:
         pass
 
     def initialize_one_time_task_object(self):
-        pass
+        data_input_operations_object = data_input_operations.DataInputOperations()
+        data_output_operations_object = data_output_operations.DataOutputOperations()
+        task_functions_object = task_functions.TaskFunctions(data_input_operations_object)
+
+        return one_time_tasks.OneTimeTasks(data_input_operations_object=data_input_operations_object,
+                                           task_functions_object=task_functions_object,
+                                           active_one_time_tasks={},
+                                           completed_one_time_tasks={})
 
     def sample_tasks(self, one_time_tasks_object):
         one_time_tasks_object.add_one_time_task("Fix This Shit Bug",
@@ -29,6 +40,7 @@ class TestOneTimeTasks:
         # initialize one time tasks object
         # create sample tasks
         # assert that the dictionary returned is as expected
+        sample_one_time_task_object = self.sample_tasks(self.initialize_one_time_task_object())
         assert "something" == "something"
 
     # FIXME

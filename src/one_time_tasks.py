@@ -6,21 +6,23 @@ StringList = List[str]
 StringDict = Dict[str, str]
 
 
+# FIXME: separate data_output_operations
 class OneTimeTasks:
+
     def __init__(self,
-                 data_io_operations_object,
+                 data_input_operations_object,
                  task_functions_object,
                  active_one_time_tasks: StringDict,
                  completed_one_time_tasks: StringDict):
 
-        self.DataIOOperationsObject = data_io_operations_object
+        self.DataInputOperationsObject = data_input_operations_object
         self.taskFunctionsObject = task_functions_object
 
         self.completedOneTimeTasks = completed_one_time_tasks
         self.activeOneTimeTasks = active_one_time_tasks
 
         self.defaultTimeValues = \
-            self.DataIOOperationsObject.get_default_values("time", "oneTimeTasks")
+            self.DataInputOperationsObject.get_default_values("time", "oneTimeTasks")
 
     # FIXME: figure out how to take customized completeBy input
     def add_one_time_task(self,
@@ -28,7 +30,7 @@ class OneTimeTasks:
                           priority: int = 0,
                           complete_by: str = "defaultValue") -> None:
 
-        unique_id = self.DataIOOperationsObject.get_new_unique_id_for_task('oneTimeTasks')
+        unique_id = self.DataInputOperationsObject.get_new_unique_id_for_task('oneTimeTasks')
 
         if complete_by == "defaultValue":
             complete_by = self.defaultTimeValues
@@ -52,8 +54,8 @@ class OneTimeTasks:
                                                             task_type="oneTimeTasks",
                                                             completed_task_type="completedOneTimeTasks")
 
-    def deleteTask(self,
-                   id_to_delete: int) -> None:
+    def delete_task(self,
+                    id_to_delete: int) -> None:
 
         self.activeOneTimeTasks = \
             self.taskFunctionsObject.delete_task(id_to_delete=id_to_delete,
@@ -62,15 +64,15 @@ class OneTimeTasks:
 
     def save_active_one_time_tasks(self) -> None:
 
-        self.DataIOOperationsObject.save_as_file(task_status='active',
-                                                 task_type='oneTimeTasks',
-                                                 dictionary_to_save=self.activeOneTimeTasks)
+        self.DataInputOperationsObject.save_as_file(task_status='active',
+                                                    task_type='oneTimeTasks',
+                                                    dictionary_to_save=self.activeOneTimeTasks)
 
     def save_completed_one_time_tasks(self) -> None:
 
-        self.DataIOOperationsObject.save_as_file(task_status='completed',
-                                                 task_type='oneTimeTasks',
-                                                 dictionary_to_save=self.completedOneTimeTasks)
+        self.DataInputOperationsObject.save_as_file(task_status='completed',
+                                                    task_type='oneTimeTasks',
+                                                    dictionary_to_save=self.completedOneTimeTasks)
 
     # TODO: implement priorities
     def sort_by_priority(self) -> StringDict:

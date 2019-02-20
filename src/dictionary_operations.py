@@ -38,3 +38,9 @@ class DictionaryOperations:
                                          sort_descending: bool = True):
         return sorted(list_of_dict,
                       key=itemgetter(sort_key))
+
+    # TODO
+    def task_dictionary_equality(self,
+                                 dict1: Dict,
+                                 dict2: Dict):
+        pass

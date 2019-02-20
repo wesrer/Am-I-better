@@ -1,4 +1,5 @@
-from pathlib import Path 
+from pathlib import Path
+from src import resolve_paths
 import json
 
 from typing import List, Dict
@@ -9,11 +10,13 @@ StringDict = Dict[str, str]
 
 
 class DataInputOperations:
-    def __init__(self):
-        self.currentDirectory = Path('.')
-        self.dataDirectory = self.currentDirectory / '..' / 'data'
-        self.uniqueIDsFile = self.dataDirectory / 'uniqueIDs.json'
-        self.defaultValuesFile = self.dataDirectory / 'defaultValues.json'
+    def __init__(self, module_path):
+
+        self.resolvePathsObject = resolve_paths.ResolvePaths()
+        self.dataDirectory = self.resolvePathsObject.data_directory_path()
+        self.uniqueIDsFile = self.resolvePathsObject.unique_ids_path()
+        self.defaultValuesFile = self.resolvePathsObject.default_values_path()
+
         self.uniqueIDs = self.read_unique_ids()
         self.defaultValues = self.read_default_values()
 

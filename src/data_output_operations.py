@@ -8,7 +8,7 @@ StringDict = Dict[str, str]
 ListStringDict = List[StringDict]
 
 
-class DataInputOperations:
+class DataOutputOperations:
     def __init__(self, dictionary_operations_object):
         self.DictionaryOperationsObject = dictionary_operations_object
 

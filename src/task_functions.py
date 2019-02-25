@@ -92,7 +92,7 @@ class TaskFunctions:
                                                                               parent_id=parent_id,
                                                                               has_children=has_children)
 
-        completed_dictionary[unique_id] = active_dictionary[str(id_to_mark_as_completed)]
+        completed_dictionary[str(unique_id)] = active_dictionary[str(id_to_mark_as_completed)]
 
         self.DataInputOperationsObject.mark_id_as_available(task_type=task_type,
                                                             parent_id=parent_id,

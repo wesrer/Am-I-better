@@ -21,7 +21,7 @@ class TestDictionaryOperations:
 
         dictionary_operations_object = dictionary_operations.DictionaryOperations()
         assert dictionary_operations_object.task_equality(dict1=dict1,
-                                                                     dict2=dict2)
+                                                          dict2=dict2)
 
     def test_task_equality_when_complete_by_and_assigned_on_is_unmatched(self):
         dict1["completeBy"] = "unMatchedAndWrecked"
@@ -31,6 +31,6 @@ class TestDictionaryOperations:
 
         dictionary_operations_object = dictionary_operations.DictionaryOperations()
         assert dictionary_operations_object.task_equality(dict1=dict1,
-                                                                     dict2=dict2)
+                                                          dict2=dict2)
 
 

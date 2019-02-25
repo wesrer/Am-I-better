@@ -83,11 +83,14 @@ class TestOneTimeTasks:
 
         expected_active_output = \
             self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_mark_as_complete.json')
+
         expected_completed_output = \
             self.read_test_data(test_data_path / 'completed' / 'oneTimeTasks_simple_mark_as_complete.json')
 
-        condition1 = expected_active_output == returned_active_output
-        condition2 = expected_completed_output == returned_completed_output
+        condition1 = \
+            dictionary_operations_object.task_dictionary_equality(expected_active_output, returned_active_output)
+        condition2 = \
+            dictionary_operations_object.task_dictionary_equality(expected_completed_output, returned_completed_output)
 
         assert condition1 and condition2
 

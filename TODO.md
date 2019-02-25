@@ -4,7 +4,8 @@
 
 - CLI
 - custom datetime
-- custom priorities
+
+- 
 
 ## Dev
 
@@ -33,10 +34,14 @@
 
 ## Bugfixes
 
+## Implemented but untested
+
+- Custom priorities
 
 ## Testing
 
 - Test if dictionary operations is working
+- Test if custom priorities are working
 
 ## Completed
 

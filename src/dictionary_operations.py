@@ -43,4 +43,20 @@ class DictionaryOperations:
     def task_dictionary_equality(self,
                                  dict1: Dict,
                                  dict2: Dict):
-        pass
+
+        for identifier, value in dict1.items():
+            if not self.task_equality(value, dict2[identifier]):
+                return False
+
+        return True
+
+    def task_equality(self,
+                      dict1: Dict,
+                      dict2: Dict):
+        for key, value in dict1.items():
+            if key == "assignedOn" or key == "completeBy":
+                continue
+            elif dict2[key] != value:
+                return False
+
+        return True

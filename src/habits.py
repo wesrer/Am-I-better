@@ -8,18 +8,18 @@ StringDict = Dict[str, str]
 # TODO: figure out how to refresh tasks
 class Habits:
     def __init__(self,
-                 data_io_operations_object,
+                 data_input_operations_object,
                  task_functions_object):
 
-        self.DataIOOperationsObject = data_io_operations_object;
+        self.DataInputOperationsObject = data_input_operations_object;
         self.TaskFunctionsObject = task_functions_object
 
         self.activeHabits = \
-            self.DataIOOperationsObject.get_tasks(task_status='active',
-                                                  task_type='habits')
+            self.DataInputOperationsObject.get_tasks(task_status='active',
+                                                     task_type='habits')
         self.inactiveHabits = \
-            self.DataIOOperationsObject.get_tasks(task_status='inactive',
-                                                  task_type='habits')
+            self.DataInputOperationsObject.get_tasks(task_status='inactive',
+                                                     task_type='habits')
 
     # FIXME: add the custom default values implementation
     def add_habit(self,
@@ -27,7 +27,7 @@ class Habits:
                   priority: int = 0,
                   refresh_rate: int = 1) -> None:
 
-        unqiue_id = self.DataIOOperationsObject.get_new_unique_id_for_task(task_type='habits')
+        unqiue_id = self.DataInputOperationsObject.get_new_unique_id_for_task(task_type='habits')
 
         self.activeHabits[str(unqiue_id)] = \
             self.TaskFunctionsObject.add_tasks(task_string=habit_string,
@@ -52,14 +52,14 @@ class Habits:
                                                             completed_task_type="inactiveHabits")
 
     def save_active_habits(self) -> None:
-        self.DataIOOperationsObject.save_as_file(task_status='active',
-                                                 task_type='habits',
-                                                 dictionary_to_save=self.activeHabits)
+        self.DataInputOperationsObject.save_as_file(task_status='active',
+                                                    task_type='habits',
+                                                    dictionary_to_save=self.activeHabits)
 
     def save_inactive_habits(self) -> None:
-        self.DataIOOperationsObject.save_as_file(task_status='inactive',
-                                                 task_type='habits',
-                                                 dictionary_to_save=self.inactiveHabits)
+        self.DataInputOperationsObject.save_as_file(task_status='inactive',
+                                                    task_type='habits',
+                                                    dictionary_to_save=self.inactiveHabits)
 
     # GET operations
 

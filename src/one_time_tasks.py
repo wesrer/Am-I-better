@@ -28,6 +28,7 @@ class OneTimeTasks:
     def add_one_time_task(self,
                           task_string: str,
                           priority: int = 0,
+                          weight: int = 3,
                           complete_by: str = "defaultValue") -> None:
 
         unique_id = self.DataInputOperationsObject.get_new_unique_id_for_task('oneTimeTasks')
@@ -42,6 +43,7 @@ class OneTimeTasks:
             self.taskFunctionsObject.add_tasks(task_string=task_string,
                                                task_type="oneTimeTasks",
                                                priority=priority,
+                                               weight=weight,
                                                complete_by=complete_by)
 
     def mark_task_as_completed(self,

@@ -1,6 +1,6 @@
 from src import app_main
 
-AppObject = app_main.App()
+AppObject = app_main.App("build")
 
 
 class TestInitializationsInAppMain:
@@ -21,19 +21,7 @@ class TestInitializationsInAppMain:
     # def test_long_term_project_initialization_in_app_main(self):
     #     initialized_long_term_project_object = AppObject.
 
-
-# def test_adding_one_time_tasks():
-#     # FIXME
-#     desired_return_value = "what"
-#
-#
-#     # TODO
-#
-#     assert desired_return_value == returned_value
-#
-# def test
-#
-# # TODO: LOL fix her bugs
+# TODO: LOL fix her bugs
 # def test_hana():
 #     pass
 #

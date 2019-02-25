@@ -1,5 +1,5 @@
 from pathlib import Path
-from src import resolve_paths
+
 import json
 
 from typing import List, Dict
@@ -10,9 +10,9 @@ StringDict = Dict[str, str]
 
 
 class DataInputOperations:
-    def __init__(self, module_path):
+    def __init__(self, resolve_path_object):
 
-        self.resolvePathsObject = resolve_paths.ResolvePaths()
+        self.resolvePathsObject = resolve_path_object
         self.dataDirectory = self.resolvePathsObject.data_directory_path()
         self.uniqueIDsFile = self.resolvePathsObject.unique_ids_path()
         self.defaultValuesFile = self.resolvePathsObject.default_values_path()
@@ -32,9 +32,9 @@ class DataInputOperations:
                   task_status: str,
                   task_type: str,
                   child_task_type: str = "None",
-                  parent_task_id: int = 0) -> StringDict:
+                  parent_task_id: int = -1) -> StringDict:
 
-        path_address = self.dataDirectory / task_status / (task_type + ".json")
+        path_address = self.dataDirectory / task_status / (task_type + '.json')
 
         with path_address.open() as f:
             data = json.load(f)
@@ -44,28 +44,7 @@ class DataInputOperations:
 
         return data
 
-    # FUNCTION PARAMETERS:
-    #   - taskStatus - "active" or "completed"
-    #   - taskType - "oneTimeTasks" or "habits" or "longTermProjects"
-    #   - dictionaryToSave - The python dictionary that is going to be converted
-    #   to JSON and then saved
-    #
-    # FUNCTION PURPOSE:
-    #   saves a python dictionary to a ' < taskType >.json' file in directory
-    #   < taskStatus >
 
-    def save_as_file(self,
-                     task_status: str,
-                     task_type: str,
-                     dictionary_to_save: StringDict) -> None:
-        file_address = self.dataDirectory / task_status / (task_type + ".json")
-
-        with open(file_address, 'w') as writefile:
-            json.dump(dictionary_to_save,
-                      writefile,
-                      sort_keys=True,
-                      indent=4,
-                      ensure_ascii=False)
 
     # FUNCTION PARAMETERS:
     #   - task_type: "oneTimeTasks" or "habits" or "longTermProjects"
@@ -76,7 +55,7 @@ class DataInputOperations:
     #   returns a new ID for the task being created
     def get_new_unique_id_for_task(self,
                                    task_type: str,
-                                   parent_id: int,
+                                   parent_id: int = -1,
                                    has_children: bool = False) -> int:
 
         # The dictionary has ID content at differing depths,
@@ -113,8 +92,8 @@ class DataInputOperations:
 
     def mark_id_as_available(self,
                              task_type: str,
-                             parent_id: int,
-                             id_to_mark_as_available: int,
+                             parent_id: int = -1,
+                             id_to_mark_as_available: int = -1,
                              has_children: bool = False, ) -> None:
 
         # The dictionary has ID content at differing depths,

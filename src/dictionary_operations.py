@@ -23,13 +23,32 @@ class DictionaryOperations:
                            preserve_keys: bool = True,
                            key_string: str = "identifier") -> List:
         return_list = []
-        for key, value in initial_dictionary:
+        for key, value in initial_dictionary.items():
             if preserve_keys:
                 value[key_string] = key
 
             return_list.append(value)
 
-            return return_list
+        return return_list
+
+    def add_outer_dictionary(self,
+                             initial_dictionary: Dict,
+                             preserve_inner_key: bool = False,
+                             key_to_use_as_outer_key: str = "identifier"):
+        return_dictionary = dict()
+
+        # FIXME: the name of the function variable is misleading because the
+        # FIXME: the inner key is not being converted to the outer key, but
+        # FIXME: rather the value associated with the inner key is being used.
+        outer_key = initial_dictionary[key_to_use_as_outer_key]
+
+        if not preserve_inner_key:
+            del initial_dictionary[key_to_use_as_outer_key]
+
+        # print({outer_key: initial_dictionary})
+
+        return {outer_key: initial_dictionary}
+
 
     # FIXME: Implement descending sort
     def sort_list_of_dictionaries_by_key(self,
@@ -53,6 +72,10 @@ class DictionaryOperations:
     def task_equality(self,
                       dict1: Dict,
                       dict2: Dict):
+
+        if not len(dict1) == len(dict2):
+            return False
+
         for key, value in dict1.items():
             if key == "assignedOn" or key == "completeBy":
                 continue

@@ -79,7 +79,7 @@ class OneTimeTasks:
     # TODO: implement priorities
     def sort_by_priority(self) -> StringDict:
 
-        sorted_by_priority= 0
+
         return sorted_by_priority
 
     # GET operations

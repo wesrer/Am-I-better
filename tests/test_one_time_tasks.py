@@ -16,6 +16,7 @@ test_data_path = Path(os.path.dirname(os.path.abspath(src.__file__))) / '..' / '
 
 
 class TestOneTimeTasks:
+
     def read_test_data(self,
                        path_val: Path):
         with path_val.open() as f:
@@ -35,10 +36,13 @@ class TestOneTimeTasks:
         #     data_output_operations.DataOutputOperations(dictionary_operations.DictionaryOperations())
         task_functions_object = task_functions.TaskFunctions(data_input_operations_object)
 
-        return one_time_tasks.OneTimeTasks(data_input_operations_object=data_input_operations_object,
-                                           task_functions_object=task_functions_object,
-                                           active_one_time_tasks={},
-                                           completed_one_time_tasks={})
+        one_time_tasks_object = \
+            one_time_tasks.OneTimeTasks(data_input_operations_object=data_input_operations_object,
+                                        task_functions_object=task_functions_object,
+                                        active_one_time_tasks={},
+                                        completed_one_time_tasks={})
+
+        return one_time_tasks_object, data_input_operations_object
 
     def sample_tasks_1(self, one_time_tasks_object):
         one_time_tasks_object.add_one_time_task("Fix This Shit Bug",
@@ -60,8 +64,7 @@ class TestOneTimeTasks:
         return one_time_tasks_object
 
     def test_adding_one_time_tasks(self):
-        sample_one_time_task_object = \
-            self.sample_tasks_1(self.initialize_one_time_task_object())
+        sample_one_time_task_object = self.sample_tasks_1(self.initialize_one_time_task_object()[0])
 
         returned_output = sample_one_time_task_object.get_active_one_time_tasks()
         expected_output = self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_addition.json')
@@ -69,9 +72,24 @@ class TestOneTimeTasks:
         assert dictionary_operations_object.task_dictionary_equality(returned_output,
                                                                      expected_output)
 
-    def test_marking_tasks_as_completed(self):
+    def test_adding_duplicate_one_time_tasks(self):
+        initialized_one_time_tasks_object = self.initialize_one_time_task_object()[0]
+
+        initialized_one_time_tasks_object.add_one_time_task("Fix This Shit Bug",
+                                                            priority=8,
+                                                            weight=3)
+        initialized_one_time_tasks_object.add_one_time_task("Fix This Shit Bug",
+                                                            priority=8,
+                                                            weight=3)
+
+        returned_output = initialized_one_time_tasks_object.get_active_one_time_tasks()
+        expected_output = self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_duplicates.json')
+
+        assert dictionary_operations_object.task_dictionary_equality(returned_output, expected_output)
+
+    def test_reusing_ids_marked_as_completed(self):
         sample_one_time_task_object = \
-            self.sample_tasks_1(self.initialize_one_time_task_object())
+            self.sample_tasks_1(self.initialize_one_time_task_object()[0])
 
         sample_one_time_task_object.mark_task_as_completed('1')
         sample_one_time_task_object.add_one_time_task(task_string="Test All the existing code",
@@ -94,23 +112,50 @@ class TestOneTimeTasks:
 
         assert condition1 and condition2
 
-    # def test_reusing_ids_marked_as_completed(self):
-    #     sample_one_time_task_object = self.sample_tasks(self.initialize_one_time_task_object())
-    #
-    #     sample_one_time_task_object.mark_task_as_completed(1)
-    #     sample_one_time_task_object.add_one_time_task("Test the new feature",
-    #                                                   priority=0)
-    #
-    #     assert "something" == "something"
+    def test_id_dictionary_after_simple_addition(self):
+        initialized_one_time_object, initialized_data_input_operations_object = \
+            self.initialize_one_time_task_object()
 
-    # def test_delete_task(self):
-    #     sample_one_time_task_object = self.sample_tasks(self.initialize_one_time_task_object())
-    #
-    #     sample_one_time_task_object.mark_task_as_completed(id_to_mark_as_completed=1)
-    #     sample_one_time_task_object.add_one_time_task("Test the new feature",
-    #                                                   priority=0)
-    #
-    #     assert "something" == "something"
+        initialized_one_time_object.add_one_time_task(task_string="Test All the existing code",
+                                                      priority=4,
+                                                      weight=3)
+        initialized_one_time_object.add_one_time_task(task_string="Test All the existing code",
+                                                      priority=4,
+                                                      weight=3)
+        assert 2 == initialized_data_input_operations_object.get_new_unique_id_for_task(task_type='oneTimeTasks')
+
+    def test_id_dictionary_after_marking_a_task_as_complete(self):
+        initialized_one_time_object, initialized_data_input_operations_object = \
+            self.initialize_one_time_task_object()
+
+        sample_one_time_task_object= \
+            self.sample_tasks_1(initialized_one_time_object)
+
+        sample_one_time_task_object.mark_task_as_completed('1')
+
+        next_id = initialized_data_input_operations_object.get_new_unique_id_for_task(task_type='oneTimeTasks')
+
+        assert next_id == 1
+
+    def test_delete_task(self):
+        initialized_one_time_object, initialized_data_input_operations_object = \
+            self.initialize_one_time_task_object()
+
+        sample_one_time_task_object= \
+            self.sample_tasks_1(initialized_one_time_object)
+
+        sample_one_time_task_object.delete_task(id_to_delete='1')
+        returned_active_output = \
+            sample_one_time_task_object.get_active_one_time_tasks()
+
+        expected_active_output = \
+            self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_deletion.json')
+
+        next_id = initialized_data_input_operations_object.get_new_unique_id_for_task(task_type='oneTimeTasks')
+
+        assert next_id == 1 and dictionary_operations_object.task_dictionary_equality(returned_active_output,
+                                                                                      expected_active_output)
+
 
 
 

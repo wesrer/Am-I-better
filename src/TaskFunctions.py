@@ -1,5 +1,5 @@
 import datetime
-from . import dictionary_operations
+from . import DictionaryOperations
 
 from typing import List, Dict
 
@@ -13,7 +13,7 @@ class TaskFunctions:
     # TODO: figure out how to Type Cast Custom Objects
     def __init__(self, data_input_operations_object):
         self.DataInputOperationsObject = data_input_operations_object
-        self.DictionaryOperationsObject = dictionary_operations.DictionaryOperations()
+        self.DictionaryOperationsObject = DictionaryOperations.DictionaryOperations()
 
     # FIXME: implement this
     def convert_time_string_to_dictionary(self,
@@ -126,5 +126,5 @@ class TaskFunctions:
 
     def sort_by_priority(self,
                          active_dictionary: StringDict) -> StringDict:
-        self.DictionaryOperationsObject.dictionary_to_list()
+        self.DictionaryOperationsObject.dict_of_dicts_to_list_of_dicts()
         self.DictionaryOperationsObject.sort_list_of_dictionaries_by_key()

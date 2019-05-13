@@ -24,6 +24,7 @@
 ### Semi-Urgent
 
 - Different colors based on different priorities
+- Notify the user when adding duplicate tasks
 - Better Directory Structure (Group similar modules?) 
 
 ### Someday?

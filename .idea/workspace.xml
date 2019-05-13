@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/tests/test_dictionary_operations.py" line="5" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e034f3f0-8464-4271-a3bc-1da7f46e87a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/inactive/habits.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AppMain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Am-I-better.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Am-I-better.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/active/oneTimeTasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/active/oneTimeTasks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/completed/oneTimeTasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/completed/oneTimeTasks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/uniqueIDs.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/uniqueIDs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataIOOperations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataIOOperations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Habits.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Habits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OneTimeTasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/OneTimeTasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/devTests.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/devTests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/completed/longTermProjects.json.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/completed/longTermProjects.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommandLineInterface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/daily_task_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DailyTaskOperations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data_input_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataInputOperations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data_output_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataOutputOperations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dictionary_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DictionaryOperations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/habits.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Habits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/initial_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/InitialSetup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/installation_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/InstallationScript.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/long_term_projects.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/LongTermProjects.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/one_time_tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/OneTimeTasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/priorities.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Priorities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/read_write_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReadWriteOperations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolve_paths.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ResolvePaths.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/task_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaskFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_app_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestAppOperations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_dictionary_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_dictionary_operations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_initialization.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_initialization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_one_time_tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_one_time_tasks.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,202 +37,67 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-459734835">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="json" value="41" />
-          <entry key="md" value="3" />
-          <entry key="py" value="26" />
-          <entry key="pyi" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JSON" value="41" />
-          <entry key="Markdown" value="3" />
-          <entry key="Python" value="26" />
-          <entry key="PythonStub" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="dummy" value="22" />
-          <entry key="json" value="455" />
-          <entry key="md" value="418" />
-          <entry key="py" value="8951" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JSON" value="455" />
-          <entry key="Markdown" value="418" />
-          <entry key="PLAIN_TEXT" value="22" />
-          <entry key="Python" value="8951" />
-        </counts>
-      </usages-collector>
-    </session>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49753347">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/devTests.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-                  <folding>
-                    <element signature="e#0#15#0" expanded="true" />
-                    <marker date="1549521124254" expanded="true" signature="914:926" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/app_main.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-                  <folding>
-                    <marker date="1549520732207" expanded="true" signature="477:496" ph="..." />
-                    <marker date="1549520732207" expanded="true" signature="490:496" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/taskFunctions.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-                  <folding>
-                    <marker date="1549168194862" expanded="true" signature="37:42" ph="..." />
-                    <marker date="1549168194862" expanded="true" signature="61:80" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Habits.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
-                  <folding>
-                    <marker date="1549520732222" expanded="true" signature="13:18" ph="..." />
-                    <marker date="1549520732222" expanded="true" signature="720:888" ph="..." />
-                    <marker date="1549520732222" expanded="true" signature="922:931" ph="..." />
-                    <marker date="1549520732222" expanded="true" signature="922:941" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/data/active/oneTimeTasks.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/data/completed/oneTimeTasks.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/data/uniqueIDs.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/OneTimeTasks.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
-                  <folding>
-                    <marker date="1549521124246" expanded="true" signature="1044:1295" ph="..." />
-                    <marker date="1549521124246" expanded="true" signature="1451:1457" ph="..." />
-                    <marker date="1549521124246" expanded="true" signature="1451:1773" ph="..." />
-                    <marker date="1549521124246" expanded="true" signature="1630:1773" ph="..." />
-                    <marker date="1549521124246" expanded="true" signature="1860:1865" ph="..." />
-                    <marker date="1549521124246" expanded="true" signature="1882:1887" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/TODO.md">
-              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="FIRST">
-                  <first_editor relative-caret-position="195">
-                    <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-                  </first_editor>
-                  <second_editor />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/setup.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="9" selection-start-line="9" selection-end-line="9" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/DataIOOperations.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="464">
-                  <caret line="77" column="50" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
-                  <folding>
-                    <element signature="e#0#24#0" expanded="true" />
-                    <element signature="e#315#337#0" />
-                    <element signature="e#667#885#0" />
-                    <element signature="e#891#913#0" />
-                    <element signature="e#1351#1739#0" />
-                    <marker date="1549523001449" expanded="true" signature="736:885" ph="..." />
-                    <marker date="1549523001449" expanded="false" signature="885:1275" ph="..." />
-                    <marker date="1549523001449" expanded="true" signature="1900:1979" ph="..." />
-                    <marker date="1549523001449" expanded="true" signature="2447:2530" ph="..." />
-                    <marker date="1549523001449" expanded="true" signature="2524:2530" ph="..." />
-                    <marker date="1549523001449" expanded="true" signature="2573:2625" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DailyTaskOperations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DataInputOperations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-60">
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DataOutputOperations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-45">
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/OneTimeTasks.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -227,7 +109,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>lastUniqueID</find>
+      <find>dict2</find>
+      <find>dict2_copy</find>
     </findStrings>
+    <replaceStrings>
+      <replace>template_dict</replace>
+      <replace>dict2</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -241,20 +129,30 @@
         <option value="$PROJECT_DIR$/data/completed/longTermProjects.json.py" />
         <option value="$PROJECT_DIR$/src/taskFunctions.py" />
         <option value="$PROJECT_DIR$/data/active/oneTimeTasks.json" />
-        <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/data/inactive/habits.json" />
-        <option value="$PROJECT_DIR$/src/app_main.py" />
         <option value="$PROJECT_DIR$/src/Habits.py" />
         <option value="$PROJECT_DIR$/data/uniqueIDs.json" />
-        <option value="$PROJECT_DIR$/src/OneTimeTasks.py" />
         <option value="$PROJECT_DIR$/src/devTests.py" />
         <option value="$PROJECT_DIR$/data/completed/oneTimeTasks.json" />
         <option value="$PROJECT_DIR$/src/DataIOOperations.py" />
+        <option value="$PROJECT_DIR$/src/app_main.py" />
+        <option value="$PROJECT_DIR$/src/installation_script.py" />
+        <option value="$PROJECT_DIR$/src/daily_task_operations.py" />
+        <option value="$PROJECT_DIR$/src/dictionary_operations.py" />
+        <option value="$PROJECT_DIR$/src/DictionaryOperations.py" />
+        <option value="$PROJECT_DIR$/tests/test_dictionary_operations.py" />
+        <option value="$PROJECT_DIR$/tests/test_initialization.py" />
+        <option value="$PROJECT_DIR$/src/ResolvePaths.py" />
+        <option value="$PROJECT_DIR$/TODO.md" />
+        <option value="$PROJECT_DIR$/tests/test_one_time_tasks.py" />
+        <option value="$PROJECT_DIR$/src/DailyTaskOperations.py" />
+        <option value="$PROJECT_DIR$/src/OneTimeTasks.py" />
+        <option value="$PROJECT_DIR$/src/DataInputOperations.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -263,6 +161,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -278,35 +177,30 @@
             <path>
               <item name="Am-I-better" type="b2602c69:ProjectViewProjectNode" />
               <item name="Am-I-better" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="active" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Am-I-better" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Am-I-better" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="completed" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Am-I-better" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Am-I-better" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="inactive" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Am-I-better" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Am-I-better" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Am-I-better" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Am-I-better" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Am-I-better" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Am-I-better" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -335,34 +229,43 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548326481227</updated>
+      <workItem from="1557485282105" duration="6450000" />
+      <workItem from="1557744755411" duration="3606000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10056000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="-37" width="1366" height="805" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.24242425" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.24621212" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="2" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32891566" />
-      <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="3" weight="0.32900432" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32756132" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="right" id="Database" order="0" weight="0.32954547" />
+      <window_info anchor="right" id="SciView" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info anchor="right" id="Terminal" order="5" weight="0.4378788" />
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2/__builtin__.pyi">
@@ -372,28 +275,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LongTermProjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/installation_script.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/initial_setup.py">
+    <entry file="file://$PROJECT_DIR$/src/LongTermProjects.py" />
+    <entry file="file://$PROJECT_DIR$/src/InitialSetup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/completed/longTermProjects.json.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cli_main.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/data/inactive/habits.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -402,131 +290,224 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/active/longTermProjects.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/active/habits.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/taskFunctions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding>
-            <marker date="1549168194862" expanded="true" signature="37:42" ph="..." />
-            <marker date="1549168194862" expanded="true" signature="61:80" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-          <folding>
-            <marker date="1549520732207" expanded="true" signature="477:496" ph="..." />
-            <marker date="1549520732207" expanded="true" signature="490:496" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Habits.py">
+    <entry file="file://$PROJECT_DIR$/src/taskFunctions.py" />
+    <entry file="file://$PROJECT_DIR$/src/Habits.py" />
+    <entry file="file://$PROJECT_DIR$/src/DataIOOperations.py" />
+    <entry file="file://$PROJECT_DIR$/data/active/oneTimeTasks.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
-          <folding>
-            <marker date="1549520732222" expanded="true" signature="13:18" ph="..." />
-            <marker date="1549520732222" expanded="true" signature="720:888" ph="..." />
-            <marker date="1549520732222" expanded="true" signature="922:931" ph="..." />
-            <marker date="1549520732222" expanded="true" signature="922:941" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/devTests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1549521124254" expanded="true" signature="914:926" ph="..." />
-          </folding>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/uniqueIDs.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/active/oneTimeTasks.json">
+    <entry file="file://$PROJECT_DIR$/data/active/habits.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/active/longTermProjects.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/completed/longTermProjects.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+        <state relative-caret-position="150">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/BaseClass.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/data/completed/oneTimeTasks.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/devTests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InstallationScript.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppMain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CommandLineInterface.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DictionaryOperations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="e#94#123#0" expanded="true" />
+            <element signature="e#347#506#0" />
+            <element signature="e#710#917#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_dictionary_operations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+          <folding>
+            <element signature="e#342#580#0" />
+            <element signature="e#670#1003#0" />
+            <element signature="e#1104#1470#0" />
+            <element signature="e#1529#1777#0" />
+            <element signature="e#1850#2411#0" />
+            <element signature="e#2476#3072#0" />
+            <element signature="e#3204#3496#0" />
+            <element signature="e#3565#4040#0" />
+            <element signature="e#4343#4769#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_initialization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestHabits.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestInputOperations.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestOutputOperations.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestAppOperations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/active/oneTimeTasks_simple_deletion.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/active/oneTimeTasks_simple_duplicates.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ResolvePaths.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TODO.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="195">
-            <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <first_editor relative-caret-position="206">
+            <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OneTimeTasks.py">
+    <entry file="file://$PROJECT_DIR$/docs/design.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/active/oneTimeTasks_simple_addition.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+        <state relative-caret-position="210">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/active/oneTimeTasks_simple_mark_as_complete.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/completed/oneTimeTasks_simple_mark_as_complete.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_one_time_tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
           <folding>
-            <marker date="1549521124246" expanded="true" signature="1044:1295" ph="..." />
-            <marker date="1549521124246" expanded="true" signature="1451:1457" ph="..." />
-            <marker date="1549521124246" expanded="true" signature="1451:1773" ph="..." />
-            <marker date="1549521124246" expanded="true" signature="1630:1773" ph="..." />
-            <marker date="1549521124246" expanded="true" signature="1860:1865" ph="..." />
-            <marker date="1549521124246" expanded="true" signature="1882:1887" ph="..." />
+            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#539#618#0" />
+            <element signature="e#675#1682#0" />
+            <element signature="e#1745#2727#0" />
+            <element signature="e#2779#3264#0" />
+            <element signature="e#3326#4169#0" />
+            <element signature="e#3522#4758#0" />
+            <element signature="e#5516#6207#0" />
+            <element signature="e#6284#6716#0" />
+            <element signature="e#6758#7646#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
+    <entry file="file://$PROJECT_DIR$/src/DailyTaskOperations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataIOOperations.py">
+    <entry file="file://$PROJECT_DIR$/src/OneTimeTasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="77" column="50" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
+        <state relative-caret-position="435">
+          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataOutputOperations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataInputOperations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#315#337#0" />
-            <element signature="e#667#885#0" />
-            <element signature="e#891#913#0" />
-            <element signature="e#1351#1739#0" />
-            <marker date="1549523001449" expanded="true" signature="736:885" ph="..." />
-            <marker date="1549523001449" expanded="false" signature="885:1275" ph="..." />
-            <marker date="1549523001449" expanded="true" signature="1900:1979" ph="..." />
-            <marker date="1549523001449" expanded="true" signature="2447:2530" ph="..." />
-            <marker date="1549523001449" expanded="true" signature="2524:2530" ph="..." />
-            <marker date="1549523001449" expanded="true" signature="2573:2625" ph="..." />
           </folding>
         </state>
       </provider>

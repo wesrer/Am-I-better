@@ -21,8 +21,7 @@ class OneTimeTasks:
         self.completedOneTimeTasks = completed_one_time_tasks
         self.activeOneTimeTasks = active_one_time_tasks
 
-        self.defaultTimeValues = \
-            self.DataInputOperationsObject.get_default_values("time", "oneTimeTasks")
+        self.defaultTimeValues = self.DataInputOperationsObject.get_default_values("time", "oneTimeTasks")
 
     # FIXME: figure out how to take customized completeBy input
     def add_one_time_task(self,

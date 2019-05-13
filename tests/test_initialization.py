@@ -1,11 +1,12 @@
-from src import app_main
+from src import AppMain
 
-AppObject = app_main.App("build")
+AppObject = AppMain.App("build")
 
 
 class TestInitializationsInAppMain:
     # helper methods
-    def get_class_name(self, some_object):
+    @staticmethod
+    def get_class_name(some_object):
         return some_object.__class__.__name__
 
     # test methods
@@ -20,8 +21,3 @@ class TestInitializationsInAppMain:
     # FIXME: write this after actually implementing it
     # def test_long_term_project_initialization_in_app_main(self):
     #     initialized_long_term_project_object = AppObject.
-
-# TODO: LOL fix her bugs
-# def test_hana():
-#     pass
-#

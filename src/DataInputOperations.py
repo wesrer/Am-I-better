@@ -25,7 +25,7 @@ class DataInputOperations:
     #   - taskType - "oneTimeTasks" or "habits" or "longTermProjects"
     #
     # FUNCTION PURPOSE:
-    #   reads the JSON file '< taskType >.json' from directory < taskStatus >
+    #   reads the JSON file '< task_type >.json' from directory < task_status >
     #   inside the data directory and returns it
 
     def get_tasks(self,
@@ -43,8 +43,6 @@ class DataInputOperations:
             data = data[parent_task_id][child_task_type]
 
         return data
-
-
 
     # FUNCTION PARAMETERS:
     #   - task_type: "oneTimeTasks" or "habits" or "longTermProjects"

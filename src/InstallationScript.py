@@ -1,7 +1,7 @@
 import click
 
 @click.group
-def installation_cli():
+def install_cli():
     # Group for the tools that lets you install the application
     pass
 

@@ -15,7 +15,7 @@ class ResolvePaths:
         return self.data_directory_path() / 'uniqueIDs.json'
 
     def data_directory_path(self):
-        if self.execution_type == "dev" or self.execution_type.lower() == "build":
+        if self.execution_type.lower() == "dev" or self.execution_type.lower() == "build":
             return self.module_path_resolution / '..' / 'data'
         elif self.execution_type.lower() == "test":
             return self.module_path_resolution / '..' / 'tests' / 'test_data'

@@ -25,9 +25,9 @@ class DataOutputOperations:
                                              dictionary_to_display: StringDict,
                                              sort_descending: bool = True):
         list_dictionary = \
-            self.DictionaryOperationsObject.dictionary_to_list(initial_dictionary=dictionary_to_display,
-                                                               preserve_keys=True,
-                                                               key_string="id")
+            self.DictionaryOperationsObject.dict_of_dicts_to_list_of_dicts(initial_dictionary=dictionary_to_display,
+                                                                           preserve_keys=True,
+                                                                           key_string="id")
         list_dictionary = \
             self.DictionaryOperationsObject.sort_list_of_dictionaries_by_key(list_of_dict=list_dictionary,
                                                                              sort_key="priority")

@@ -15,13 +15,13 @@ class OneTimeTasks:
                  active_one_time_tasks: StringDict,
                  completed_one_time_tasks: StringDict):
 
-        self.DataInputOperationsObject = data_input_operations_object
-        self.taskFunctionsObject = task_functions_object
+        self.DataInputOperations = data_input_operations_object
+        self.taskFunctions = task_functions_object
 
-        self.completedOneTimeTasks = completed_one_time_tasks
-        self.activeOneTimeTasks = active_one_time_tasks
+        self.completed_one_time_tasks = completed_one_time_tasks
+        self.active_one_time_tasks = active_one_time_tasks
 
-        self.defaultTimeValues = self.DataInputOperationsObject.get_default_values("time", "oneTimeTasks")
+        self.default_time_values = self.DataInputOperations.get_default_values("time", "oneTimeTasks")
 
     # FIXME: figure out how to take customized completeBy input
     def add_one_time_task(self,
@@ -30,60 +30,64 @@ class OneTimeTasks:
                           weight: int = 3,
                           complete_by: str = "defaultValue") -> None:
 
-        unique_id = self.DataInputOperationsObject.get_new_unique_id_for_task('oneTimeTasks')
+        unique_id = self.DataInputOperations.get_new_unique_id_for_task('oneTimeTasks')
+        unique_id = str(unique_id)  # for easier JSON conversion
 
         if complete_by == "defaultValue":
-            complete_by = self.defaultTimeValues
+            complete_by = self.default_time_values
         else:
-            complete_by = \
-                self.taskFunctionsObject.convert_time_string_to_dictionary(complete_by)
+            complete_by = self.taskFunctions.convert_time_string_to_dictionary(complete_by)
 
-        self.activeOneTimeTasks[str(unique_id)] = \
-            self.taskFunctionsObject.add_tasks(task_string=task_string,
-                                               task_type="oneTimeTasks",
-                                               priority=priority,
-                                               weight=weight,
-                                               complete_by=complete_by)
+        self.active_one_time_tasks[unique_id] = self.taskFunctions.add_tasks(task_string=task_string,
+                                                                             task_type="oneTimeTasks",
+                                                                             priority=priority,
+                                                                             weight=weight,
+                                                                             complete_by=complete_by)
 
-    def mark_task_as_completed(self,
-                               id_to_mark_as_completed: int) -> None:
+    def mark_task_as_completed(self, id_to_mark_as_completed: int) -> None:
 
-        self.activeOneTimeTasks, self.completedOneTimeTasks = \
-            self.taskFunctionsObject.mark_task_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
-                                                            active_dictionary=self.activeOneTimeTasks,
-                                                            completed_dictionary=self.completedOneTimeTasks,
-                                                            task_type="oneTimeTasks",
-                                                            completed_task_type="completedOneTimeTasks")
+        self.active_one_time_tasks, self.completed_one_time_tasks = \
+            self.taskFunctions.mark_task_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
+                                                      active_dictionary=self.active_one_time_tasks,
+                                                      completed_dictionary=self.completed_one_time_tasks,
+                                                      task_type="oneTimeTasks",
+                                                      completed_task_type="completedOneTimeTasks")
 
-    def delete_task(self,
-                    id_to_delete: int) -> None:
+    def unmark_completed_task(self, id_to_unmark: int) -> None:
 
-        self.activeOneTimeTasks = \
-            self.taskFunctionsObject.delete_task(id_to_delete=id_to_delete,
-                                                 active_dictionary=self.activeOneTimeTasks,
-                                                 task_type='oneTimeTasks')
+        self.active_one_time_tasks, self.completed_one_time_tasks = \
+            self.taskFunctions.unmark_a_completed_task(id_to_unmark=id_to_unmark,
+                                                       active_dictionary=self.active_one_time_tasks,
+                                                       completed_dictionary=self.completed_one_time_tasks,
+                                                       task_type="oneTimeTasks",
+                                                       completed_task_type="completedOneTimeTasks")
+
+    def delete_task(self, id_to_delete: int) -> None:
+
+        self.active_one_time_tasks = self.taskFunctions.delete_task(id_to_delete=id_to_delete,
+                                                                    active_dictionary=self.active_one_time_tasks,
+                                                                    task_type='oneTimeTasks')
 
     def save_active_one_time_tasks(self) -> None:
 
-        self.DataInputOperationsObject.save_as_file(task_status='active',
-                                                    task_type='oneTimeTasks',
-                                                    dictionary_to_save=self.activeOneTimeTasks)
+        self.DataInputOperations.save_as_file(task_status='active',
+                                              task_type='oneTimeTasks',
+                                              dictionary_to_save=self.active_one_time_tasks)
 
     def save_completed_one_time_tasks(self) -> None:
 
-        self.DataInputOperationsObject.save_as_file(task_status='completed',
-                                                    task_type='oneTimeTasks',
-                                                    dictionary_to_save=self.completedOneTimeTasks)
+        self.DataInputOperations.save_as_file(task_status='completed',
+                                              task_type='oneTimeTasks',
+                                              dictionary_to_save=self.completed_one_time_tasks)
 
     # TODO: implement priorities
     def sort_by_priority(self) -> StringDict:
-
-
-        return sorted_by_priority
+        pass
+        # return sorted_by_priority
 
     # GET operations
     def get_active_one_time_tasks(self) -> StringDict:
-        return self.activeOneTimeTasks
+        return self.active_one_time_tasks
 
     def get_completed_one_time_tasks(self) -> StringDict:
-        return self.completedOneTimeTasks
+        return self.completed_one_time_tasks

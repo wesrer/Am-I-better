@@ -16,9 +16,6 @@ test_data_path = Path(os.path.dirname(os.path.abspath(src.__file__))) / '..' / '
 
 
 class TestOneTimeTasks:
-    def __init__(self):
-        self.check_equality_of_dict_of_task_dicts = dictionary_operations_object.check_equality_of_dicts_of_task_dicts
-
     @staticmethod
     def read_test_data(path_val: Path):
         with path_val.open() as f:
@@ -64,8 +61,8 @@ class TestOneTimeTasks:
         returned_output = sample_one_time_task_object.get_active_one_time_tasks()
         expected_output = self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_addition.json')
 
-        assert self.check_equality_of_dict_of_task_dicts(returned_output,
-                                                         expected_output)
+        assert dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(returned_output,
+                                                                                           expected_output)
 
     def test_adding_duplicate_one_time_tasks(self):
         initialized_one_time_tasks_object = self.initialize_one_time_task_object()[0]
@@ -76,7 +73,7 @@ class TestOneTimeTasks:
         returned_output = initialized_one_time_tasks_object.get_active_one_time_tasks()
         expected_output = self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_duplicates.json')
 
-        assert dictionary_operations_object.check_equality_of_dicts_of_task_dicts(returned_output, expected_output)
+        assert dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(returned_output, expected_output)
 
     def test_reusing_ids_marked_as_completed(self):
         sample_one_time_task_object = \
@@ -96,10 +93,10 @@ class TestOneTimeTasks:
         expected_completed_output = self.read_test_data(
             test_data_path / 'completed' / 'oneTimeTasks_simple_mark_as_complete.json')
 
-        condition1 = self.check_equality_of_dicts_of_task_dicts(expected_active_output,
-                                                                returned_active_output)
-        condition2 = self.check_equality_of_dicts_of_task_dicts(expected_completed_output,
-                                                                returned_completed_output)
+        condition1 = dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(expected_active_output,
+                                                                                                 returned_active_output)
+        condition2 = dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(expected_completed_output,
+                                                                                                 returned_completed_output)
 
         assert condition1 and condition2
 
@@ -136,9 +133,63 @@ class TestOneTimeTasks:
         next_id = initialized_data_input_operations_object.get_new_unique_id_for_task(task_type='oneTimeTasks')
 
         assert next_id == 1 and \
-            dictionary_operations_object.check_equality_of_dicts_of_task_dicts(returned_active_output,
-                                                                               expected_active_output)
+               dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(returned_active_output,
+                                                                                           expected_active_output)
 
+    def test_unmarking_a_completed_task(self):
+        initialized_one_time_tasks_object, initialized_data_input_operations = self.initialize_one_time_task_object()
+        sample_one_time_task_object =  self.sample_tasks_1(initialized_one_time_tasks_object)
 
+        sample_one_time_task_object.mark_task_as_completed('1')
+        sample_one_time_task_object.unmark_completed_task('0')
 
+        returned_active_output = sample_one_time_task_object.get_active_one_time_tasks()
+        returned_completed_output = sample_one_time_task_object.get_completed_one_time_tasks()
 
+        expected_active_output = self.read_test_data(
+            test_data_path / 'active' / 'oneTimeTasks_simple_addition.json')
+
+        length_of_expected_completed_output = 0
+
+        condition1 = dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(expected_active_output,
+                                                                                                 returned_active_output)
+        condition2 = len(returned_completed_output) == length_of_expected_completed_output
+
+        condition3 = \
+            initialized_data_input_operations.get_new_unique_id_for_task(task_type="completedOneTimeTasks") == 0
+
+        condition4 = initialized_data_input_operations.get_new_unique_id_for_task(task_type="oneTimeTasks") == 5
+
+        assert condition1 and condition2 and condition3 and condition4
+
+    def test_unmarking_multiple_completed_tasks_in_reverse_order(self):
+        initialized_one_time_tasks_object, initialized_data_input_operations = self.initialize_one_time_task_object()
+        sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_tasks_object)
+
+        sample_one_time_task_object.mark_task_as_completed('1')
+        sample_one_time_task_object.mark_task_as_completed('2')
+        sample_one_time_task_object.unmark_completed_task('1')
+        sample_one_time_task_object.unmark_completed_task('0')
+
+        returned_active_output = sample_one_time_task_object.get_active_one_time_tasks()
+        returned_completed_output = sample_one_time_task_object.get_completed_one_time_tasks()
+
+        expected_active_output = self.read_test_data(
+            test_data_path / 'active' / 'oneTimeTasks_unmarking_completed_out_of_order.json')
+
+        length_of_expected_completed_output = 0
+
+        condition1 = dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(expected_active_output,
+                                                                                                 returned_active_output)
+        condition2 = len(returned_completed_output) == length_of_expected_completed_output
+
+        next_completed_task_id = \
+            initialized_data_input_operations.get_new_unique_id_for_task(task_type="completedOneTimeTasks")
+        next_new_task_id = initialized_data_input_operations.get_new_unique_id_for_task(task_type="oneTimeTasks")
+
+        print(next_completed_task_id)
+
+        condition3 = next_completed_task_id == 0
+        condition4 = next_new_task_id == 5
+
+        assert condition1 and condition2 and condition3 and condition4

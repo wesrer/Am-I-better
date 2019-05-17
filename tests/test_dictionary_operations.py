@@ -91,7 +91,7 @@ class TestDictionaryOperations:
                                                                    preserve_inner_key=False,
                                                                    key_to_use_as_outer_key="identifier")
 
-        assert dictionary_operations.check_equality_of_dicts_of_task_dicts({"0": template_dict}, returned_dict)
+        assert dictionary_operations.check_equality_of_dicts_with_nested_task_dicts({"0": template_dict}, returned_dict)
 
     def test_adding_outer_key_preserving_inner_keys(self):
         dict1 = deepcopy(template_dict)
@@ -100,7 +100,7 @@ class TestDictionaryOperations:
         returned_dict = dictionary_operations.add_outer_dictionary(dict1,
                                                                    preserve_inner_key=True,
                                                                    key_to_use_as_outer_key="identifier")
-        assert dictionary_operations.check_equality_of_dicts_of_task_dicts({"0": dict1}, returned_dict)
+        assert dictionary_operations.check_equality_of_dicts_with_nested_task_dicts({"0": dict1}, returned_dict)
 
     def test_list_to_dictionary_depth_1(self):
         key_list = ["randVal", "anotherRandVal", "yetAnotherOne"]

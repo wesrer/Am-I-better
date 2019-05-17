@@ -9,12 +9,10 @@ ListStringDict = List[StringDict]
 
 
 class DataOutputOperations:
-    def __init__(self,
-                 resolve_paths_object,
-                 dictionary_operations_object):
+    def __init__(self, resolve_paths, dictionary_operations):
 
-        self.resolvePathsObject = resolve_paths_object
-        self.DictionaryOperationsObject = dictionary_operations_object
+        self.resolvePathsObject = resolve_paths
+        self.DictionaryOperationsObject = dictionary_operations
 
     # FUNCTION PARAMETERS:
     #   - dictionary_to_display - the task type dictionary

@@ -10,19 +10,27 @@ import os
 
 class App:
     def __init__(self, execution_type):
-        self.dailyTasks = []
+
+        # self.dailyTasks = []
 
         source_path = os.path.dirname(os.path.abspath(__file__))
 
+        # UTILITY MODULES
+
         self.DictionaryOperations = DictionaryOperations.DictionaryOperations()
         self.ResolvePaths = ResolvePaths.ResolvePaths(source_path, execution_type=execution_type)
+
+        # I/O MODULES
+
         self.DataInputOperations = DataInputOperations.DataInputOperations(resolve_path_object=self.ResolvePaths)
-
         self.DataOutputOperations = \
-            DataOutputOperations.DataOutputOperations(resolve_paths_object=self.ResolvePaths,
-                                                      dictionary_operations_object=self.DictionaryOperations)
+            DataOutputOperations.DataOutputOperations(resolve_paths=self.ResolvePaths,
+                                                      dictionary_operations=self.DictionaryOperations)
 
+        # COMMON METHODS MODULE
         self.TaskFunctions = TaskFunctions.TaskFunctions(data_input_operations_object=self.DataInputOperations)
+
+        # TASK MODULES
 
         self.MainOneTimeTasks = self.initialize_main_one_time_tasks_object()
 
@@ -32,19 +40,18 @@ class App:
     def on_start_operations(self):
         pass
 
-    # This is the Class Level Initialization of One Time Tasks
-    # There can also be long term tasks level initialization of oneTimeTasks
+    # NOTE: This is the Class Level Initialization of oneTimeTasks
+    #       There can also be long term tasks level initialization of oneTimeTasks
     def initialize_main_one_time_tasks_object(self):
-
-        # self.dataDirectory / task_status / (task_type + ".json")
-
         completed_one_time_tasks = self.DataInputOperations.get_tasks(task_status='completed',
                                                                       task_type='oneTimeTasks')
         active_one_time_tasks = self.DataInputOperations.get_tasks(task_status='active',
                                                                    task_type='oneTimeTasks')
 
-        return OneTimeTasks.OneTimeTasks(self.DataInputOperations, self.TaskFunctions, active_one_time_tasks,
-                                         completed_one_time_tasks)
+        return OneTimeTasks.OneTimeTasks(data_input_operations_object=self.DataInputOperations,
+                                         task_functions_object=self.TaskFunctions,
+                                         active_one_time_tasks=active_one_time_tasks,
+                                         completed_one_time_tasks=completed_one_time_tasks)
 
     def on_close_operations(self):
         # TODO: have to do this for all the kinds of operations

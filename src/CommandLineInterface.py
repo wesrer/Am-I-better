@@ -1,12 +1,20 @@
 import click
 
+
 @click.group()
-def app_cli():
-    # Main group for the app cli 
+def cli():
     pass
 
+
+@cli.command()
+def init():
+    click.echo("Init this shit")
+
+
+@cli.command()
+def hello():
+    click.echo("Hello, World!")
 
 
 if __name__ == '__main__':
-    # something should happen here
-    pass
+    cli()

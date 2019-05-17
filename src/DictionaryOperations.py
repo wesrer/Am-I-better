@@ -64,7 +64,7 @@ class DictionaryOperations:
         return sorted(list_of_dict,
                       key=itemgetter(sort_key))
 
-    def check_equality_of_dicts_of_task_dicts(self, dict1: Dict, dict2: Dict):
+    def check_equality_of_dicts_with_nested_task_dicts(self, dict1: Dict, dict2: Dict):
 
         for identifier, value in dict1.items():
             if not self.check_task_dictionary_equality(value, dict2[identifier]):

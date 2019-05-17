@@ -20,13 +20,13 @@ class DataInputOperations:
         self.uniqueIDs = self.read_unique_ids()
         self.defaultValues = self.read_default_values()
 
-    # FUNCTION PARAMETERS:
-    #   - taskStatus - "active" or "completed"
-    #   - taskType - "oneTimeTasks" or "habits" or "longTermProjects"
-    #
     # FUNCTION PURPOSE:
     #   reads the JSON file '< task_type >.json' from directory < task_status >
     #   inside the data directory and returns it
+    #
+    # FUNCTION PARAMETERS:
+    #   - taskStatus: "active" or "completed"
+    #   - taskType:   "oneTimeTasks" or "habits" or "longTermProjects"
 
     def get_tasks(self,
                   task_status: str,
@@ -43,14 +43,14 @@ class DataInputOperations:
             data = data[parent_task_id][child_task_type]
 
         return data
-
-    # FUNCTION PARAMETERS:
-    #   - task_type: "oneTimeTasks" or "habits" or "longTermProjects"
-    #   - parent_id: The ID of the task if it has sub-tasks
-    #   - has_children: indicates whether the task type can have sub-tasks
-    #
     # FUNCTION PURPOSE:
     #   returns a new ID for the task being created
+    #
+    # FUNCTION PARAMETERS:
+    #   - task_type:    "oneTimeTasks" or "habits" or "longTermProjects"
+    #   - parent_id:    The ID of the task if it has sub-tasks
+    #   - has_children: indicates whether the task type can have sub-tasks
+
     def get_new_unique_id_for_task(self,
                                    task_type: str,
                                    parent_id: int = -1,
@@ -60,8 +60,8 @@ class DataInputOperations:
         # based on whether the taskType can have Children or not
 
         # NOTE: Current case only handles depth of 0 and 1
-        # Will need to be reimplemented if any other depths
-        # are present in the data structure
+        #       Will need to be reimplemented if any other depths
+        #       are present in the data structure
         if has_children:
             parent_dictionary = self.uniqueIDs[task_type][parent_id]
         else:
@@ -78,15 +78,15 @@ class DataInputOperations:
 
         return int(new_unique_id)
 
-    # FUNCTION PARAMETERS:
-    #   - task_type - "oneTimeTasks" or "habits" or "longTermProjects"
-    #   - parent_id - only applies when the taskType can have sub-tasks("longTermProjects")
-    #              in which case the task has to be identified with an id
-    #   - id_to_mark_as_available - the ID to recycle
-    #   - has_children - can the task type have sub-tasks
-    #
     # FUNCTION PURPOSE:
     #   Recycles old IDs
+    #
+    # FUNCTION PARAMETERS:
+    #   - task_type:               "oneTimeTasks" or "habits" or "longTermProjects"
+    #   - parent_id:               only applies when the taskType can have sub-tasks("longTermProjects")
+    #                              in which case the task has to be identified with an id
+    #   - id_to_mark_as_available: the ID to recycle
+    #   - has_children:            can the task type have sub-tasks
 
     def mark_id_as_available(self,
                              task_type: str,
@@ -103,14 +103,15 @@ class DataInputOperations:
             parent_id = self.uniqueIDs[task_type]
 
         parent_id["available"].append(str(id_to_mark_as_available))
+        parent_id["available"].sort()
 
-    # FUNCTION PARAMETERS:
-    #   - task_id - the id which has to be initialized
-    #   - task_type - usually just "longTermProjects"
-    #
     # FUNCTION PURPOSE:
     #   Sets up the data structure for tasks and sub-tasks that need their own
     #   independent ID scheme
+    #
+    # FUNCTION PARAMETERS:
+    #   - task_id:    the id which has to be initialized
+    #   - task_type:  usually just "longTermProjects"
     #
     # NOTE:
     #   This function is only meant to be called when the task type can have sub-tasks
@@ -124,9 +125,6 @@ class DataInputOperations:
             "next": 0
         }
 
-    # FUNCTION PARAMETERS:
-    #   None
-    #
     # FUNCTION PURPOSE:
     #   Reads the default values dictionary from a json file
 
@@ -145,10 +143,7 @@ class DataInputOperations:
     def write_default_values(self) -> None:
 
         with open(self.defaultValuesFile, 'w') as idfile:
-            data_to_write = json.dumps(self.defaultValues,
-                                       sort_keys=True,
-                                       indent=4,
-                                       ensure_ascii=False)
+            data_to_write = json.dumps(self.defaultValues, sort_keys=True, indent=4, ensure_ascii=False)
 
             idfile.write(data_to_write)
             idfile.close()
@@ -178,10 +173,7 @@ class DataInputOperations:
     def write_unique_ids(self) -> None:
 
         with open(self.uniqueIDsFile, 'w') as idfile:
-            data_to_write = json.dumps(self.uniqueIDs,
-                                       sort_keys=True,
-                                       indent=4,
-                                       ensure_ascii=False)
+            data_to_write = json.dumps(self.uniqueIDs, sort_keys=True, indent=4, ensure_ascii=False)
 
             idfile.write(data_to_write)
             idfile.close()

@@ -94,18 +94,26 @@ class TaskFunctions:
                                parent_id: int = -1,
                                has_children: bool = False) -> [StringDict, StringDict]:
 
+        id_to_mark_as_completed = str(id_to_mark_as_completed)
+
+        print(active_dictionary)
+
+        if id_to_mark_as_completed not in active_dictionary:
+            print('getting here')
+            raise KeyError
+
         unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=completed_task_type,
                                                                         parent_id=parent_id,
                                                                         has_children=has_children)
 
-        completed_dictionary[str(unique_id)] = active_dictionary[str(id_to_mark_as_completed)]
+        completed_dictionary[str(unique_id)] = active_dictionary[id_to_mark_as_completed]
 
         self.DataInputOperations.mark_id_as_available(task_type=task_type,
                                                       parent_id=parent_id,
                                                       has_children=has_children,
                                                       id_to_mark_as_available=id_to_mark_as_completed)
 
-        del active_dictionary[str(id_to_mark_as_completed)]
+        del active_dictionary[id_to_mark_as_completed]
 
         return active_dictionary, completed_dictionary
 
@@ -119,19 +127,24 @@ class TaskFunctions:
                                 completed_task_type: str,
                                 parent_id: int = -1,
                                 has_children: bool = False):
+        id_to_unmark = str(id_to_unmark)
+
+        if id_to_unmark not in completed_dictionary:
+            raise KeyError
+
         unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=task_type,
                                                                         parent_id=parent_id,
                                                                         has_children=has_children)
 
         # pushing the string to the active_dictionary under a next available id
-        active_dictionary[str(unique_id)] = completed_dictionary[str(id_to_unmark)]
+        active_dictionary[str(unique_id)] = completed_dictionary[id_to_unmark]
 
         self.DataInputOperations.mark_id_as_available(task_type=completed_task_type,
                                                       parent_id=parent_id,
                                                       has_children=has_children,
                                                       id_to_mark_as_available=id_to_unmark)
 
-        del completed_dictionary[str(id_to_unmark)]
+        del completed_dictionary[id_to_unmark]
 
         return active_dictionary, completed_dictionary
 
@@ -145,7 +158,12 @@ class TaskFunctions:
                     parent_id: int = -1,
                     has_children: bool = False) -> StringDict:
 
-        del active_dictionary[str(id_to_delete)]
+        id_to_delete = str(id_to_delete)
+
+        if id_to_delete not in active_dictionary:
+            raise KeyError
+
+        del active_dictionary[id_to_delete]
 
         self.DataInputOperations.mark_id_as_available(task_type=task_type,
                                                       id_to_mark_as_available=id_to_delete,

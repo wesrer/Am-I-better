@@ -158,6 +158,16 @@ class DataInputOperations:
                            default_identifier_string: str) -> str:
         return self.defaultValues[defualt_value_type][default_identifier_string]
 
+    def reset_ids(self,
+                  task_type: str,
+                  reset_available: bool,
+                  reset_next: bool):
+        if reset_available:
+            self.uniqueIDs[task_type]["available"] = []
+
+        if reset_next:
+            self.uniqueIDs[task_type]["next"] = 0
+
     # FUNCTION PARAMETERS:
     #   None
     #
@@ -182,6 +192,7 @@ class DataInputOperations:
 
             idfile.write(data_to_write)
             idfile.close()
+
 
 
 

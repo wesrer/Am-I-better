@@ -149,32 +149,32 @@ class TaskFunctions:
 
         return active_dictionary, completed_dictionary
 
-# TODO: implement parent_id and has_children functionalities
-# TODO: allow multiple ids to be unmarked in one call
+    # TODO: implement parent_id and has_children functionalities
+    # TODO: allow multiple ids to be unmarked in one call
     def unmark_a_completed_task(self,
-                            id_to_unmark: int,
-                            active_dictionary: StringDict,
-                            completed_dictionary: StringDict,
-                            task_type: str,
-                            completed_task_type: str,
-                            parent_id: int = -1,
-                            has_children: bool = False):
+                                id_to_unmark: int,
+                                active_dictionary: StringDict,
+                                completed_dictionary: StringDict,
+                                task_type: str,
+                                completed_task_type: str,
+                                parent_id: int = -1,
+                                has_children: bool = False):
         id_to_unmark = str(id_to_unmark)
 
         if id_to_unmark not in completed_dictionary:
             raise KeyError
 
         unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=task_type,
-                                                                    parent_id=parent_id,
-                                                                    has_children=has_children)
+                                                                        parent_id=parent_id,
+                                                                        has_children=has_children)
 
         # pushing the string to the active_dictionary under a next available id
         active_dictionary[str(unique_id)] = completed_dictionary[id_to_unmark]
 
         self.DataInputOperations.mark_id_as_available(task_type=completed_task_type,
-                                                  parent_id=parent_id,
-                                                  has_children=has_children,
-                                                  id_to_mark_as_available=id_to_unmark)
+                                                      parent_id=parent_id,
+                                                      has_children=has_children,
+                                                      id_to_mark_as_available=id_to_unmark)
 
         del completed_dictionary[id_to_unmark]
 
@@ -184,11 +184,11 @@ class TaskFunctions:
     #        to send all of this excess data just because you are calling the
     #        markIDAsAvailable function
     def delete_task(self,
-                id_to_delete: int,
-                active_dictionary: StringDict,
-                task_type: str,
-                parent_id: int = -1,
-                has_children: bool = False) -> StringDict:
+                    id_to_delete: int,
+                    active_dictionary: StringDict,
+                    task_type: str,
+                    parent_id: int = -1,
+                    has_children: bool = False) -> StringDict:
 
         id_to_delete = str(id_to_delete)
 
@@ -209,3 +209,12 @@ class TaskFunctions:
                          active_dictionary: StringDict) -> StringDict:
         self.DictionaryOperations.dict_of_dicts_to_list_of_dicts()
         self.DictionaryOperations.sort_list_of_dictionaries_by_key()
+
+    # TODO: have some sort of warning before the actual execution of this, since this cannot be
+    #       undone
+    def clearing_all_tasks(self,
+                           task_type: str):
+        self.DataInputOperations.reset_ids(task_type=task_type,
+                                           reset_available=True,
+                                           reset_next=True)
+        return {}  # this is the value the dictionary is going to be reset to

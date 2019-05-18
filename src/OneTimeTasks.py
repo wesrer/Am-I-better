@@ -78,6 +78,12 @@ class OneTimeTasks:
                                                                     active_dictionary=self.active_one_time_tasks,
                                                                     task_type='oneTimeTasks')
 
+    def clear_all_completed_tasks(self) -> None:
+        self.completed_one_time_tasks = self.taskFunctions.clearing_all_tasks(task_type="completedOneTimeTasks")
+
+    def delete_all_completed_tasks(self) -> None:
+        self.clear_all_completed_tasks()
+
     def save_active_one_time_tasks(self) -> None:
 
         self.DataInputOperations.save_as_file(task_status='active',

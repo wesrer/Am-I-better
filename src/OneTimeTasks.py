@@ -44,14 +44,24 @@ class OneTimeTasks:
                                                                              weight=weight,
                                                                              complete_by=complete_by)
 
-    def mark_task_as_completed(self, id_to_mark_as_completed: int) -> None:
+    def mark_tasks_as_completed(self,
+                                id_to_mark_as_completed: int = -1,
+                                list_of_ids_to_mark_as_completed: List[int] = []) -> None:
 
-        self.active_one_time_tasks, self.completed_one_time_tasks = \
-            self.taskFunctions.mark_task_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
-                                                      active_dictionary=self.active_one_time_tasks,
-                                                      completed_dictionary=self.completed_one_time_tasks,
-                                                      task_type="oneTimeTasks",
-                                                      completed_task_type="completedOneTimeTasks")
+        if len(list_of_ids_to_mark_as_completed) != 0:
+            self.active_one_time_tasks, self.completed_one_time_tasks = self.taskFunctions.mark_tasks_as_completed(
+                list_of_ids_to_mark_as_completed=list_of_ids_to_mark_as_completed,
+                active_dictionary=self.active_one_time_tasks,
+                completed_dictionary=self.completed_one_time_tasks,
+                task_type="oneTimeTasks",
+                completed_task_type="completedOneTimeTasks")
+        else :
+            self.active_one_time_tasks, self.completed_one_time_tasks = \
+                self.taskFunctions.mark_tasks_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
+                                                           active_dictionary=self.active_one_time_tasks,
+                                                           completed_dictionary=self.completed_one_time_tasks,
+                                                           task_type="oneTimeTasks",
+                                                           completed_task_type="completedOneTimeTasks")
 
     def unmark_completed_task(self, id_to_unmark: int) -> None:
 

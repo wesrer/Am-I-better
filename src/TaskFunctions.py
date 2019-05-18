@@ -79,27 +79,59 @@ class TaskFunctions:
                       complete_by: bool = False) -> StringDict:
         pass
 
+    # TODO: this is a really inefficient way of doing this. Needs refactoring to more efficiently handle lists
+    def mark_tasks_as_completed(self,
+                                active_dictionary: StringDict,
+                                completed_dictionary: StringDict,
+                                task_type: str,
+                                completed_task_type: str,
+                                parent_id: int = -1,
+                                has_children: bool = False,
+                                id_to_mark_as_completed: int = -1,
+                                list_of_ids_to_mark_as_completed: List[int] = [],) -> [StringDict, StringDict]:
+
+        if len(list_of_ids_to_mark_as_completed) == 0:
+            return self.mark_one_task_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
+                                                   active_dictionary=active_dictionary,
+                                                   completed_dictionary=completed_dictionary,
+                                                   task_type=task_type,
+                                                   completed_task_type=completed_task_type,
+                                                   parent_id=parent_id,
+                                                   has_children=has_children)
+
+        else:
+            for x in list_of_ids_to_mark_as_completed:
+                print("sending off ", x)
+                active_dictionary, completed_dictionary = \
+                    self.mark_one_task_as_completed(id_to_mark_as_completed=x,
+                                                    active_dictionary=active_dictionary,
+                                                    completed_dictionary=completed_dictionary,
+                                                    task_type=task_type,
+                                                    completed_task_type=completed_task_type,
+                                                    parent_id=parent_id,
+                                                    has_children=has_children)
+
+            return active_dictionary, completed_dictionary
+
     # Moves Task From Active Dictionary to Completed Dictionary
     # and adjusts ids to reflect this task
 
     # FIXME: implement parent-child relationships, because they are clearly
     #        not working
     # TODO: allow multiple tasks to be marked as completed in one function call
-    def mark_task_as_completed(self,
-                               id_to_mark_as_completed: int,
-                               active_dictionary: StringDict,
-                               completed_dictionary: StringDict,
-                               task_type: str,
-                               completed_task_type: str,
-                               parent_id: int = -1,
-                               has_children: bool = False) -> [StringDict, StringDict]:
+    def mark_one_task_as_completed(self,
+                                   active_dictionary: StringDict,
+                                   completed_dictionary: StringDict,
+                                   task_type: str,
+                                   completed_task_type: str,
+                                   id_to_mark_as_completed: int = -1,
+                                   parent_id: int = -1,
+                                   has_children: bool = False) -> [StringDict, StringDict]:
 
         id_to_mark_as_completed = str(id_to_mark_as_completed)
 
-        print(active_dictionary)
-
         if id_to_mark_as_completed not in active_dictionary:
-            print('getting here')
+            print(id_to_mark_as_completed)
             raise KeyError
 
         unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=completed_task_type,
@@ -117,32 +149,32 @@ class TaskFunctions:
 
         return active_dictionary, completed_dictionary
 
-    # TODO: implement parent_id and has_children functionalities
-    # TODO: allow multiple ids to be unmarked in one call
+# TODO: implement parent_id and has_children functionalities
+# TODO: allow multiple ids to be unmarked in one call
     def unmark_a_completed_task(self,
-                                id_to_unmark: int,
-                                active_dictionary: StringDict,
-                                completed_dictionary: StringDict,
-                                task_type: str,
-                                completed_task_type: str,
-                                parent_id: int = -1,
-                                has_children: bool = False):
+                            id_to_unmark: int,
+                            active_dictionary: StringDict,
+                            completed_dictionary: StringDict,
+                            task_type: str,
+                            completed_task_type: str,
+                            parent_id: int = -1,
+                            has_children: bool = False):
         id_to_unmark = str(id_to_unmark)
 
         if id_to_unmark not in completed_dictionary:
             raise KeyError
 
         unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=task_type,
-                                                                        parent_id=parent_id,
-                                                                        has_children=has_children)
+                                                                    parent_id=parent_id,
+                                                                    has_children=has_children)
 
         # pushing the string to the active_dictionary under a next available id
         active_dictionary[str(unique_id)] = completed_dictionary[id_to_unmark]
 
         self.DataInputOperations.mark_id_as_available(task_type=completed_task_type,
-                                                      parent_id=parent_id,
-                                                      has_children=has_children,
-                                                      id_to_mark_as_available=id_to_unmark)
+                                                  parent_id=parent_id,
+                                                  has_children=has_children,
+                                                  id_to_mark_as_available=id_to_unmark)
 
         del completed_dictionary[id_to_unmark]
 
@@ -152,11 +184,11 @@ class TaskFunctions:
     #        to send all of this excess data just because you are calling the
     #        markIDAsAvailable function
     def delete_task(self,
-                    id_to_delete: int,
-                    active_dictionary: StringDict,
-                    task_type: str,
-                    parent_id: int = -1,
-                    has_children: bool = False) -> StringDict:
+                id_to_delete: int,
+                active_dictionary: StringDict,
+                task_type: str,
+                parent_id: int = -1,
+                has_children: bool = False) -> StringDict:
 
         id_to_delete = str(id_to_delete)
 

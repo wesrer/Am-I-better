@@ -92,6 +92,7 @@ class DataInputOperations:
                              task_type: str,
                              parent_id: int = -1,
                              id_to_mark_as_available: int = -1,
+                             list_of_ids_to_mark_as_available: List[int] = [],
                              has_children: bool = False, ) -> None:
 
         # The dictionary has ID content at differing depths,
@@ -102,7 +103,11 @@ class DataInputOperations:
         else:
             parent_id = self.uniqueIDs[task_type]
 
-        parent_id["available"].append(str(id_to_mark_as_available))
+        if len(list_of_ids_to_mark_as_available) != 0:
+            [parent_id["available"].append(str(x)) for x in list_of_ids_to_mark_as_available]
+        else:
+            parent_id["available"].append(str(id_to_mark_as_available))
+
         parent_id["available"].sort()
 
     # FUNCTION PURPOSE:

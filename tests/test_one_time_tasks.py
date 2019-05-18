@@ -80,7 +80,7 @@ class TestOneTimeTasks:
         sample_one_time_task_object = \
             self.sample_tasks_1(self.initialize_one_time_task_object()[0])
 
-        sample_one_time_task_object.mark_task_as_completed(1)
+        sample_one_time_task_object.mark_tasks_as_completed(1)
         sample_one_time_task_object.add_one_time_task(task_string="Test All the existing code",
                                                       priority=4,
                                                       weight=3)
@@ -114,11 +114,35 @@ class TestOneTimeTasks:
 
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_object)
 
-        sample_one_time_task_object.mark_task_as_completed(1)
+        sample_one_time_task_object.mark_tasks_as_completed(1)
 
         next_id = initialized_data_input_operations_object.get_new_unique_id_for_task(task_type='oneTimeTasks')
 
         assert next_id == 1
+
+    # TODO: implement this
+    def test_marking_multiple_tasks_as_complete(self):
+        sample_one_time_task_object = \
+            self.sample_tasks_1(self.initialize_one_time_task_object()[0])
+
+        sample_one_time_task_object.mark_tasks_as_completed(list_of_ids_to_mark_as_completed=[0, 1])
+
+        returned_active_output = sample_one_time_task_object.get_active_one_time_tasks()
+        returned_completed_output = sample_one_time_task_object.get_completed_one_time_tasks()
+
+        expected_active_output = self.read_test_data(
+            test_data_path / 'active' / 'oneTimeTasks_marking_multiple_as_complete.json')
+
+        expected_completed_output = self.read_test_data(
+            test_data_path / 'completed' / 'oneTimeTasks_marking_multiple_as_complete.json')
+
+        condition1 = dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(expected_active_output,
+                                                                                                 returned_active_output)
+        condition2 = \
+            dictionary_operations_object.check_equality_of_dicts_with_nested_task_dicts(expected_completed_output,
+                                                                                        returned_completed_output)
+
+        assert condition1 and condition2
 
     def test_delete_task(self):
         initialized_one_time_object, initialized_data_input_operations_object = self.initialize_one_time_task_object()
@@ -141,7 +165,7 @@ class TestOneTimeTasks:
         initialized_one_time_tasks_object, initialized_data_input_operations = self.initialize_one_time_task_object()
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_tasks_object)
 
-        sample_one_time_task_object.mark_task_as_completed(1)
+        sample_one_time_task_object.mark_tasks_as_completed(1)
         sample_one_time_task_object.unmark_completed_task(0)
 
         returned_active_output = sample_one_time_task_object.get_active_one_time_tasks()
@@ -167,8 +191,8 @@ class TestOneTimeTasks:
         initialized_one_time_tasks_object, initialized_data_input_operations = self.initialize_one_time_task_object()
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_tasks_object)
 
-        sample_one_time_task_object.mark_task_as_completed(1)
-        sample_one_time_task_object.mark_task_as_completed(2)
+        sample_one_time_task_object.mark_tasks_as_completed(1)
+        sample_one_time_task_object.mark_tasks_as_completed(2)
 
         # unmarking tasks out of order, so that their position is reversed in the active tasks dictionary
         sample_one_time_task_object.unmark_completed_task(1)
@@ -198,7 +222,7 @@ class TestOneTimeTasks:
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
 
         with pytest.raises(KeyError):
-            initialized_one_time_task_object.mark_task_as_completed(0)
+            initialized_one_time_task_object.mark_tasks_as_completed(0)
 
     def test_raise_exception_when_invalid_key_is_unmarked(self):
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
@@ -212,5 +236,10 @@ class TestOneTimeTasks:
         with pytest.raises(KeyError):
             initialized_one_time_task_object.delete_task(0)
 
+    # TODO: implement this
+    def test_clearing_all_completed_tasks(self):
+        assert "something" == "something"
+
     # TODO: implement deleting completed tasks
     # TODO: implement clearing all completed tasks
+    # TODO: implement requesting more than one unqiue ids

@@ -200,7 +200,7 @@ class TaskFunctions:
         id_to_delete = str(id_to_delete)
 
         if id_to_delete not in active_dictionary:
-            raise KeyError
+            raise KeyError(f"{id_to_delete} not found")
 
         del active_dictionary[id_to_delete]
 

@@ -38,9 +38,9 @@ class Habits:
     def delete(self,
                id_to_delete: int) -> None:
         self.activeHabits = \
-            self.TaskFunctionsObject.delete_task(id_to_delete=id_to_delete,
-                                                 active_dictionary=self.activeHabits,
-                                                 task_type="habits")
+            self.TaskFunctionsObject.delete(id_to_delete=id_to_delete,
+                                            active_dictionary=self.activeHabits,
+                                            task_type="habits")
 
     def mark_as_inactive(self,
                          id_to_mark_as_inactive: int) -> None:

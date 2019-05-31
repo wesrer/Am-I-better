@@ -74,13 +74,13 @@ class OneTimeTasks:
                                                        task_type="oneTimeTasks",
                                                        completed_task_type="completedOneTimeTasks")
 
-    def delete_active_tasks(self, id_to_delete: int) -> None:
+    def delete_active(self, id_to_delete: int) -> None:
 
         self.active_one_time_tasks = self.taskFunctions.delete_task(id_to_delete=id_to_delete,
                                                                     active_dictionary=self.active_one_time_tasks,
                                                                     task_type='oneTimeTasks')
 
-    def delete_completed_tasks(self, id_to_delete: int) -> None:
+    def delete_completed(self, id_to_delete: int) -> None:
         self.completed_one_time_tasks = self.taskFunctions.delete_task(id_to_delete=id_to_delete,
                                                                        active_dictionary=self.completed_one_time_tasks,
                                                                        task_type='oneTimeTasks')
@@ -109,8 +109,8 @@ class OneTimeTasks:
         # return sorted_by_priority
 
     # GET operations
-    def get_active_one_time_tasks(self) -> StringDict:
+    def get_active(self) -> StringDict:
         return self.active_one_time_tasks
 
-    def get_completed_one_time_tasks(self) -> StringDict:
+    def get_completed(self) -> StringDict:
         return self.completed_one_time_tasks

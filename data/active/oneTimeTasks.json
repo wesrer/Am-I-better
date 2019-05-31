@@ -1,1 +1,10 @@
-{}
+{
+    "0": {
+        "assignedOn": "Fri May 31 22:39:15 2019",
+        "completeBy": "Sat Jun  1 22:39:15 2019",
+        "priority": "0",
+        "scheduledStart": "Fri May 31 22:39:15 2019",
+        "taskString": "Have 100 commits on Github",
+        "weight": "3"
+    }
+}

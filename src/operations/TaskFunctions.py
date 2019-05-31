@@ -187,6 +187,18 @@ class TaskFunctions:
 
         return active_dictionary, completed_dictionary
 
+    def unmark_all_completed_habits(self,
+                                    active_dictionary: StringDict,
+                                    completed_dictionary: StringDict):
+
+        for key, value in completed_dictionary.items():
+            active_dictionary[key] = value
+            self.DataInputOperations.mark_id_as_unavailable(task_type='habits',
+                                                            id_to_mark_as_unavailable=key)
+            del completed_dictionary[key]
+
+        return active_dictionary, completed_dictionary
+
     # FIXME: Okay, this is not a primary concern, but it sucks that you have
     #        to send all of this excess data just because you are calling the
     #        markIDAsAvailable function

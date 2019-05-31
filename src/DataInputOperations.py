@@ -110,6 +110,29 @@ class DataInputOperations:
 
         parent_id["available"].sort()
 
+    def mark_id_as_unavailable(self,
+                               task_type: str,
+                               parent_id: int = -1,
+                               id_to_mark_as_unavailable: int = -1,
+                               list_of_ids_to_mark_as_unavailable: List[int] = [],
+                               has_children: bool = False, ) -> None:
+
+        # The dictionary has ID content at differing depths,
+        # based on whether the taskType can have Children or not
+
+        if has_children:
+            parent_id = self.uniqueIDs[task_type][parent_id]
+        else:
+            parent_id = self.uniqueIDs[task_type]
+
+        if len(list_of_ids_to_mark_as_unavailable) != 0:
+            for x in list_of_ids_to_mark_as_unavailable:
+                del parent_id["available"][x]
+        else:
+            del parent_id["available"][id_to_mark_as_unavailable]
+
+        parent_id["available"].sort()
+
     # FUNCTION PURPOSE:
     #   Sets up the data structure for tasks and sub-tasks that need their own
     #   independent ID scheme

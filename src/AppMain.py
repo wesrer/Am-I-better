@@ -33,6 +33,7 @@ class App:
         self.MainOneTimeTasks = self.initialize_main_one_time_tasks_object()
 
         self.Habits = Habits.Habits(data_input_operations_object=self.DataInputOperations,
+                                    data_output_operations_object=self.DataOutputOperations,
                                     task_functions_object=self.TaskFunctions)
 
     def on_start_operations(self):
@@ -56,6 +57,9 @@ class App:
         # TODO: have to do this for all the kinds of operations
         self.MainOneTimeTasks.save_active_one_time_tasks()
         self.MainOneTimeTasks.save_completed_one_time_tasks()
+
+        self.Habits.save_active_habits()
+        self.Habits.save_inactive_habits()
 
         self.DataInputOperations.write_unique_ids()
 

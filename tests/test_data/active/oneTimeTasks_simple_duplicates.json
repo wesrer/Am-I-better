@@ -1,6 +1,7 @@
 {
     "0": {
         "assignedOn": "Sat Feb 23 20:41:12 2019",
+        "scheduledStart": "Sat Feb 23 20:41:12 2019",
         "completeBy": "Sun Feb 24 20:41:12 2019",
         "priority": "8",
         "taskString": "Fix This Shit Bug",
@@ -8,6 +9,7 @@
     },
     "1": {
         "assignedOn": "Sat Feb 23 20:41:12 2019",
+        "scheduledStart": "Sat Feb 23 20:41:12 2019",
         "completeBy": "Sun Feb 24 20:41:12 2019",
         "priority": "8",
         "taskString": "Fix This Shit Bug",

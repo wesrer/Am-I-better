@@ -1,6 +1,7 @@
 {
     "0": {
         "assignedOn": "Sat Feb 23 20:41:12 2019",
+        "scheduledStart": "Sat Feb 23 20:41:12 2019",
         "completeBy": "Sun Feb 24 20:41:12 2019",
         "priority": "8",
         "taskString": "Fix This Shit Bug",
@@ -8,6 +9,7 @@
     },
     "2": {
         "assignedOn": "Sat Feb 23 20:41:12 2019",
+        "scheduledStart": "Sat Feb 23 20:41:12 2019",
         "completeBy": "Sun Feb 24 20:41:12 2019",
         "priority": "4",
         "taskString": "Study Japanese for 2 hours",
@@ -15,6 +17,7 @@
     },
     "3": {
         "assignedOn": "Sat Feb 23 20:41:12 2019",
+        "scheduledStart": "Sat Feb 23 20:41:12 2019",
         "completeBy": "Sun Feb 24 20:41:12 2019",
         "priority": "0",
         "taskString": "Drink some Honey Tea",
@@ -22,6 +25,7 @@
     },
     "4": {
         "assignedOn": "Sat Feb 23 20:41:12 2019",
+        "scheduledStart": "Sat Feb 23 20:41:12 2019",
         "completeBy": "Sun Feb 24 20:41:12 2019",
         "priority": "0",
         "taskString": "Drink some Hot Chocolate",

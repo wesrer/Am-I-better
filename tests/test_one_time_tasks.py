@@ -1,9 +1,6 @@
 from src import OneTimeTasks
 from src import DataInputOperations
-from src import DataOutputOperations
-from src import TaskFunctions
-from src import DictionaryOperations
-from src import ResolvePaths
+from src.operations import DictionaryOperations, ResolvePaths, TaskFunctions
 
 import os
 import json
@@ -48,11 +45,11 @@ class TestOneTimeTasks:
 
     @staticmethod
     def sample_tasks_1(one_time_tasks_object):
-        one_time_tasks_object.add_one_time_task("Fix This Shit Bug", priority=8, weight=3)
-        one_time_tasks_object.add_one_time_task("Code for 4 hours", priority=4, weight=3)
-        one_time_tasks_object.add_one_time_task("Study Japanese for 2 hours", priority=4, weight=3)
-        one_time_tasks_object.add_one_time_task("Drink some Honey Tea", priority=0, weight=3)
-        one_time_tasks_object.add_one_time_task("Drink some Hot Chocolate", priority=0, weight=3)
+        one_time_tasks_object.add("Fix This Shit Bug", priority=8, weight=3)
+        one_time_tasks_object.add("Code for 4 hours", priority=4, weight=3)
+        one_time_tasks_object.add("Study Japanese for 2 hours", priority=4, weight=3)
+        one_time_tasks_object.add("Drink some Honey Tea", priority=0, weight=3)
+        one_time_tasks_object.add("Drink some Hot Chocolate", priority=0, weight=3)
 
         return one_time_tasks_object
 
@@ -68,8 +65,8 @@ class TestOneTimeTasks:
     def test_adding_duplicate_one_time_tasks(self):
         initialized_one_time_tasks_object = self.initialize_one_time_task_object()[0]
 
-        initialized_one_time_tasks_object.add_one_time_task("Fix This Shit Bug", priority=8, weight=3)
-        initialized_one_time_tasks_object.add_one_time_task("Fix This Shit Bug", priority=8, weight=3)
+        initialized_one_time_tasks_object.add("Fix This Shit Bug", priority=8, weight=3)
+        initialized_one_time_tasks_object.add("Fix This Shit Bug", priority=8, weight=3)
 
         returned_output = initialized_one_time_tasks_object.get_active_one_time_tasks()
         expected_output = self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_duplicates.json')
@@ -81,10 +78,10 @@ class TestOneTimeTasks:
         sample_one_time_task_object = \
             self.sample_tasks_1(self.initialize_one_time_task_object()[0])
 
-        sample_one_time_task_object.mark_tasks_as_completed(1)
-        sample_one_time_task_object.add_one_time_task(task_string="Test All the existing code",
-                                                      priority=4,
-                                                      weight=3)
+        sample_one_time_task_object.mark_as_completed(1)
+        sample_one_time_task_object.add(task_string="Test All the existing code",
+                                        priority=4,
+                                        weight=3)
 
         returned_active_output = sample_one_time_task_object.get_active_one_time_tasks()
         returned_completed_output = sample_one_time_task_object.get_completed_one_time_tasks()
@@ -104,8 +101,8 @@ class TestOneTimeTasks:
     def test_id_dictionary_after_simple_addition(self):
         initialized_one_time_object, initialized_data_input_operations_object = self.initialize_one_time_task_object()
 
-        initialized_one_time_object.add_one_time_task(task_string="test1", priority=4, weight=3)
-        initialized_one_time_object.add_one_time_task(task_string="test2", priority=4, weight=3)
+        initialized_one_time_object.add(task_string="test1", priority=4, weight=3)
+        initialized_one_time_object.add(task_string="test2", priority=4, weight=3)
 
         assert 2 == initialized_data_input_operations_object.get_new_unique_id_for_task(task_type='oneTimeTasks')
 
@@ -114,19 +111,18 @@ class TestOneTimeTasks:
 
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_object)
 
-        sample_one_time_task_object.mark_tasks_as_completed(1)
+        sample_one_time_task_object.mark_as_completed(1)
 
         next_id = initialized_data_input_operations_object.get_new_unique_id_for_task(task_type='oneTimeTasks')
 
         assert next_id == 1
 
-    # TODO: implement this
-    def test_marking_multiple_tasks_as_complete(self):
+    def test_marking_multiple_tasks_as_completed(self):
         initialized_one_time_object, initialized_data_input_operations_object = self.initialize_one_time_task_object()
 
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_object)
 
-        sample_one_time_task_object.mark_tasks_as_completed(list_of_ids_to_mark_as_completed=[0, 1])
+        sample_one_time_task_object.mark_as_completed(list_of_ids_to_mark_as_completed=[0, 1])
 
         returned_active_output = sample_one_time_task_object.get_active_one_time_tasks()
         returned_completed_output = sample_one_time_task_object.get_completed_one_time_tasks()
@@ -170,8 +166,8 @@ class TestOneTimeTasks:
         initialized_one_time_tasks_object, initialized_data_input_operations = self.initialize_one_time_task_object()
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_tasks_object)
 
-        sample_one_time_task_object.mark_tasks_as_completed(1)
-        sample_one_time_task_object.unmark_completed_task(0)
+        sample_one_time_task_object.mark_as_completed(1)
+        sample_one_time_task_object.unmark_completed(0)
 
         returned_active_output = sample_one_time_task_object.get_active_one_time_tasks()
         returned_completed_output = sample_one_time_task_object.get_completed_one_time_tasks()
@@ -193,12 +189,12 @@ class TestOneTimeTasks:
         initialized_one_time_tasks_object, initialized_data_input_operations = self.initialize_one_time_task_object()
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_tasks_object)
 
-        sample_one_time_task_object.mark_tasks_as_completed(1)
-        sample_one_time_task_object.mark_tasks_as_completed(2)
+        sample_one_time_task_object.mark_as_completed(1)
+        sample_one_time_task_object.mark_as_completed(2)
 
         # unmarking tasks out of order, so that their position is reversed in the active tasks dictionary
-        sample_one_time_task_object.unmark_completed_task(1)
-        sample_one_time_task_object.unmark_completed_task(0)
+        sample_one_time_task_object.unmark_completed(1)
+        sample_one_time_task_object.unmark_completed(0)
 
         returned_active_output = sample_one_time_task_object.get_active_one_time_tasks()
         returned_completed_output = sample_one_time_task_object.get_completed_one_time_tasks()
@@ -217,13 +213,13 @@ class TestOneTimeTasks:
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
 
         with pytest.raises(KeyError):
-            initialized_one_time_task_object.mark_tasks_as_completed(0)
+            initialized_one_time_task_object.mark_as_completed(0)
 
     def test_raise_exception_when_invalid_key_is_unmarked(self):
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
 
         with pytest.raises(KeyError):
-            initialized_one_time_task_object.unmark_completed_task(0)
+            initialized_one_time_task_object.unmark_completed(0)
 
     def test_raise_exception_when_deleting_unavailable_task_key(self):
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
@@ -231,12 +227,11 @@ class TestOneTimeTasks:
         with pytest.raises(KeyError):
             initialized_one_time_task_object.delete_task(0)
 
-    # TODO: implement this
     def test_clearing_all_completed_tasks(self):
         initialized_one_time_object, initialized_data_input_operations_object = self.initialize_one_time_task_object()
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_object)
 
-        sample_one_time_task_object.mark_tasks_as_completed(list_of_ids_to_mark_as_completed=[0, 1])
+        sample_one_time_task_object.mark_as_completed(list_of_ids_to_mark_as_completed=[0, 1])
 
         sample_one_time_task_object.delete_all_completed_tasks()
 
@@ -244,5 +239,4 @@ class TestOneTimeTasks:
         assert len(sample_one_time_task_object.get_completed_one_time_tasks()) == 0
 
     # TODO: implement deleting completed tasks
-    # TODO: implement clearing all completed tasks
     # TODO: implement requesting more than one unqiue ids

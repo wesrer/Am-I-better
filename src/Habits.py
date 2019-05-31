@@ -22,10 +22,10 @@ class Habits:
                                                      task_type='habits')
 
     # FIXME: add the custom default values implementation
-    def add_habit(self,
-                  habit_string: str,
-                  priority: int = 0,
-                  refresh_rate: int = 1) -> None:
+    def add(self,
+            habit_string: str,
+            priority: int = 0,
+            refresh_rate: int = 1) -> None:
 
         unqiue_id = self.DataInputOperationsObject.get_new_unique_id_for_task(task_type='habits')
 
@@ -35,21 +35,26 @@ class Habits:
                                                priority=priority,
                                                refresh_rate=refresh_rate)
 
-    def delete_habit(self,
-                     id_to_delete: int) -> None:
+    def delete(self,
+               id_to_delete: int) -> None:
         self.activeHabits = \
             self.TaskFunctionsObject.delete_task(id_to_delete=id_to_delete,
                                                  active_dictionary=self.activeHabits,
                                                  task_type="habits")
 
-    def mark_habit_as_inactive(self,
-                               id_to_mark_as_inactive: int) -> None:
+    def mark_as_inactive(self,
+                         id_to_mark_as_inactive: int) -> None:
         self.activeHabits, self.inactiveHabits = \
             self.TaskFunctionsObject.mark_task_as_completed(id_to_mark_as_completed=id_to_mark_as_inactive,
                                                             active_dictionary=self.activeHabits,
                                                             completed_dictionary=self.inactiveHabits,
                                                             task_type="habits",
                                                             completed_task_type="inactiveHabits")
+
+    # TODO: implement this
+    def unmark_inactive(self,
+                        id_to_unmark: int):
+        pass
 
     def save_active_habits(self) -> None:
         self.DataInputOperationsObject.save_as_file(task_status='active',

@@ -1,5 +1,5 @@
 import datetime
-from . import DictionaryOperations
+from src.operations import DictionaryOperations
 
 from typing import List, Dict
 
@@ -14,6 +14,7 @@ class TaskFunctions:
     def __init__(self, data_input_operations_object):
         self.DataInputOperations = data_input_operations_object
         self.DictionaryOperations = DictionaryOperations.DictionaryOperations()
+        self.today = datetime.datetime.now()
 
     # FIXME: implement this
     def convert_time_string_to_dictionary(self,
@@ -32,29 +33,35 @@ class TaskFunctions:
 
     # TODO: add the custom default values implementation
     # TODO: figure out how the refresh rate works
-    @staticmethod
-    def add_tasks(task_string: str,
+
+    def add_tasks(self,
+                  task_string: str,
                   task_type: str,
                   priority: int = 0,
                   weight: int = 3,
+                  scheduled_start=False,  # TODO: add type casting
                   complete_by: str = "N/A",
                   refresh_rate: int = 1) -> StringDict:
 
-        # By default, all tasks need to be completed by 24 hours of initializing them
+        if not scheduled_start:
+            scheduled_start = self.today
+
+        # By default, all tasks need to be completed by 24 hours of their scheduled start
         if task_type == "oneTimeTasks":
-            complete_by = datetime.datetime.now() + datetime.timedelta(hours=24)
+            complete_by = scheduled_start + datetime.timedelta(hours=24)
 
             # formatting the string
             complete_by = complete_by.strftime("%c")
 
         elif task_type == "longTermProjects":
-            complete_by = datetime.datetime.now() + datetime.timedelta(years=1)
+            complete_by = scheduled_start + datetime.timedelta(years=1)
 
         # make a JSON object to append to the existing list
         data_dict = {
             "taskString": task_string,
             "weight": str(weight),
-            "assignedOn": (datetime.datetime.now()).strftime("%c"),
+            "assignedOn": self.today.strftime("%c"),
+            "scheduledStart": scheduled_start.strftime("%c"),
             "priority": str(priority),
         }
 

@@ -7,6 +7,7 @@ setup(
     py_modules=['yourscript'],
     install_requires=[
         'Click',
+        'python-dateutil'
     ],
     entry_points='''
         [console_scripts]

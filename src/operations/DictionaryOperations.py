@@ -77,11 +77,13 @@ class DictionaryOperations:
                                        dict2: Dict,
                                        skip_time_values: bool = True):
 
+        doesnt_affect_equality = ["assignedOn", "completeBy", "scheduledStart"]
+
         if not len(dict1) == len(dict2):
             return False
 
         for key, value in dict1.items():
-            if skip_time_values and (key == "assignedOn" or key == "completeBy"):
+            if skip_time_values and (key in doesnt_affect_equality):
                 continue
             elif dict2[key] != value:
                 return False

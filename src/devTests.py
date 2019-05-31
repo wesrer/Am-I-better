@@ -1,4 +1,4 @@
-import app_main
+
 
 
 def testOneTimeTasks():
@@ -8,16 +8,16 @@ def testOneTimeTasks():
 
     # operations
 
-    one_time_tasks_object.add_one_time_task("Fix This Shit Bug",
-                                            priority=8)
-    one_time_tasks_object.add_one_time_task("Code for 4 hours",
-                                            priority=4)
-    one_time_tasks_object.add_one_time_task("Study Japanese for 2 hours",
-                                            priority=4)
-    one_time_tasks_object.add_one_time_task("Drink some Honey Tea",
-                                            priority=0)
-    one_time_tasks_object.add_one_time_task("Drink some Hot Chocolate",
-                                            priority=0)
+    one_time_tasks_object.add("Fix This Shit Bug",
+                              priority=8)
+    one_time_tasks_object.add("Code for 4 hours",
+                              priority=4)
+    one_time_tasks_object.add("Study Japanese for 2 hours",
+                              priority=4)
+    one_time_tasks_object.add("Drink some Honey Tea",
+                              priority=0)
+    one_time_tasks_object.add("Drink some Hot Chocolate",
+                              priority=0)
 
     appObject.on_close_operations()
 

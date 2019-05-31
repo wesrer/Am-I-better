@@ -1,4 +1,4 @@
-from src import DictionaryOperations
+from src.operations import DictionaryOperations
 from copy import deepcopy
 
 dictionary_operations = DictionaryOperations.DictionaryOperations()

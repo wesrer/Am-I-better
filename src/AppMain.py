@@ -1,15 +1,13 @@
-from . import DictionaryOperations
+from src.operations import DictionaryOperations, ResolvePaths, TaskFunctions
 from . import DataInputOperations
 from . import DataOutputOperations
-from . import TaskFunctions
-from . import ResolvePaths
 from . import OneTimeTasks
 from . import Habits
 import os
 
 
 class App:
-    def __init__(self, execution_type):
+    def __init__(self, execution_type: str = "dev"):
 
         # self.dailyTasks = []
 
@@ -49,6 +47,7 @@ class App:
                                                                    task_type='oneTimeTasks')
 
         return OneTimeTasks.OneTimeTasks(data_input_operations_object=self.DataInputOperations,
+                                         data_output_operations_object=self.DataOutputOperations,
                                          task_functions_object=self.TaskFunctions,
                                          active_one_time_tasks=active_one_time_tasks,
                                          completed_one_time_tasks=completed_one_time_tasks)

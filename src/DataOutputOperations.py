@@ -52,9 +52,9 @@ class DataOutputOperations:
     def save_as_file(self,
                      task_status: str,
                      task_type: str,
-                     directory_address: Path,
                      dictionary_to_save: StringDict) -> None:
-        file_address = directory_address / task_status / (task_type + ".json")
+        data_path = self.resolvePathsObject.data_directory_path()
+        file_address = data_path / task_status / (task_type + ".json")
 
         with open(file_address, 'w') as writefile:
             json.dump(dictionary_to_save,

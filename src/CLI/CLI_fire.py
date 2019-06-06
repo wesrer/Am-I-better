@@ -16,8 +16,6 @@ def parse_cli(task_type,
 
     app.on_start_operations()
 
-    # TODO: why not perform actions directly instead of returning a function?
-    #       functional programming?
     perform_actions(task_type=task_type,
                     action_type=action_type,
                     args=args)
@@ -39,6 +37,7 @@ def print_header(header_string):
     print('-'*100)
 
 
+# FIXME: use this in actual code
 def parse_args(args):
     properties = dict()
     properties["task_string"] = [x for x in args.split(" ") if ":" not in x].join(" ")
@@ -46,6 +45,7 @@ def parse_args(args):
     for item in [x.split(':') for x in args.split(" ") if ":" in x]:
         properties[item[0]] = item[1]
 
+    return properties
 
 # FIXME: refactor this?
 def perform_actions(task_type,
@@ -69,6 +69,29 @@ def perform_actions(task_type,
     if action_type == "add":
         task_string = ' '.join(map(str, args))
         obj.add(task_string=task_string)
+
+    elif action_type in ['update', 'edit']:
+        # TODO: implement updating priorities / weight / dates
+        #       right now you can only update the string
+        try:
+            print(type(args[0]))
+            if type(args[0]) is int:
+                id_to_update = int(args[0])
+                task_string = " ".join(args[1:])
+
+                obj.update(id_to_update=id_to_update,
+                           option_to_update="task_string",
+                           updated_value=task_string)
+            elif "id" in args:
+                raise NotImplementedError
+            else:
+                print("inside this why?")
+                raise TypeError
+        except TypeError as err:
+            print(err)
+            sys.exit("update needs an id to update")
+        except NotImplementedError:
+            sys.exit("Using id: isn't implemented yet. Sorry!")
 
     elif action_type in ["active", "list", "view"]:
         pprint(obj.get_active())

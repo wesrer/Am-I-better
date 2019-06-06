@@ -223,9 +223,21 @@ class TaskFunctions:
 
         return active_dictionary
 
+    @staticmethod
+    def update_values(id_to_edit: int,
+                      active_dictionary: StringDict,
+                      updated_value: str,
+                      field_name: str,
+                      parent_id: int = -1,
+                      has_children: bool = False):
+
+        # TODO: figure out if we need parent_id and has_children
+        active_dictionary[str(id_to_edit)][field_name] = updated_value
+        return active_dictionary
+
     # TODO: implement this
-    def sort_by_priority(self,
-                         active_dictionary: StringDict) -> StringDict:
+    def sort_by_weight(self,
+                       active_dictionary: StringDict) -> StringDict:
         self.DictionaryOperations.dict_of_dicts_to_list_of_dicts()
         self.DictionaryOperations.sort_list_of_dictionaries_by_key()
 

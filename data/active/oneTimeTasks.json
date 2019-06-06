@@ -1,10 +1,98 @@
 {
     "0": {
-        "assignedOn": "Fri May 31 22:39:15 2019",
-        "completeBy": "Sat Jun  1 22:39:15 2019",
+        "assignedOn": "Tue Jun  4 20:58:38 2019",
+        "completeBy": "Wed Jun  5 20:58:38 2019",
         "priority": "0",
-        "scheduledStart": "Fri May 31 22:39:15 2019",
-        "taskString": "Have 100 commits on Github",
+        "scheduledStart": "Tue Jun  4 20:58:38 2019",
+        "taskString": "finish adding multiple links in jquery-submenu",
+        "weight": "3"
+    },
+    "1": {
+        "assignedOn": "Wed Jun  5 16:27:50 2019",
+        "completeBy": "Thu Jun  6 16:27:50 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 16:27:50 2019",
+        "taskString": "send all the exacat report to Amri",
+        "weight": "3"
+    },
+    "10": {
+        "assignedOn": "Thu Jun  6 17:17:30 2019",
+        "completeBy": "Fri Jun  7 17:17:30 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun  6 17:17:30 2019",
+        "taskString": "add refreshing mechanism to habits",
+        "weight": "3"
+    },
+    "11": {
+        "assignedOn": "Thu Jun  6 17:20:30 2019",
+        "completeBy": "Fri Jun  7 17:20:30 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun  6 17:20:30 2019",
+        "taskString": "add more tests to test the newly added functions",
+        "weight": "3"
+    },
+    "2": {
+        "assignedOn": "Wed Jun  5 16:28:08 2019",
+        "completeBy": "Thu Jun  6 16:28:08 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 16:28:08 2019",
+        "taskString": "compile a list of all the undead code",
+        "weight": "3"
+    },
+    "3": {
+        "assignedOn": "Wed Jun  5 16:29:27 2019",
+        "completeBy": "Thu Jun  6 16:29:27 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 16:29:27 2019",
+        "taskString": "ask a prompt if a task with the String already exists in the list of tasks",
+        "weight": "3"
+    },
+    "4": {
+        "assignedOn": "Wed Jun  5 16:52:05 2019",
+        "completeBy": "Thu Jun  6 16:52:05 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 16:52:05 2019",
+        "taskString": "migrate to intermediate Trilium version and then the tabs version",
+        "weight": "3"
+    },
+    "5": {
+        "assignedOn": "Wed Jun  5 16:55:12 2019",
+        "completeBy": "Thu Jun  6 16:55:12 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 16:55:12 2019",
+        "taskString": "check if the new Hard Disk already has bad sectors",
+        "weight": "3"
+    },
+    "6": {
+        "assignedOn": "Wed Jun  5 17:24:26 2019",
+        "completeBy": "Thu Jun  6 17:24:26 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 17:24:26 2019",
+        "taskString": "work for 10 pomos",
+        "weight": "3"
+    },
+    "7": {
+        "assignedOn": "Wed Jun  5 17:24:37 2019",
+        "completeBy": "Thu Jun  6 17:24:37 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 17:24:37 2019",
+        "taskString": "finsih reading the rust book",
+        "weight": "3"
+    },
+    "8": {
+        "assignedOn": "Wed Jun  5 18:46:03 2019",
+        "completeBy": "Thu Jun  6 18:46:03 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 18:46:03 2019",
+        "taskString": "send your CV to LINE",
+        "weight": "3"
+    },
+    "9": {
+        "assignedOn": "Thu Jun  6 16:52:29 2019",
+        "completeBy": "Fri Jun  7 16:52:29 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun  6 16:52:29 2019",
+        "taskString": "Add EDIT option to habit and task",
         "weight": "3"
     }
 }

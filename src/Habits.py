@@ -1,4 +1,5 @@
 from typing import List, Dict
+import sys
 
 # Custom Type Hints for Type Checking
 StringList = List[str]
@@ -36,6 +37,36 @@ class Habits:
                                                task_type="habits",
                                                priority=priority,
                                                refresh_rate=refresh_rate)
+
+    def update(self,
+               id_to_update: int,
+               option_to_update: str,
+               updated_value: str):
+        option_to_update = option_to_update.lower()
+
+        try:
+            # the conditions are being checked against lists because in the future,
+            # we might need to include synonyms for the same actions
+            if option_to_update in ["task_string", "task string", "taskstring", "habitstring", "habit_string", "habit"]:
+                field_type = "taskString"
+            elif option_to_update in ["weight"]:
+                field_type = "weight"
+            elif option_to_update in ["priority"]:
+                field_type = "priority"
+            elif option_to_update in ["scheduled_for", "scheduled", "due", "complete_by", "completeby", "by"]:
+                # FIXME: implement this after implementing a general string to time conversion
+                #        function in the time functions module
+                raise NotImplementedError
+            elif option_to_update in ["refresh_rate", "refreshrate"]:
+                # FIXME: refresh rates hasn't been implemented yet properly
+                raise NotImplementedError
+
+            self.activeHabits = self.taskFunctions.update_values(id_to_edit=id_to_update,
+                                                                 field_name=field_type,
+                                                                 active_dictionary=self.active_one_time_tasks,
+                                                                 updated_value=updated_value)
+        except NotImplementedError as e:
+            sys.exit("this feature hasn't been implemented yet")
 
     def delete_active(self,
                       id_to_delete: int) -> None:

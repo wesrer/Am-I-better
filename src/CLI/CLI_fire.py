@@ -89,7 +89,7 @@ def perform_actions(task_type,
         task_id = args[0]
 
         if not (task_id == "completed" or task_id == "inactive"):
-            id_in_string = UserInputParser.generate_task_string(args).split(' ')
+            id_in_string = UserInputParser.generate_list_of_ids(args)
             ids_to_mark = [x for x in id_in_string]
             obj.delete_active(list_of_ids_to_delete=ids_to_mark)
         else:
@@ -105,8 +105,8 @@ def perform_actions(task_type,
                     [obj.delete_inactive(id_to_delete=x) for x in args[1:]]
 
     elif action_type == "mark":
-        id_in_string = UserInputParser.generate_task_string(args).split(' ')
-        ids_to_mark = [x for x in id_in_string]
+        ids_to_mark = UserInputParser.generate_list_of_ids(args)
+        print("got back this", ids_to_mark)
         
         if task_type == "task":
             obj.mark_as_completed(list_of_ids_to_mark_as_completed=ids_to_mark)

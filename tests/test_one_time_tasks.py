@@ -153,7 +153,7 @@ class TestOneTimeTasks:
 
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_object)
 
-        sample_one_time_task_object.delete_active(id_to_delete='1')
+        sample_one_time_task_object.delete_active(list_of_ids_to_delete='1')
         returned_active_output = sample_one_time_task_object.get_active()
 
         expected_active_output = self.read_test_data(

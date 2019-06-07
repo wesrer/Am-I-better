@@ -31,12 +31,28 @@
         "taskString": "add more tests to test the newly added functions",
         "weight": "3"
     },
+    "12": {
+        "assignedOn": "Fri Jun  7 19:55:50 2019",
+        "completeBy": "Sat Jun  8 19:55:50 2019",
+        "priority": "0",
+        "scheduledStart": "Fri Jun  7 19:55:50 2019",
+        "taskString": "send contracts to Salman",
+        "weight": "3"
+    },
+    "13": {
+        "assignedOn": "Thu Jun  6 18:17:49 2019",
+        "completeBy": "Fri Jun  7 18:17:49 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun  6 18:17:49 2019",
+        "taskString": "start working on the Intelligent Name Checker",
+        "weight": "3"
+    },
     "2": {
         "assignedOn": "Wed Jun  5 16:28:08 2019",
         "completeBy": "Thu Jun  6 16:28:08 2019",
         "priority": "0",
         "scheduledStart": "Wed Jun  5 16:28:08 2019",
-        "taskString": "compile a list of all the undead code",
+        "taskString": "compile a list of all the dead code",
         "weight": "3"
     },
     "3": {
@@ -88,11 +104,11 @@
         "weight": "3"
     },
     "9": {
-        "assignedOn": "Thu Jun  6 16:52:29 2019",
-        "completeBy": "Fri Jun  7 16:52:29 2019",
+        "assignedOn": "Fri Jun  7 17:19:17 2019",
+        "completeBy": "Sat Jun  8 17:19:17 2019",
         "priority": "0",
-        "scheduledStart": "Thu Jun  6 16:52:29 2019",
-        "taskString": "Test UPDATE option",
+        "scheduledStart": "Fri Jun  7 17:19:17 2019",
+        "taskString": "clean up debugging prints",
         "weight": "3"
     }
 }

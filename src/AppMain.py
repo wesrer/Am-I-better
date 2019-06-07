@@ -60,6 +60,7 @@ class App:
 
         self.Habits.save_active_habits()
         self.Habits.save_inactive_habits()
+        self.Habits.save_completed_habits()
 
         self.DataInputOperations.write_unique_ids()
 

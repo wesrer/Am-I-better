@@ -81,18 +81,18 @@ class Habits:
                                                                  task_type="habits")
 
     def mark_as_completed(self,
-                          id_to_mark_as_completed: int) -> None:
+                          list_of_ids_to_mark_as_completed: List[int]) -> None:
         self.activeHabits, self.completedHabits = \
-            self.TaskFunctionsObject.mark_tasks_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
+            self.TaskFunctionsObject.mark_tasks_as_completed(list_of_ids_to_mark_as_completed=list_of_ids_to_mark_as_completed,
                                                              active_dictionary=self.activeHabits,
                                                              completed_dictionary=self.completedHabits,
                                                              task_type="habits",
-                                                             completed_task_type="")
+                                                             completed_task_type="completedHabits")
 
     def mark_as_inactive(self,
-                         id_to_mark_as_inactive: int) -> None:
+                         list_of_ids_to_mark_as_inactive: List[int]) -> None:
         self.activeHabits, self.inactiveHabits = \
-            self.TaskFunctionsObject.mark_tasks_as_completed(id_to_mark_as_completed=id_to_mark_as_inactive,
+            self.TaskFunctionsObject.mark_tasks_as_completed(list_of_ids_to_mark_as_completed=list_of_ids_to_mark_as_inactive,
                                                              active_dictionary=self.activeHabits,
                                                              completed_dictionary=self.inactiveHabits,
                                                              task_type="habits",
@@ -112,6 +112,11 @@ class Habits:
         self.DataOutputOperations.save_as_file(task_status='inactive',
                                                task_type='habits',
                                                dictionary_to_save=self.inactiveHabits)
+
+    def save_completed_habits(self) -> None:
+        self.DataOutputOperations.save_as_file(task_status='completed',
+                                               task_type='habits',
+                                               dictionary_to_save=self.completedHabits)
 
     # GET operations
 

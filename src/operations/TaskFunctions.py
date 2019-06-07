@@ -202,24 +202,25 @@ class TaskFunctions:
     # FIXME: Okay, this is not a primary concern, but it sucks that you have
     #        to send all of this excess data just because you are calling the
     #        markIDAsAvailable function
-    def delete_task(self,
-                    id_to_delete: int,
-                    active_dictionary: StringDict,
-                    task_type: str,
-                    parent_id: int = -1,
-                    has_children: bool = False) -> StringDict:
+    def delete_tasks(self,
+                     list_of_ids_to_delete: List[int],
+                     active_dictionary: StringDict,
+                     task_type: str,
+                     parent_id: int = -1,
+                     has_children: bool = False) -> StringDict:
 
-        id_to_delete = str(id_to_delete)
+        for id_to_delete in list_of_ids_to_delete:
+            id_to_delete = str(id_to_delete)
 
-        if id_to_delete not in active_dictionary:
-            raise KeyError(f"{id_to_delete} not found")
+            if id_to_delete not in active_dictionary:
+                raise KeyError(f"{id_to_delete} not found")
 
-        del active_dictionary[id_to_delete]
+            del active_dictionary[id_to_delete]
 
-        self.DataInputOperations.mark_id_as_available(task_type=task_type,
-                                                      id_to_mark_as_available=id_to_delete,
-                                                      has_children=has_children,
-                                                      parent_id=parent_id)
+            self.DataInputOperations.mark_id_as_available(task_type=task_type,
+                                                          id_to_mark_as_available=id_to_delete,
+                                                          has_children=has_children,
+                                                          parent_id=parent_id)
 
         return active_dictionary
 

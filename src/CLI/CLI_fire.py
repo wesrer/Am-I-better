@@ -39,8 +39,12 @@ def perform_actions(task_type,
                     args,
                     weight=3):
 
-    if task_type not in ["all", "test"]:
+    if task_type not in ["all", "test", "pandas"]:
         obj = parse_task(task_type=task_type)
+
+    elif task_type == "pandas":
+        app.get_pandas().print_active()
+        return
 
     elif action_type in ["list", "view", "active"]:
         PrettyPrinter.print_header("habits")
@@ -50,7 +54,7 @@ def perform_actions(task_type,
         perform_actions(task_type="task", action_type="list", args=[])
         return
 
-    elif action_type == "test":
+    elif task_type == "test":
         print(UserInputParser.generate_task_string(args=args))
         return
 

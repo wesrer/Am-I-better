@@ -1,6 +1,7 @@
 from src import OneTimeTasks
 from src import DataInputOperations, DataOutputOperations
 from src.operations import DictionaryOperations, ResolvePaths, TaskFunctions
+from src.operations.UserInputParser import UserInputParser
 
 import os
 import json
@@ -10,6 +11,7 @@ from pathlib import Path
 import pytest
 
 dictionary_operations = DictionaryOperations.DictionaryOperations()
+user_input_parser = UserInputParser()
 
 test_data_path = Path(os.path.dirname(os.path.abspath(src.__file__))) / '..' / 'tests' / 'test_data'
 
@@ -216,7 +218,7 @@ class TestOneTimeTasks:
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
 
         with pytest.raises(KeyError):
-            initialized_one_time_task_object.mark_as_completed(0)
+            initialized_one_time_task_object.mark_as_completed([0])
 
     def test_raise_exception_when_invalid_key_is_unmarked(self):
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
@@ -228,7 +230,7 @@ class TestOneTimeTasks:
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
 
         with pytest.raises(KeyError):
-            initialized_one_time_task_object.delete_active(0)
+            initialized_one_time_task_object.delete_active([0])
 
     def test_clearing_all_completed_tasks(self):
         initialized_one_time_object, initialized_data_input_operations_object = self.initialize_one_time_task_object()

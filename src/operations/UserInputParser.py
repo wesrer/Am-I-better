@@ -26,8 +26,11 @@ class UserInputParser:
     def generate_list_of_ids(self, args):
         if len(args) == 1:
             for item in args:
+                # case 1: when only one is given
                 if type(item) is int:
                     return [item]
+
+                # case 2: when a list of ids are given
                 elif type(item) is tuple:
                     return [element for element in item]
         else:

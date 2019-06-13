@@ -1,9 +1,15 @@
-from src.operations import DictionaryOperations, ResolvePaths, TaskFunctions
-from . import DataInputOperations
-from . import DataOutputOperations
-from . import OneTimeTasks
-from . import Habits
 import os
+
+from src.operations.DictionaryOperations import DictionaryOperations
+from src.operations.ResolvePaths import ResolvePaths
+from src.operations.TaskFunctions import TaskFunctions
+
+from src.DataOutputOperations import DataOutputOperations
+from src.DataInputOperations import DataInputOperations
+from src.OneTimeTasks import OneTimeTasks
+from src.Habits import Habits
+
+from src.Experimental.PandasTest import PandasTest
 
 
 class App:
@@ -15,26 +21,27 @@ class App:
 
         # UTILITY MODULES
 
-        self.DictionaryOperations = DictionaryOperations.DictionaryOperations()
-        self.ResolvePaths = ResolvePaths.ResolvePaths(source_path, execution_type=execution_type)
+        self.DictionaryOperations = DictionaryOperations()
+        self.ResolvePaths = ResolvePaths(source_path, execution_type=execution_type)
 
         # I/O MODULES
 
-        self.DataInputOperations = DataInputOperations.DataInputOperations(resolve_path_object=self.ResolvePaths)
-        self.DataOutputOperations = \
-            DataOutputOperations.DataOutputOperations(resolve_paths=self.ResolvePaths,
-                                                      dictionary_operations=self.DictionaryOperations)
+        self.DataInputOperations = DataInputOperations(resolve_path_object=self.ResolvePaths)
+        self.DataOutputOperations = DataOutputOperations(resolve_paths=self.ResolvePaths,
+                                                         dictionary_operations=self.DictionaryOperations)
 
         # COMMON METHODS MODULE
-        self.TaskFunctions = TaskFunctions.TaskFunctions(data_input_operations_object=self.DataInputOperations)
+        self.TaskFunctions = TaskFunctions(data_input_operations_object=self.DataInputOperations)
 
         # TASK MODULES
 
         self.MainOneTimeTasks = self.initialize_main_one_time_tasks_object()
 
-        self.Habits = Habits.Habits(data_input_operations_object=self.DataInputOperations,
-                                    data_output_operations_object=self.DataOutputOperations,
-                                    task_functions_object=self.TaskFunctions)
+        self.Habits = Habits(data_input_operations_object=self.DataInputOperations,
+                             data_output_operations_object=self.DataOutputOperations,
+                             task_functions_object=self.TaskFunctions)
+
+        self.PandasTest = PandasTest(one_time_tasks_object=self.MainOneTimeTasks)
 
     def on_start_operations(self):
         pass
@@ -47,11 +54,11 @@ class App:
         active_one_time_tasks = self.DataInputOperations.get_tasks(task_status='active',
                                                                    task_type='oneTimeTasks')
 
-        return OneTimeTasks.OneTimeTasks(data_input_operations_object=self.DataInputOperations,
-                                         data_output_operations_object=self.DataOutputOperations,
-                                         task_functions_object=self.TaskFunctions,
-                                         active_one_time_tasks=active_one_time_tasks,
-                                         completed_one_time_tasks=completed_one_time_tasks)
+        return OneTimeTasks(data_input_operations_object=self.DataInputOperations,
+                            data_output_operations_object=self.DataOutputOperations,
+                            task_functions_object=self.TaskFunctions,
+                            active_one_time_tasks=active_one_time_tasks,
+                            completed_one_time_tasks=completed_one_time_tasks)
 
     def on_close_operations(self):
         # TODO: have to do this for all the kinds of operations
@@ -70,6 +77,10 @@ class App:
 
     def get_habit_object(self):
         return self.Habits
+
+    # FIXME: delete later
+    def get_pandas(self):
+        return self.PandasTest
 
     # FIXME: no initialized object lol
     def get_long_term_objects(self):

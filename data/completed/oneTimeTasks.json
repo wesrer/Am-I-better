@@ -38,5 +38,21 @@
         "scheduledStart": "Fri Jun  7 19:56:33 2019",
         "taskString": "test2",
         "weight": "3"
+    },
+    "5": {
+        "assignedOn": "Wed Jun 12 17:45:02 2019",
+        "completeBy": "Thu Jun 13 17:45:02 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 12 17:45:02 2019",
+        "taskString": "Install pandas",
+        "weight": "3"
+    },
+    "6": {
+        "assignedOn": "Wed Jun 12 17:45:06 2019",
+        "completeBy": "Thu Jun 13 17:45:06 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 12 17:45:06 2019",
+        "taskString": "Install numpy",
+        "weight": "3"
     }
 }

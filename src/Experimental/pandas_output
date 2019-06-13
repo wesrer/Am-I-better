@@ -1,0 +1,21 @@
+                  assignedOn                completeBy priority            scheduledStart                                         taskString weight
+0   Tue Jun  4 20:58:38 2019  Wed Jun  5 20:58:38 2019        0  Tue Jun  4 20:58:38 2019     finish adding multiple links in jquery-submenu      3
+1   Wed Jun  5 16:27:50 2019  Thu Jun  6 16:27:50 2019        0  Wed Jun  5 16:27:50 2019                 send all the exacat report to Amri      3
+10  Thu Jun  6 17:17:30 2019  Fri Jun  7 17:17:30 2019        0  Thu Jun  6 17:17:30 2019                 add refreshing mechanism to habits      3
+11  Thu Jun  6 17:20:30 2019  Fri Jun  7 17:20:30 2019        0  Thu Jun  6 17:20:30 2019  add more tests to test newly added Am-I-Better...      3
+12  Thu Jun 13 17:41:43 2019  Fri Jun 14 17:41:43 2019        0  Thu Jun 13 17:41:43 2019  get SQL-workbench fixed so that it properly ex...      3
+13  Thu Jun 13 17:44:20 2019  Fri Jun 14 17:44:20 2019        0  Thu Jun 13 17:44:20 2019                     Finish operations PR for Elyah      3
+14  Fri Jun  7 20:46:20 2019  Sat Jun  8 20:46:20 2019        0  Fri Jun  7 20:46:20 2019  install RubyMine Pycharm IntetelliJ Rust Ruby ...      3
+15  Wed Jun 12 17:44:42 2019  Thu Jun 13 17:44:42 2019        0  Wed Jun 12 17:44:42 2019                      Finish Google ML crash course      3
+16  Wed Jun 12 17:44:52 2019  Thu Jun 13 17:44:52 2019        0  Wed Jun 12 17:44:52 2019                                 Model Data from DB      3
+17  Wed Jun 12 17:45:02 2019  Thu Jun 13 17:45:02 2019        0  Wed Jun 12 17:45:02 2019                                     Install pandas      3
+18  Wed Jun 12 17:45:06 2019  Thu Jun 13 17:45:06 2019        0  Wed Jun 12 17:45:06 2019                                      Install numpy      3
+19  Thu Jun 13 17:44:58 2019  Fri Jun 14 17:44:58 2019        0  Thu Jun 13 17:44:58 2019            Read Two more chapters of the Rust book      3
+2   Wed Jun  5 16:28:08 2019  Thu Jun  6 16:28:08 2019        0  Wed Jun  5 16:28:08 2019                compile a list of all the dead code      3
+3   Wed Jun  5 16:29:27 2019  Thu Jun  6 16:29:27 2019        0  Wed Jun  5 16:29:27 2019  ask a prompt if a task with the String already...      3
+4   Wed Jun  5 16:52:05 2019  Thu Jun  6 16:52:05 2019        0  Wed Jun  5 16:52:05 2019  migrate to intermediate Trilium version and th...      3
+5   Wed Jun  5 16:55:12 2019  Thu Jun  6 16:55:12 2019        0  Wed Jun  5 16:55:12 2019  check if the new Hard Disk already has bad sec...      3
+6   Wed Jun  5 17:24:26 2019  Thu Jun  6 17:24:26 2019        0  Wed Jun  5 17:24:26 2019                                  work for 10 pomos      3
+7   Wed Jun  5 17:24:37 2019  Thu Jun  6 17:24:37 2019        0  Wed Jun  5 17:24:37 2019                       finsih reading the rust book      3
+8   Wed Jun  5 18:46:03 2019  Thu Jun  6 18:46:03 2019        0  Wed Jun  5 18:46:03 2019                               send your CV to LINE      3
+9   Fri Jun  7 17:19:17 2019  Sat Jun  8 17:19:17 2019        0  Fri Jun  7 17:19:17 2019                          clean up debugging prints      3

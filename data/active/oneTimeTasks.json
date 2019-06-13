@@ -28,15 +28,7 @@
         "completeBy": "Fri Jun  7 17:20:30 2019",
         "priority": "0",
         "scheduledStart": "Thu Jun  6 17:20:30 2019",
-        "taskString": "add more tests to test the newly added functions",
-        "weight": "3"
-    },
-    "12": {
-        "assignedOn": "Fri Jun  7 19:55:50 2019",
-        "completeBy": "Sat Jun  8 19:55:50 2019",
-        "priority": "0",
-        "scheduledStart": "Fri Jun  7 19:55:50 2019",
-        "taskString": "send contracts to Salman",
+        "taskString": "add more tests to test newly added Am-I-Better functions",
         "weight": "3"
     },
     "13": {
@@ -45,6 +37,46 @@
         "priority": "0",
         "scheduledStart": "Thu Jun  6 18:17:49 2019",
         "taskString": "start working on the Intelligent Name Checker",
+        "weight": "3"
+    },
+    "14": {
+        "assignedOn": "Fri Jun  7 20:46:20 2019",
+        "completeBy": "Sat Jun  8 20:46:20 2019",
+        "priority": "0",
+        "scheduledStart": "Fri Jun  7 20:46:20 2019",
+        "taskString": "install RubyMine Pycharm IntetelliJ Rust Ruby Crystal JDK on new computer",
+        "weight": "3"
+    },
+    "15": {
+        "assignedOn": "Wed Jun 12 17:44:42 2019",
+        "completeBy": "Thu Jun 13 17:44:42 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 12 17:44:42 2019",
+        "taskString": "Finish Google ML crash course",
+        "weight": "3"
+    },
+    "16": {
+        "assignedOn": "Wed Jun 12 17:44:52 2019",
+        "completeBy": "Thu Jun 13 17:44:52 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 12 17:44:52 2019",
+        "taskString": "Model Data from DB",
+        "weight": "3"
+    },
+    "17": {
+        "assignedOn": "Wed Jun 12 17:45:02 2019",
+        "completeBy": "Thu Jun 13 17:45:02 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 12 17:45:02 2019",
+        "taskString": "Install pandas",
+        "weight": "3"
+    },
+    "18": {
+        "assignedOn": "Wed Jun 12 17:45:06 2019",
+        "completeBy": "Thu Jun 13 17:45:06 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 12 17:45:06 2019",
+        "taskString": "Install numpy",
         "weight": "3"
     },
     "2": {

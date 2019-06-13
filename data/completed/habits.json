@@ -67,5 +67,21 @@
         "scheduledStart": "Fri Jun  7 20:38:42 2019",
         "taskString": "test_another",
         "weight": "3"
+    },
+    "8": {
+        "assignedOn": "Fri May 31 22:57:02 2019",
+        "priority": "0",
+        "refreshRate": "1",
+        "scheduledStart": "Fri May 31 22:57:02 2019",
+        "taskString": "Brush your teeth twice every day",
+        "weight": "3"
+    },
+    "9": {
+        "assignedOn": "Thu Jun 13 16:26:38 2019",
+        "priority": "0",
+        "refreshRate": "1",
+        "scheduledStart": "Thu Jun 13 16:26:38 2019",
+        "taskString": "Take a shower",
+        "weight": "3"
     }
 }

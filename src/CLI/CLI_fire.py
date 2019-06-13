@@ -91,6 +91,7 @@ def perform_actions(task_type,
         if not (task_id == "completed" or task_id == "inactive"):
             id_in_string = UserInputParser.generate_list_of_ids(args)
             ids_to_mark = [x for x in id_in_string]
+            print("ids to mark", ids_to_mark)
             obj.delete_active(list_of_ids_to_delete=ids_to_mark)
         else:
             if args[1] == "all":

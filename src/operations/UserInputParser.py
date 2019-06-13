@@ -25,7 +25,11 @@ class UserInputParser:
 
     def generate_list_of_ids(self, args):
         if len(args) == 1:
-            return [element for one_tuple in args for element in one_tuple]
+            for item in args:
+                if type(item) is int:
+                    return [item]
+                elif type(item) is tuple:
+                    return [element for element in item]
         else:
             # FIXME: hacky approach. might fix later
             return self.generate_task_string(args).split(' ')

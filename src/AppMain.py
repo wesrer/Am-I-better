@@ -41,6 +41,7 @@ class App:
                              data_output_operations_object=self.DataOutputOperations,
                              task_functions_object=self.TaskFunctions)
 
+        # FIXME: testing module - delete later
         self.PandasTest = PandasTest(one_time_tasks_object=self.MainOneTimeTasks)
 
     def on_start_operations(self):

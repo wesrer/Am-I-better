@@ -84,10 +84,12 @@ def perform_actions(task_type,
             sys.exit("Using id: isn't implemented yet. Sorry!")
 
     elif action_type in ["active", "list", "view"]:
-        PrettyPrinter.pprint(obj.get_active())
+        PrettyPrinter.pprint(task_dict=obj.get_active(),
+                             task_type=task_type)
 
     elif action_type == "completed":
-        PrettyPrinter.pprint(obj.get_completed())
+        PrettyPrinter.pprint(task_dict=obj.get_completed(),
+                             task_type=task_type)
 
     elif action_type == "delete" or action_type == "del":
         task_id = args[0]

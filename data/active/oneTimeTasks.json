@@ -71,6 +71,22 @@
         "taskString": "Model Data from DB",
         "weight": "3"
     },
+    "17": {
+        "assignedOn": "Thu Jun 13 19:34:31 2019",
+        "completeBy": "Fri Jun 14 19:34:31 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun 13 19:34:31 2019",
+        "taskString": "complete the Intro to Tensorflow page",
+        "weight": "3"
+    },
+    "18": {
+        "assignedOn": "Fri Jun 14 16:05:49 2019",
+        "completeBy": "Sat Jun 15 16:05:49 2019",
+        "priority": "0",
+        "scheduledStart": "Fri Jun 14 16:05:49 2019",
+        "taskString": "Finish Reading the LifeLabs Whitepaper",
+        "weight": "3"
+    },
     "19": {
         "assignedOn": "Thu Jun 13 17:44:58 2019",
         "completeBy": "Fri Jun 14 17:44:58 2019",
@@ -103,28 +119,12 @@
         "taskString": "migrate to intermediate Trilium version and then the tabs version",
         "weight": "3"
     },
-    "5": {
-        "assignedOn": "Wed Jun  5 16:55:12 2019",
-        "completeBy": "Thu Jun  6 16:55:12 2019",
-        "priority": "0",
-        "scheduledStart": "Wed Jun  5 16:55:12 2019",
-        "taskString": "check if the new Hard Disk already has bad sectors",
-        "weight": "3"
-    },
-    "6": {
-        "assignedOn": "Wed Jun  5 17:24:26 2019",
-        "completeBy": "Thu Jun  6 17:24:26 2019",
-        "priority": "0",
-        "scheduledStart": "Wed Jun  5 17:24:26 2019",
-        "taskString": "work for 10 pomos",
-        "weight": "3"
-    },
     "7": {
         "assignedOn": "Wed Jun  5 17:24:37 2019",
         "completeBy": "Thu Jun  6 17:24:37 2019",
         "priority": "0",
         "scheduledStart": "Wed Jun  5 17:24:37 2019",
-        "taskString": "finsih reading the rust book",
+        "taskString": "finish reading the rust book",
         "weight": "3"
     },
     "8": {

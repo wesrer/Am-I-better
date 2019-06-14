@@ -46,6 +46,8 @@ class OneTimeTasks:
                                                                              weight=weight,
                                                                              complete_by=complete_by)
 
+        print(f"Successfully added task {unique_id}")
+
     def update(self,
                id_to_update: int,
                option_to_update: str,
@@ -70,8 +72,11 @@ class OneTimeTasks:
                                                                       active_dictionary=self.active_one_time_tasks,
                                                                       updated_value=updated_value)
 
+        print(f"Successfully updated task {id_to_update}")
+
+    # TODO: refactor this to only deal with lists, because handling two cases doesn't make sense
     def mark_as_completed(self,
-                          id_to_mark_as_completed: int = -1,
+                          id_to_mark_as_completed: int = -1,  # for legacy support; depcrecate this
                           list_of_ids_to_mark_as_completed: List[int] = []) -> None:
 
         if len(list_of_ids_to_mark_as_completed) != 0:
@@ -81,6 +86,8 @@ class OneTimeTasks:
                 completed_dictionary=self.completed_one_time_tasks,
                 task_type="oneTimeTasks",
                 completed_task_type="completedOneTimeTasks")
+
+            print(f"Successfully marked task {id_to_mark_as_completed} as completed")
         else:
             self.active_one_time_tasks, self.completed_one_time_tasks = \
                 self.taskFunctions.mark_tasks_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
@@ -88,6 +95,8 @@ class OneTimeTasks:
                                                            completed_dictionary=self.completed_one_time_tasks,
                                                            task_type="oneTimeTasks",
                                                            completed_task_type="completedOneTimeTasks")
+
+            print(f"Successfully marked tasks {list_of_ids_to_mark_as_completed} as completed")
 
     def unmark_completed(self, id_to_unmark: int) -> None:
 
@@ -104,13 +113,17 @@ class OneTimeTasks:
                                                                      active_dictionary=self.active_one_time_tasks,
                                                                      task_type='oneTimeTasks')
 
+        print(f"Successfully deleted active tasks - {list_of_ids_to_delete}")
+
     def delete_completed(self, list_of_ids_to_delete: List[int]) -> None:
         self.completed_one_time_tasks = self.taskFunctions.delete_tasks(ist_of_ids_to_delete=list_of_ids_to_delete,
                                                                         active_dictionary=self.completed_one_time_tasks,
                                                                         task_type='oneTimeTasks')
+        print(f"Successfully deleted completed tasks - {list_of_ids_to_delete}")
 
     def clear_all_completed_tasks(self) -> None:
         self.completed_one_time_tasks = self.taskFunctions.clearing_all_tasks(task_type="completedOneTimeTasks")
+        print(f"Successfully deleted all completed tasks")
 
     def delete_all_completed_tasks(self) -> None:
         self.clear_all_completed_tasks()

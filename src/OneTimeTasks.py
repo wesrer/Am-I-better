@@ -96,7 +96,8 @@ class OneTimeTasks:
                                                            task_type="oneTimeTasks",
                                                            completed_task_type="completedOneTimeTasks")
 
-            print(f"Successfully marked tasks {list_of_ids_to_mark_as_completed} as completed")
+            id_string = ', '.join([str(x) for x in list_of_ids_to_mark_as_completed])
+            print(f"Successfully marked tasks {id_string} as completed")
 
     def unmark_completed(self, id_to_unmark: int) -> None:
 
@@ -113,13 +114,15 @@ class OneTimeTasks:
                                                                      active_dictionary=self.active_one_time_tasks,
                                                                      task_type='oneTimeTasks')
 
-        print(f"Successfully deleted active tasks - {list_of_ids_to_delete}")
+        id_string = ', '.join([str(x) for x in list_of_ids_to_delete])
+        print(f"Successfully deleted active tasks {id_string}")
 
     def delete_completed(self, list_of_ids_to_delete: List[int]) -> None:
-        self.completed_one_time_tasks = self.taskFunctions.delete_tasks(ist_of_ids_to_delete=list_of_ids_to_delete,
+        self.completed_one_time_tasks = self.taskFunctions.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
                                                                         active_dictionary=self.completed_one_time_tasks,
                                                                         task_type='oneTimeTasks')
-        print(f"Successfully deleted completed tasks - {list_of_ids_to_delete}")
+        id_string = ', '.join([str(x) for x in list_of_ids_to_delete])
+        print(f"Successfully deleted completed tasks {id_string}")
 
     def clear_all_completed_tasks(self) -> None:
         self.completed_one_time_tasks = self.taskFunctions.clearing_all_tasks(task_type="completedOneTimeTasks")

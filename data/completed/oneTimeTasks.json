@@ -7,46 +7,6 @@
         "taskString": "Test UPDATE option",
         "weight": "3"
     },
-    "1": {
-        "assignedOn": "Thu Jun  6 18:16:36 2019",
-        "completeBy": "Fri Jun  7 18:16:36 2019",
-        "priority": "0",
-        "scheduledStart": "Thu Jun  6 18:16:36 2019",
-        "taskString": "email ('CDL',) GTN",
-        "weight": "3"
-    },
-    "2": {
-        "assignedOn": "Thu Jun  6 18:17:16 2019",
-        "completeBy": "Fri Jun  7 18:17:16 2019",
-        "priority": "0",
-        "scheduledStart": "Thu Jun  6 18:17:16 2019",
-        "taskString": "reply to Nathan on ('LinkedIn',) talk to him over the phone",
-        "weight": "3"
-    },
-    "3": {
-        "assignedOn": "Fri Jun  7 19:56:31 2019",
-        "completeBy": "Sat Jun  8 19:56:31 2019",
-        "priority": "0",
-        "scheduledStart": "Fri Jun  7 19:56:31 2019",
-        "taskString": "test1",
-        "weight": "3"
-    },
-    "4": {
-        "assignedOn": "Fri Jun  7 19:56:33 2019",
-        "completeBy": "Sat Jun  8 19:56:33 2019",
-        "priority": "0",
-        "scheduledStart": "Fri Jun  7 19:56:33 2019",
-        "taskString": "test2",
-        "weight": "3"
-    },
-    "5": {
-        "assignedOn": "Wed Jun 12 17:45:02 2019",
-        "completeBy": "Thu Jun 13 17:45:02 2019",
-        "priority": "0",
-        "scheduledStart": "Wed Jun 12 17:45:02 2019",
-        "taskString": "Install pandas",
-        "weight": "3"
-    },
     "6": {
         "assignedOn": "Wed Jun 12 17:45:06 2019",
         "completeBy": "Thu Jun 13 17:45:06 2019",

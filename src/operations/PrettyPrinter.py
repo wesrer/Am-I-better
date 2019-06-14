@@ -39,6 +39,6 @@ class PrettyPrinter:
         for x in date_headers:
             task_dataframe[x] = pd.to_datetime(task_dataframe[x])
 
-        # FIXME: this doesn't work for habits
+        # FIXME: longTermTasks not implemented
         print(colums_to_print.sort_values(sort_by))
 

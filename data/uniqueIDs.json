@@ -10,8 +10,14 @@
     },
     "habits": {
         "available": [
+            "2",
+            "3",
             "4",
-            "5"
+            "4",
+            "5",
+            "5",
+            "6",
+            "7"
         ],
         "next": "6"
     },
@@ -26,6 +32,11 @@
     "longTermProjectsSubTasks": {},
     "oneTimeTasks": {
         "available": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
             "6"
         ],
         "next": "20"

@@ -88,8 +88,11 @@ def perform_actions(task_type,
                              task_type=task_type)
 
     elif action_type == "completed":
-        PrettyPrinter.pprint(task_dict=obj.get_completed(),
-                             task_type=task_type)
+        if len(args) == 0:
+            PrettyPrinter.pprint(task_dict=obj.get_completed(),
+                                 task_type=task_type)
+        elif args[0]:
+            print(args[0], type(args[0]))
 
     elif action_type == "delete" or action_type == "del":
         task_id = args[0]
@@ -106,15 +109,23 @@ def perform_actions(task_type,
                 elif task_type == "habit":
                     obj.clear_all_inactive_tasks()
             else:
-                if task_type == "task":
-                    [obj.delete_completed(list_of_ids_to_delete=x) for x in args[1:]]
-                elif task_type == "habit":
-                    [obj.delete_inactive(id_to_delete=x) for x in args[1:]]
+                ids_to_delete = UserInputParser.generate_list_of_ids(args[1:])
+                if task_id == "completed":
+                    if task_type == "task":
+                        obj.delete_completed(list_of_ids_to_delete=ids_to_delete)
+                    elif task_type == "habit":
+                        obj.delete_completed(list_of_ids_to_delete=ids_to_delete)
+                elif task_id == "inactive":
+                    if task_type == "habit":
+                        obj.delete_inactive(list_of_ids_to_delete=ids_to_delete)
+                    else:
+                        raise ValueError(f"The {task_id} action is not available on {task_type}")
+
 
     elif action_type == "mark":
         ids_to_mark = UserInputParser.generate_list_of_ids(args)
         print("got back this", ids_to_mark)
-        
+
         if task_type == "task":
             obj.mark_as_completed(list_of_ids_to_mark_as_completed=ids_to_mark)
         elif task_type == "habit":

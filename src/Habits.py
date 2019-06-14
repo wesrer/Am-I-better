@@ -69,16 +69,22 @@ class Habits:
             sys.exit("this feature hasn't been implemented yet")
 
     def delete_active(self,
-                      id_to_delete: int) -> None:
-        self.activeHabits = self.TaskFunctionsObject.delete_task(id_to_delete=id_to_delete,
-                                                                 active_dictionary=self.activeHabits,
-                                                                 task_type="habits")
+                      list_of_ids_to_delete: List[int]) -> None:
+        self.activeHabits = self.TaskFunctionsObject.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
+                                                                  active_dictionary=self.activeHabits,
+                                                                  task_type="habits")
+
+    def delete_completed(self,
+                         list_of_ids_to_delete: List[int]) -> None:
+        self.completedHabits = self.TaskFunctionsObject.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
+                                                                     active_dictionary=self.completedHabits,
+                                                                     task_type="habits")
 
     def delete_inactive(self,
-                        id_to_delete: int) -> None:
-        self.activeHabits = self.TaskFunctionsObject.delete_task(id_to_delete=id_to_delete,
-                                                                 active_dictionary=self.inactiveHabits,
-                                                                 task_type="habits")
+                        list_of_ids_to_delete: int) -> None:
+        self.activeHabits = self.TaskFunctionsObject.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
+                                                                  active_dictionary=self.inactiveHabits,
+                                                                  task_type="habits")
 
     def mark_as_completed(self,
                           list_of_ids_to_mark_as_completed: List[int]) -> None:

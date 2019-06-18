@@ -15,14 +15,6 @@
         "taskString": "schedule a meeting with DueDil",
         "weight": "3"
     },
-    "10": {
-        "assignedOn": "Thu Jun  6 17:17:30 2019",
-        "completeBy": "Fri Jun  7 17:17:30 2019",
-        "priority": "0",
-        "scheduledStart": "Thu Jun  6 17:17:30 2019",
-        "taskString": "add refreshing mechanism to habits",
-        "weight": "3"
-    },
     "11": {
         "assignedOn": "Thu Jun  6 17:20:30 2019",
         "completeBy": "Fri Jun  7 17:20:30 2019",
@@ -45,14 +37,6 @@
         "priority": "0",
         "scheduledStart": "Thu Jun 13 17:44:20 2019",
         "taskString": "Finish operations PR for Elyah",
-        "weight": "3"
-    },
-    "14": {
-        "assignedOn": "Fri Jun  7 20:46:20 2019",
-        "completeBy": "Sat Jun  8 20:46:20 2019",
-        "priority": "0",
-        "scheduledStart": "Fri Jun  7 20:46:20 2019",
-        "taskString": "install RubyMine Pycharm IntetelliJ Rust Ruby Crystal JDK on new computer",
         "weight": "3"
     },
     "15": {

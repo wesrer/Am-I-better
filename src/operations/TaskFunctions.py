@@ -108,7 +108,6 @@ class TaskFunctions:
 
         else:
             for x in list_of_ids_to_mark_as_completed:
-                print("sending off ", x)
                 active_dictionary, completed_dictionary = \
                     self.mark_one_task_as_completed(id_to_mark_as_completed=x,
                                                     active_dictionary=active_dictionary,
@@ -138,7 +137,6 @@ class TaskFunctions:
         id_to_mark_as_completed = str(id_to_mark_as_completed)
 
         if id_to_mark_as_completed not in active_dictionary:
-            print(id_to_mark_as_completed)
             raise KeyError
 
         unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=completed_task_type,
@@ -168,7 +166,6 @@ class TaskFunctions:
                                has_children: bool = False):
 
         for id_to_unmark in list_of_ids_to_unmark:
-            print(id_to_unmark)
 
             id_to_unmark = str(id_to_unmark)
 

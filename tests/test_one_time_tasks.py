@@ -171,8 +171,8 @@ class TestOneTimeTasks:
         initialized_one_time_tasks_object, initialized_data_input_operations = self.initialize_one_time_task_object()
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_tasks_object)
 
-        sample_one_time_task_object.mark_as_completed(1)
-        sample_one_time_task_object.unmark_completed(0)
+        sample_one_time_task_object.mark_as_completed([1])
+        sample_one_time_task_object.unmark_completed([0])
 
         returned_active_output = sample_one_time_task_object.get_active()
         returned_completed_output = sample_one_time_task_object.get_completed()
@@ -194,12 +194,12 @@ class TestOneTimeTasks:
         initialized_one_time_tasks_object, initialized_data_input_operations = self.initialize_one_time_task_object()
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_tasks_object)
 
-        sample_one_time_task_object.mark_as_completed(1)
-        sample_one_time_task_object.mark_as_completed(2)
+        sample_one_time_task_object.mark_as_completed([1])
+        sample_one_time_task_object.mark_as_completed([2])
 
         # unmarking tasks out of order, so that their position is reversed in the active tasks dictionary
-        sample_one_time_task_object.unmark_completed(1)
-        sample_one_time_task_object.unmark_completed(0)
+        sample_one_time_task_object.unmark_completed([1])
+        sample_one_time_task_object.unmark_completed([0])
 
         returned_active_output = sample_one_time_task_object.get_active()
         returned_completed_output = sample_one_time_task_object.get_completed()
@@ -224,7 +224,7 @@ class TestOneTimeTasks:
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
 
         with pytest.raises(KeyError):
-            initialized_one_time_task_object.unmark_completed(0)
+            initialized_one_time_task_object.unmark_completed([0])
 
     def test_raise_exception_when_deleting_unavailable_task_key(self):
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]

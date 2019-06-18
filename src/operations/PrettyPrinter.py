@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from typing import Dict
+import sys
 
 
 class PrettyPrinter:
@@ -18,7 +19,11 @@ class PrettyPrinter:
 
     @staticmethod
     def pprint(task_dict: Dict[str, str],
-               task_type:str):
+               task_type: str):
+
+        if len(task_dict) == 0:
+            sys.exit("No items to display.")
+
         # loading the dictionary as a DataFrame
         task_dataframe = pd.DataFrame(task_dict)
 

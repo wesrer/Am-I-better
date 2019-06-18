@@ -87,7 +87,8 @@ class OneTimeTasks:
                 task_type="oneTimeTasks",
                 completed_task_type="completedOneTimeTasks")
 
-            print(f"Successfully marked task {id_to_mark_as_completed} as completed")
+            id_string = ', '.join([str(x) for x in list_of_ids_to_mark_as_completed])
+            print(f"Successfully marked tasks {id_string} as completed")
         else:
             self.active_one_time_tasks, self.completed_one_time_tasks = \
                 self.taskFunctions.mark_tasks_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
@@ -95,18 +96,17 @@ class OneTimeTasks:
                                                            completed_dictionary=self.completed_one_time_tasks,
                                                            task_type="oneTimeTasks",
                                                            completed_task_type="completedOneTimeTasks")
+            
+            print(f"Successfully marked task {id_to_mark_as_completed} as completed")
 
-            id_string = ', '.join([str(x) for x in list_of_ids_to_mark_as_completed])
-            print(f"Successfully marked tasks {id_string} as completed")
-
-    def unmark_completed(self, id_to_unmark: int) -> None:
+    def unmark_completed(self, list_of_ids_to_unmark: List[int]) -> None:
 
         self.active_one_time_tasks, self.completed_one_time_tasks = \
-            self.taskFunctions.unmark_a_completed_task(id_to_unmark=id_to_unmark,
-                                                       active_dictionary=self.active_one_time_tasks,
-                                                       completed_dictionary=self.completed_one_time_tasks,
-                                                       task_type="oneTimeTasks",
-                                                       completed_task_type="completedOneTimeTasks")
+            self.taskFunctions.unmark_completed_tasks(list_of_ids_to_unmark=list_of_ids_to_unmark,
+                                                      active_dictionary=self.active_one_time_tasks,
+                                                      completed_dictionary=self.completed_one_time_tasks,
+                                                      task_type="oneTimeTasks",
+                                                      completed_task_type="completedOneTimeTasks")
 
     def delete_active(self, list_of_ids_to_delete: List[int]) -> None:
 

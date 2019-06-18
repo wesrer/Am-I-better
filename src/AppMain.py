@@ -3,6 +3,7 @@ import os
 from src.operations.DictionaryOperations import DictionaryOperations
 from src.operations.ResolvePaths import ResolvePaths
 from src.operations.TaskFunctions import TaskFunctions
+from src.operations.TimeOperations import TimeOperations
 
 from src.DataOutputOperations import DataOutputOperations
 from src.DataInputOperations import DataInputOperations
@@ -32,6 +33,7 @@ class App:
 
         # COMMON METHODS MODULE
         self.TaskFunctions = TaskFunctions(data_input_operations_object=self.DataInputOperations)
+        self.TimeOperations = TimeOperations()
 
         # TASK MODULES
 
@@ -39,13 +41,14 @@ class App:
 
         self.Habits = Habits(data_input_operations_object=self.DataInputOperations,
                              data_output_operations_object=self.DataOutputOperations,
-                             task_functions_object=self.TaskFunctions)
+                             task_functions_object=self.TaskFunctions,
+                             time_operations_object=self.TimeOperations)
 
         # FIXME: testing module - delete later
         self.PandasTest = PandasTest(one_time_tasks_object=self.MainOneTimeTasks)
 
     def on_start_operations(self):
-        pass
+        self.Habits.refresh_habits()
 
     # NOTE: This is the Class Level Initialization of oneTimeTasks
     #       There can also be long term tasks level initialization of oneTimeTasks

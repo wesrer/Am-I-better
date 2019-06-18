@@ -108,7 +108,13 @@ class DataInputOperations:
         else:
             parent_id["available"].append(str(id_to_mark_as_available))
 
-        parent_id["available"].sort()
+        # FIXME: hacky shit
+        print("available the first", parent_id["available"])
+        parent_id["available"] = sorted([int(x) for x in parent_id["available"]])
+        print("available as ints", parent_id["available"])
+        parent_id["available"] = [str(x) for x in parent_id["available"]]
+
+        print("available ids", parent_id["available"])
 
     def mark_id_as_unavailable(self,
                                task_type: str,

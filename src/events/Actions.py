@@ -19,15 +19,10 @@ class Actions:
             self.list_tasks_by_category(task_type="task")
             return
 
-    def delete(self,
-               task_id,
-               args,
-               task_object,
-               task_type):
+    def delete(self, task_id: str, args, task_object, task_type) -> None:
 
         if not (task_id == "completed" or task_id == "inactive"):
             ids_to_mark = self.UserInputParser.generate_list_of_ids(args=args)
-            # ids_to_mark = [x for x in id_in_string]
             task_object.delete_active(list_of_ids_to_delete=ids_to_mark)
         else:
             if args[1] == "all":

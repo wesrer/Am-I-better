@@ -1,26 +1,11 @@
 {
-    "0": {
-        "assignedOn": "Fri May 31 22:58:26 2019",
-        "priority": "0",
-        "refreshRate": "1",
-        "scheduledStart": "Fri May 31 22:58:26 2019",
-        "taskString": "Study Japanese for an hour",
-        "weight": "3"
-    },
     "8": {
-        "assignedOn": "Fri May 31 22:57:02 2019",
+        "assignedOn": "Tue Jun 18 19:20:30 2019",
+        "lastCompletedOn": "Tue Jun 18 19:20:44 2019",
         "priority": "0",
         "refreshRate": "1",
-        "scheduledStart": "Fri May 31 22:57:02 2019",
-        "taskString": "Brush your teeth twice every day",
-        "weight": "3"
-    },
-    "9": {
-        "assignedOn": "Thu Jun 13 16:26:38 2019",
-        "priority": "0",
-        "refreshRate": "1",
-        "scheduledStart": "Thu Jun 13 16:26:38 2019",
-        "taskString": "Take a shower",
+        "scheduledStart": "Tue Jun 18 19:20:30 2019",
+        "taskString": "100 Days of Code",
         "weight": "3"
     }
 }

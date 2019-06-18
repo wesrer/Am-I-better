@@ -158,32 +158,36 @@ class TaskFunctions:
 
     # TODO: implement parent_id and has_children functionalities
     # TODO: allow multiple ids to be unmarked in one call
-    def unmark_a_completed_task(self,
-                                id_to_unmark: int,
-                                active_dictionary: StringDict,
-                                completed_dictionary: StringDict,
-                                task_type: str,
-                                completed_task_type: str,
-                                parent_id: int = -1,
-                                has_children: bool = False):
-        id_to_unmark = str(id_to_unmark)
+    def unmark_completed_tasks(self,
+                               list_of_ids_to_unmark: List[int],
+                               active_dictionary: StringDict,
+                               completed_dictionary: StringDict,
+                               task_type: str,
+                               completed_task_type: str,
+                               parent_id: int = -1,
+                               has_children: bool = False):
 
-        if id_to_unmark not in completed_dictionary:
-            raise KeyError
+        for id_to_unmark in list_of_ids_to_unmark:
+            print(id_to_unmark)
 
-        unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=task_type,
-                                                                        parent_id=parent_id,
-                                                                        has_children=has_children)
+            id_to_unmark = str(id_to_unmark)
 
-        # pushing the string to the active_dictionary under a next available id
-        active_dictionary[str(unique_id)] = completed_dictionary[id_to_unmark]
+            if id_to_unmark not in completed_dictionary:
+                raise KeyError
 
-        self.DataInputOperations.mark_id_as_available(task_type=completed_task_type,
-                                                      parent_id=parent_id,
-                                                      has_children=has_children,
-                                                      id_to_mark_as_available=id_to_unmark)
+            unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=task_type,
+                                                                            parent_id=parent_id,
+                                                                            has_children=has_children)
 
-        del completed_dictionary[id_to_unmark]
+            # pushing the string to the active_dictionary under a next available id
+            active_dictionary[str(unique_id)] = completed_dictionary[id_to_unmark]
+
+            self.DataInputOperations.mark_id_as_available(task_type=completed_task_type,
+                                                          parent_id=parent_id,
+                                                          has_children=has_children,
+                                                          id_to_mark_as_available=id_to_unmark)
+
+            del completed_dictionary[id_to_unmark]
 
         return active_dictionary, completed_dictionary
 

@@ -5,11 +5,7 @@ from src.operations.PrettyPrinter import PrettyPrinter
 from src.operations.UserInputParser import UserInputParser
 from src.events.Actions import Actions
 
-from typing import List
-from functools import partial
-import json
 import sys
-import re
 
 app = AppMain.App()
 
@@ -75,7 +71,6 @@ def perform_actions(task_type,
             elif "id" in args:
                 raise NotImplementedError
             else:
-                print("inside this why?")
                 raise TypeError
         except TypeError as err:
             print(err)
@@ -84,32 +79,32 @@ def perform_actions(task_type,
             sys.exit("Using id: isn't implemented yet. Sorry!")
 
     elif action_type in ["active", "list", "view"]:
-        PrettyPrinter.pprint(task_dict=obj.get_active(),
-                             task_type=task_type)
+        PrettyPrinter.pprint(task_dict=obj.get_active(), task_type=task_type)
 
     elif action_type == "completed":
         if len(args) == 0:
-            PrettyPrinter.pprint(task_dict=obj.get_completed(),
-                                 task_type=task_type)
-        elif args[0]:
-            print(args[0], type(args[0]))
+            PrettyPrinter.pprint(task_dict=obj.get_completed(), task_type=task_type)
 
     elif action_type == "delete" or action_type == "del":
         task_id = args[0]
 
-        Actions.delete(task_id=task_id,
-                       args=args,
-                       task_object=obj,
-                       task_type=task_type)
+        Actions.delete(task_id=task_id, args=args, task_object=obj, task_type=task_type)
 
     elif action_type == "mark":
         ids_to_mark = UserInputParser.generate_list_of_ids(args)
-        print("got back this", ids_to_mark)
 
         if task_type == "task":
             obj.mark_as_completed(list_of_ids_to_mark_as_completed=ids_to_mark)
         elif task_type == "habit":
             obj.mark_as_completed(list_of_ids_to_mark_as_completed=ids_to_mark)
+
+    # TODO: implement unmarking inactive habits
+    elif action_type == "unmark":
+        ids_to_unmark = UserInputParser.generate_list_of_ids(args)
+        if task_type == "task":
+            obj.unmark_completed(list_of_ids_to_unmark=ids_to_unmark)
+        elif task_type == "habit":
+            obj.unmark_completed(list_of_ids_to_unmark=ids_to_unmark)
 
     else:
         raise ValueError(f"{action_type} is not a valid action on {task_type}")

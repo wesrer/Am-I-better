@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timedelta
 from dateutil import relativedelta
 import json
 
@@ -6,7 +6,7 @@ import json
 class TimeOperations:
 
     def datetime_to_string(self,
-                           date_time_value: datetime.datetime):
+                           date_time_value: datetime):
         date_time_value.strftime("%c")
 
     @staticmethod
@@ -38,11 +38,11 @@ class TimeOperations:
         # TODO: add more relative time strings
         reference_dict = {
             "today": start_time,
-            "tomorrow": start_time + datetime.timedelta(days=1),
-            "yesterday": start_time + datetime.timedelta(days=-1),
-            "day_after_tomorrow": start_time + datetime.timedelta(days=2),
-            "next_hour": start_time + datetime.timedelta(hours=1),
-            "next_week": start_time + datetime.timedelta(days=7),
+            "tomorrow": start_time + timedelta(days=1),
+            "yesterday": start_time + timedelta(days=-1),
+            "day_after_tomorrow": start_time + timedelta(days=2),
+            "next_hour": start_time + timedelta(hours=1),
+            "next_week": start_time + timedelta(days=7),
             "next_month": start_time + relativedelta.relativedelta(months=1),
             "next_year": start_time + relativedelta.relativedelta(year=1),
         }
@@ -59,3 +59,12 @@ class TimeOperations:
             raise ValueError("relative time string is not valid")
         else:
             return reference_dict[relative_time_string]
+
+    @staticmethod
+    def is_still_valid(last_completed_on: str,
+                       refresh_rate: int) -> bool:
+        last_completed_on = datetime.strptime(last_completed_on, "%c")
+
+        refresh_after = 24 // refresh_rate # integer division
+
+        return last_completed_on + timedelta(hours=refresh_after) >= datetime.now()

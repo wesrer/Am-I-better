@@ -2,10 +2,17 @@ class UserInputParser:
     def __int__(self):
         pass
 
+    # makes a list of all the additional options that the user included
     @staticmethod
     def find_properties(args):
         properties = dict()
 
+        # first split the string into words, and make a list of the words
+        # with the ':' character in it
+        # loop through the list and split the word into two parts with ':' as the
+        # separator. Create a dictionary with the left side is the property name,
+        # and the right side as the property value.
+        # TODO: add "=" support in the future
         for item in [str(x).split(':') for x in str(args).split(" ") if ":" in x]:
             properties[item[0]] = item[1]
 
@@ -36,5 +43,6 @@ class UserInputParser:
         else:
             # FIXME: hacky approach. might fix later
             return self.generate_task_string(args).split(' ')
+
 
 

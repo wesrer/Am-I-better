@@ -31,7 +31,7 @@ class Actions:
                 elif task_type == "habit":
                     task_object.clear_all_inactive_tasks()
             else:
-                ids_to_delete = UserInputParser.generate_list_of_ids(args[1:])
+                ids_to_delete = self.UserInputParser.generate_list_of_ids(args[1:])
                 if task_id == "completed":
                     if task_type == "task":
                         task_object.delete_completed(list_of_ids_to_delete=ids_to_delete)

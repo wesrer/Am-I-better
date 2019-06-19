@@ -30,6 +30,7 @@ class PrettyPrinter:
         # we need to transpose because in the JSON, the data is organized under their id's
         # translating them into column headers but we want their attributes as column headers
         task_dataframe = task_dataframe.T
+        task_dataframe['id'] = task_dataframe.index
 
         date_headers = ['assignedOn', 'scheduledStart']
 

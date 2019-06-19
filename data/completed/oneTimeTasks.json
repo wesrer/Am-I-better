@@ -39,6 +39,38 @@
         "taskString": "install RubyMine Pycharm IntetelliJ Rust Ruby Crystal JDK on new computer",
         "weight": "3"
     },
+    "14": {
+        "assignedOn": "Fri Jun 14 22:45:55 2019",
+        "completeBy": "Sat Jun 15 22:45:55 2019",
+        "priority": "0",
+        "scheduledStart": "Fri Jun 14 22:45:55 2019",
+        "taskString": "have a phone conversation with KPMG law",
+        "weight": "3"
+    },
+    "15": {
+        "assignedOn": "Thu Jun 13 19:34:31 2019",
+        "completeBy": "Fri Jun 14 19:34:31 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun 13 19:34:31 2019",
+        "taskString": "complete the Intro to Tensorflow page",
+        "weight": "3"
+    },
+    "16": {
+        "assignedOn": "Mon Jun 17 16:32:20 2019",
+        "completeBy": "Tue Jun 18 16:32:20 2019",
+        "priority": "0",
+        "scheduledStart": "Mon Jun 17 16:32:20 2019",
+        "taskString": "check in your other computer if you have patched the delete error",
+        "weight": "3"
+    },
+    "17": {
+        "assignedOn": "Thu Jun 13 17:44:20 2019",
+        "completeBy": "Fri Jun 14 17:44:20 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun 13 17:44:20 2019",
+        "taskString": "Finish operations PR for Elyah",
+        "weight": "3"
+    },
     "6": {
         "assignedOn": "Wed Jun 12 17:45:06 2019",
         "completeBy": "Thu Jun 13 17:45:06 2019",

@@ -31,14 +31,6 @@
         "taskString": "get SQL-workbench fixed so that it properly executes queries",
         "weight": "3"
     },
-    "13": {
-        "assignedOn": "Thu Jun 13 17:44:20 2019",
-        "completeBy": "Fri Jun 14 17:44:20 2019",
-        "priority": "0",
-        "scheduledStart": "Thu Jun 13 17:44:20 2019",
-        "taskString": "Finish operations PR for Elyah",
-        "weight": "3"
-    },
     "15": {
         "assignedOn": "Wed Jun 12 17:44:42 2019",
         "completeBy": "Thu Jun 13 17:44:42 2019",
@@ -55,22 +47,6 @@
         "taskString": "Model Data from DB",
         "weight": "3"
     },
-    "17": {
-        "assignedOn": "Thu Jun 13 19:34:31 2019",
-        "completeBy": "Fri Jun 14 19:34:31 2019",
-        "priority": "0",
-        "scheduledStart": "Thu Jun 13 19:34:31 2019",
-        "taskString": "complete the Intro to Tensorflow page",
-        "weight": "3"
-    },
-    "18": {
-        "assignedOn": "Fri Jun 14 22:44:50 2019",
-        "completeBy": "Sat Jun 15 22:44:50 2019",
-        "priority": "0",
-        "scheduledStart": "Fri Jun 14 22:44:50 2019",
-        "taskString": "code the PayPay software engineering challenge",
-        "weight": "3"
-    },
     "19": {
         "assignedOn": "Thu Jun 13 17:44:58 2019",
         "completeBy": "Fri Jun 14 17:44:58 2019",
@@ -80,35 +56,11 @@
         "weight": "3"
     },
     "2": {
-        "assignedOn": "Fri Jun 14 22:45:55 2019",
-        "completeBy": "Sat Jun 15 22:45:55 2019",
+        "assignedOn": "Tue Jun 18 20:27:25 2019",
+        "completeBy": "Wed Jun 19 20:27:25 2019",
         "priority": "0",
-        "scheduledStart": "Fri Jun 14 22:45:55 2019",
-        "taskString": "have a phone conversation with KPMG law",
-        "weight": "3"
-    },
-    "20": {
-        "assignedOn": "Fri Jun 14 22:54:15 2019",
-        "completeBy": "Sat Jun 15 22:54:15 2019",
-        "priority": "0",
-        "scheduledStart": "Fri Jun 14 22:54:15 2019",
-        "taskString": "dummy task 2",
-        "weight": "3"
-    },
-    "21": {
-        "assignedOn": "Fri Jun 14 22:54:38 2019",
-        "completeBy": "Sat Jun 15 22:54:38 2019",
-        "priority": "0",
-        "scheduledStart": "Fri Jun 14 22:54:38 2019",
-        "taskString": "dummy task 5",
-        "weight": "3"
-    },
-    "22": {
-        "assignedOn": "Mon Jun 17 16:32:20 2019",
-        "completeBy": "Tue Jun 18 16:32:20 2019",
-        "priority": "0",
-        "scheduledStart": "Mon Jun 17 16:32:20 2019",
-        "taskString": "check in your other computer if you have patched the delete error",
+        "scheduledStart": "Tue Jun 18 20:27:25 2019",
+        "taskString": "take document printouts from 123stores and fill them out",
         "weight": "3"
     },
     "3": {
@@ -120,27 +72,27 @@
         "weight": "3"
     },
     "4": {
-        "assignedOn": "Fri Jun 14 22:54:21 2019",
-        "completeBy": "Sat Jun 15 22:54:21 2019",
+        "assignedOn": "Tue Jun 18 20:28:20 2019",
+        "completeBy": "Wed Jun 19 20:28:20 2019",
         "priority": "0",
-        "scheduledStart": "Fri Jun 14 22:54:21 2019",
-        "taskString": "dummy task 3",
+        "scheduledStart": "Tue Jun 18 20:28:20 2019",
+        "taskString": "ask sushant about using the scanner",
         "weight": "3"
     },
     "5": {
-        "assignedOn": "Fri Jun 14 22:54:25 2019",
-        "completeBy": "Sat Jun 15 22:54:25 2019",
+        "assignedOn": "Wed Jun 19 17:26:29 2019",
+        "completeBy": "Thu Jun 20 17:26:29 2019",
         "priority": "0",
-        "scheduledStart": "Fri Jun 14 22:54:25 2019",
-        "taskString": "dummy task",
+        "scheduledStart": "Wed Jun 19 17:26:29 2019",
+        "taskString": "Start working on the Rust Quil Parser",
         "weight": "3"
     },
     "6": {
-        "assignedOn": "Fri Jun 14 22:54:31 2019",
-        "completeBy": "Sat Jun 15 22:54:31 2019",
+        "assignedOn": "Wed Jun 19 17:26:52 2019",
+        "completeBy": "Thu Jun 20 17:26:52 2019",
         "priority": "0",
-        "scheduledStart": "Fri Jun 14 22:54:31 2019",
-        "taskString": "dummy task 4",
+        "scheduledStart": "Wed Jun 19 17:26:52 2019",
+        "taskString": "Start course for QML on edx",
         "weight": "3"
     },
     "7": {

@@ -64,11 +64,18 @@ def perform_actions(task_type,
             try:
                 if type(args[0]) is int:
                     id_to_update = int(args[0])
+                    properties = UserInputParser.find_properties(args=args[1:])
+
+                    for key, value in properties.items():
+                        obj.update(id_to_update=id_to_update,
+                                   option_to_update=key,
+                                   updated_value=value)
                     task_string = UserInputParser.generate_task_string(args[1:])
 
-                    obj.update(id_to_update=id_to_update,
-                               option_to_update="task_string",
-                               updated_value=task_string)
+                    if task_string:
+                        obj.update(id_to_update=id_to_update,
+                                   option_to_update="task_string",
+                                   updated_value=task_string)
                 elif "id" in args:
                     raise NotImplementedError
                 else:

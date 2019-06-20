@@ -1,4 +1,5 @@
 from typing import List, Dict
+import sys
 
 # TODO: figure out how to Type Cast Custom Objects
 # Custom Type Hints for Type Checking
@@ -54,23 +55,31 @@ class OneTimeTasks:
                updated_value: str):
         option_to_update = option_to_update.lower()
 
-        # the conditions are being checked against lists because in the future,
-        # we might need to include synonyms for the same actions
-        if option_to_update in ["task_string", "task string"]:
-            field_type = "taskString"
-        elif option_to_update in ["weight"]:
-            field_type = "weight"
-        elif option_to_update in ["priority"]:
-            field_type = "priority"
-        elif option_to_update in ["scheduled_for", "scheduled", "due", "complete_by", "completeby", "by"]:
-            # FIXME: implement this after implementing a general string to time conversion
-            #        function in the time functions module
-            pass
+        try:
+            # the conditions are being checked against lists because in the future,
+            # we might need to include synonyms for the same actions
+            if option_to_update in ["task_string", "task string"]:
+                field_type = "taskString"
+            elif option_to_update in ["weight"]:
+                field_type = "weight"
+            elif option_to_update in ["priority"]:
+                field_type = "priority"
+            elif option_to_update in ["scheduled_for", "scheduled", "due", "complete_by", "completeby", "by"]:
+                # FIXME: implement this after implementing a general string to time conversion
+                #        function in the time functions module
+                raise NotImplementedError
+            else:
+                raise ValueError
 
-        self.active_one_time_tasks = self.taskFunctions.update_values(id_to_edit=id_to_update,
-                                                                      field_name=field_type,
-                                                                      active_dictionary=self.active_one_time_tasks,
-                                                                      updated_value=updated_value)
+
+            self.active_one_time_tasks = self.taskFunctions.update_values(id_to_edit=id_to_update,
+                                                                          field_name=field_type,
+                                                                          active_dictionary=self.active_one_time_tasks,
+                                                                          updated_value=updated_value)
+        except NotImplementedError as e:
+            sys.exit(f"{option_to_update} hasn't been implemented yet. Sorry!")
+        except ValueError as e:
+            sys.exit(f"{option_to_update} is not a recognized property and cannot be updated")
 
         print(f"Successfully updated task {id_to_update}")
 
@@ -96,7 +105,7 @@ class OneTimeTasks:
                                                            completed_dictionary=self.completed_one_time_tasks,
                                                            task_type="oneTimeTasks",
                                                            completed_task_type="completedOneTimeTasks")
-            
+
             print(f"Successfully marked task {id_to_mark_as_completed} as completed")
 
     def unmark_completed(self, list_of_ids_to_unmark: List[int]) -> None:

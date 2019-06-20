@@ -63,6 +63,30 @@
         "taskString": "Finish operations PR for Elyah",
         "weight": "3"
     },
+    "18": {
+        "assignedOn": "Thu Jun 13 17:41:43 2019",
+        "completeBy": "Fri Jun 14 17:41:43 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun 13 17:41:43 2019",
+        "taskString": "get SQL-workbench fixed so that it properly executes queries",
+        "weight": "3"
+    },
+    "19": {
+        "assignedOn": "Fri Jun 14 22:47:04 2019",
+        "completeBy": "Sat Jun 15 22:47:04 2019",
+        "priority": "0",
+        "scheduledStart": "Fri Jun 14 22:47:04 2019",
+        "taskString": "talk to Amri about working out a plan",
+        "weight": "3"
+    },
+    "20": {
+        "assignedOn": "Tue Jun 18 20:27:25 2019",
+        "completeBy": "Wed Jun 19 20:27:25 2019",
+        "priority": "0",
+        "scheduledStart": "Tue Jun 18 20:27:25 2019",
+        "taskString": "fill out the Immigration forms",
+        "weight": "3"
+    },
     "6": {
         "assignedOn": "Wed Jun 12 17:45:06 2019",
         "completeBy": "Thu Jun 13 17:45:06 2019",

@@ -6,8 +6,8 @@ jan_31_2019 = datetime.datetime(2019, 1, 31)
 
 
 class TestTimeOperations:
-    def aliases_helper(self,
-                       date_value,
+    @staticmethod
+    def aliases_helper(date_value,
                        alias_list):
         condition = True
         for x in alias_list:

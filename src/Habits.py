@@ -55,9 +55,9 @@ class Habits:
             # we might need to include synonyms for the same actions
             if option_to_update in ["task_string", "task string", "taskstring", "habitstring", "habit_string", "habit"]:
                 field_type = "taskString"
-            elif option_to_update in ["weight"]:
+            elif option_to_update in ["weight", "w", "wt"]:
                 field_type = "weight"
-            elif option_to_update in ["priority"]:
+            elif option_to_update in ["priority", "pri", "prio"]:
                 field_type = "priority"
             elif option_to_update in ["scheduled_for", "scheduled", "due", "complete_by", "completeby", "by"]:
                 # FIXME: implement this after implementing a general string to time conversion
@@ -65,6 +65,8 @@ class Habits:
                 raise NotImplementedError
             elif option_to_update in ["refresh_rate", "refreshrate"]:
                 field_type = "refreshRate"
+            else:
+                raise ValueError
 
             self.activeHabits = self.TaskFunctions.update_values(id_to_edit=id_to_update,
                                                                  field_name=field_type,
@@ -72,6 +74,8 @@ class Habits:
                                                                  updated_value=updated_value)
         except NotImplementedError as e:
             sys.exit("this feature hasn't been implemented yet")
+        except ValueError as e:
+            sys.exit(f"{option_to_update} is not a recognized property and cannot be updated")
 
     def delete_active(self,
                       list_of_ids_to_delete: List[int]) -> None:
@@ -122,6 +126,9 @@ class Habits:
 
         if len(habits_to_unmark) != 0:
             self.unmark_completed(list_of_ids_to_unmark=habits_to_unmark)
+
+    def find_next_refresh_on(self) -> datetime:
+        pass
 
     def unmark(self,
                list_of_ids_to_unmark: List[int],

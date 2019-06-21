@@ -102,20 +102,20 @@ class Habits:
             self.activeHabits[str(x)]["lastCompletedOn"] = datetime.now().strftime("%c")
 
         self.activeHabits, self.completedHabits = \
-            self.TaskFunctions.mark_tasks_as_completed(list_of_ids_to_mark_as_completed=list_of_ids_to_mark_as_completed,
-                                                       active_dictionary=self.activeHabits,
-                                                       completed_dictionary=self.completedHabits,
-                                                       task_type="habits",
-                                                       completed_task_type="completedHabits")
+            self.TaskFunctions.mark_tasks(list_of_ids_to_mark=list_of_ids_to_mark_as_completed,
+                                          active_dictionary=self.activeHabits,
+                                          completed_dictionary=self.completedHabits,
+                                          task_type="habits",
+                                          completed_task_type="completedHabits")
 
     def mark_as_inactive(self,
                          list_of_ids_to_mark_as_inactive: List[int]) -> None:
         self.activeHabits, self.inactiveHabits = \
-            self.TaskFunctions.mark_tasks_as_completed(list_of_ids_to_mark_as_completed=list_of_ids_to_mark_as_inactive,
-                                                       active_dictionary=self.activeHabits,
-                                                       completed_dictionary=self.inactiveHabits,
-                                                       task_type="habits",
-                                                       completed_task_type="inactiveHabits")
+            self.TaskFunctions.mark_tasks(list_of_ids_to_mark=list_of_ids_to_mark_as_inactive,
+                                          active_dictionary=self.activeHabits,
+                                          completed_dictionary=self.inactiveHabits,
+                                          task_type="habits",
+                                          completed_task_type="inactiveHabits")
 
     def refresh_habits(self) -> None:
         habits_to_unmark = []

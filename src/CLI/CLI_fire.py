@@ -60,31 +60,8 @@ def perform_actions(task_type,
             obj.add(task_string=task_string)
 
         elif action_type in ['update', 'edit']:
-            # TODO: implement updating priorities / weight / dates
-            try:
-                if type(args[0]) is int:
-                    id_to_update = int(args[0])
-                    properties = UserInputParser.find_properties(args=args[1:])
-
-                    for key, value in properties.items():
-                        obj.update(id_to_update=id_to_update,
-                                   option_to_update=key,
-                                   updated_value=value)
-                    task_string = UserInputParser.generate_task_string(args[1:])
-
-                    if task_string:
-                        obj.update(id_to_update=id_to_update,
-                                   option_to_update="task_string",
-                                   updated_value=task_string)
-                elif "id" in args:
-                    raise NotImplementedError
-                else:
-                    raise TypeError
-            except TypeError as err:
-                print(err)
-                sys.exit("update needs an id to update")
-            except NotImplementedError:
-                sys.exit("Using id: isn't implemented yet. Sorry!")
+            Actions.update(args=args,
+                           task_object=obj)
 
         elif action_type in ["active", "list", "view"]:
             PrettyPrinter.pprint(task_dict=obj.get_active(), task_type=task_type)
@@ -93,26 +70,29 @@ def perform_actions(task_type,
             if len(args) == 0:
                 PrettyPrinter.pprint(task_dict=obj.get_completed(), task_type=task_type)
 
+        elif action_type == "inactive":
+            if len(args) == 0:
+                PrettyPrinter.pprint(task_dict=obj.get_inactive(), task_type=task_type)
+
         elif action_type == "delete" or action_type == "del":
             task_id = args[0]
 
-            Actions.delete(task_id=task_id, args=args, task_object=obj, task_type=task_type)
+            Actions.delete(task_id=task_id,
+                           args=args,
+                           task_object=obj,
+                           task_type=task_type)
 
-        elif action_type == "mark":
-            ids_to_mark = UserInputParser.generate_list_of_ids(args)
-
-            if task_type == "task":
-                obj.mark_as_completed(list_of_ids_to_mark_as_completed=ids_to_mark)
-            elif task_type == "habit":
-                obj.mark_as_completed(list_of_ids_to_mark_as_completed=ids_to_mark)
+        elif "mark" in action_type:
+           Actions.mark(task_type=task_type,
+                        action_type=action_type,
+                        args=args,
+                        task_object=obj,)
 
         # TODO: implement unmarking inactive habits
         elif action_type == "unmark":
-            ids_to_unmark = UserInputParser.generate_list_of_ids(args)
-            if task_type == "task":
-                obj.unmark_completed(list_of_ids_to_unmark=ids_to_unmark)
-            elif task_type == "habit":
-                obj.unmark_completed(list_of_ids_to_unmark=ids_to_unmark)
+            Actions.unmark(task_type=task_type,
+                           task_object=obj,
+                           args=args)
 
         else:
             raise ValueError

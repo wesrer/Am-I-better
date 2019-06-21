@@ -15,7 +15,8 @@ class OneTimeTasks:
                  data_output_operations_object,
                  task_functions_object,
                  active_one_time_tasks: StringDict,
-                 completed_one_time_tasks: StringDict):
+                 completed_one_time_tasks: StringDict,
+                 inactive_one_time_tasks: StringDict):
 
         self.DataInputOperations = data_input_operations_object
         self.DataOutputOperations = data_output_operations_object
@@ -23,6 +24,7 @@ class OneTimeTasks:
 
         self.completed_one_time_tasks = completed_one_time_tasks
         self.active_one_time_tasks = active_one_time_tasks
+        self.inactive_one_time_tasks = inactive_one_time_tasks
 
         self.default_time_values = self.DataInputOperations.get_default_values("time", "oneTimeTasks")
 
@@ -71,7 +73,6 @@ class OneTimeTasks:
             else:
                 raise ValueError
 
-
             self.active_one_time_tasks = self.taskFunctions.update_values(id_to_edit=id_to_update,
                                                                           field_name=field_type,
                                                                           active_dictionary=self.active_one_time_tasks,
@@ -89,8 +90,8 @@ class OneTimeTasks:
                           list_of_ids_to_mark_as_completed: List[int] = []) -> None:
 
         if len(list_of_ids_to_mark_as_completed) != 0:
-            self.active_one_time_tasks, self.completed_one_time_tasks = self.taskFunctions.mark_tasks_as_completed(
-                list_of_ids_to_mark_as_completed=list_of_ids_to_mark_as_completed,
+            self.active_one_time_tasks, self.completed_one_time_tasks = self.taskFunctions.mark_tasks(
+                list_of_ids_to_mark=list_of_ids_to_mark_as_completed,
                 active_dictionary=self.active_one_time_tasks,
                 completed_dictionary=self.completed_one_time_tasks,
                 task_type="oneTimeTasks",
@@ -100,13 +101,23 @@ class OneTimeTasks:
             print(f"Successfully marked tasks {id_string} as completed")
         else:
             self.active_one_time_tasks, self.completed_one_time_tasks = \
-                self.taskFunctions.mark_tasks_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
-                                                           active_dictionary=self.active_one_time_tasks,
-                                                           completed_dictionary=self.completed_one_time_tasks,
-                                                           task_type="oneTimeTasks",
-                                                           completed_task_type="completedOneTimeTasks")
+                self.taskFunctions.mark_tasks(id_to_mark=id_to_mark_as_completed,
+                                              active_dictionary=self.active_one_time_tasks,
+                                              completed_dictionary=self.completed_one_time_tasks,
+                                              task_type="oneTimeTasks",
+                                              completed_task_type="completedOneTimeTasks")
 
             print(f"Successfully marked task {id_to_mark_as_completed} as completed")
+
+    def mark_as_inactive(self,
+                         list_of_ids_to_mark_as_inactive: List[int]) -> None:
+
+        self.active_one_time_tasks, self.inactive_one_time_tasks = \
+            self.taskFunctions.mark_tasks(list_of_ids_to_mark=list_of_ids_to_mark_as_inactive,
+                                          active_dictionary=self.active_one_time_tasks,
+                                          completed_dictionary=self.inactive_one_time_tasks,
+                                          task_type="oneTimeTasks",
+                                          completed_task_type="inactiveOneTimeTasks")
 
     def unmark_completed(self, list_of_ids_to_unmark: List[int]) -> None:
 
@@ -137,6 +148,9 @@ class OneTimeTasks:
         self.completed_one_time_tasks = self.taskFunctions.clearing_all_tasks(task_type="completedOneTimeTasks")
         print(f"Successfully deleted all completed tasks")
 
+    def clear_all_inactive_tasks(self) -> None:
+        self.inactive_one_time_tasks = self.taskFunctions.clearing_all_tasks(task_type="inactiveOneTimeTasks")
+
     def delete_all_completed_tasks(self) -> None:
         self.clear_all_completed_tasks()
 
@@ -152,6 +166,11 @@ class OneTimeTasks:
                                                task_type='oneTimeTasks',
                                                dictionary_to_save=self.completed_one_time_tasks)
 
+    def save_inactive_one_time_tasks(self) -> None:
+        self.DataOutputOperations.save_as_file(task_status='inactive',
+                                               task_type='oneTimeTasks',
+                                               dictionary_to_save=self.inactive_one_time_tasks)
+
     # TODO: implement priorities
     def sort_by_priority(self) -> StringDict:
         pass
@@ -163,3 +182,6 @@ class OneTimeTasks:
 
     def get_completed(self) -> StringDict:
         return self.completed_one_time_tasks
+
+    def get_inactive(self) -> StringDict:
+        return self.inactive_one_time_tasks

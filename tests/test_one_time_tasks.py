@@ -44,7 +44,8 @@ class TestOneTimeTasks:
                                                           data_output_operations_object=data_output_operations_object,
                                                           task_functions_object=task_functions_object,
                                                           active_one_time_tasks={},
-                                                          completed_one_time_tasks={})
+                                                          completed_one_time_tasks={},
+                                                          inactive_one_time_tasks={})
 
         return one_time_tasks_object, data_input_operations_object
 

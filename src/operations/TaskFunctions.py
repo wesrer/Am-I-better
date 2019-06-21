@@ -1,4 +1,5 @@
 import datetime
+import sys
 from src.operations import DictionaryOperations
 
 from typing import List, Dict
@@ -87,35 +88,35 @@ class TaskFunctions:
         pass
 
     # TODO: this is a really inefficient way of doing this. Needs refactoring to more efficiently handle lists
-    def mark_tasks_as_completed(self,
-                                active_dictionary: StringDict,
-                                completed_dictionary: StringDict,
-                                task_type: str,
-                                completed_task_type: str,
-                                parent_id: int = -1,
-                                has_children: bool = False,
-                                id_to_mark_as_completed: int = -1,
-                                list_of_ids_to_mark_as_completed: List[int] = [],) -> [StringDict, StringDict]:
+    def mark_tasks(self,
+                   active_dictionary: StringDict,
+                   completed_dictionary: StringDict,
+                   task_type: str,
+                   completed_task_type: str,
+                   parent_id: int = -1,
+                   has_children: bool = False,
+                   id_to_mark: int = -1,
+                   list_of_ids_to_mark: List[int] = [], ) -> [StringDict, StringDict]:
 
-        if len(list_of_ids_to_mark_as_completed) == 0:
-            return self.mark_one_task_as_completed(id_to_mark_as_completed=id_to_mark_as_completed,
-                                                   active_dictionary=active_dictionary,
-                                                   completed_dictionary=completed_dictionary,
-                                                   task_type=task_type,
-                                                   completed_task_type=completed_task_type,
-                                                   parent_id=parent_id,
-                                                   has_children=has_children)
+        if len(list_of_ids_to_mark) == 0:
+            return self.mark_one_task(id_to_mark=id_to_mark,
+                                      active_dictionary=active_dictionary,
+                                      completed_dictionary=completed_dictionary,
+                                      task_type=task_type,
+                                      completed_task_type=completed_task_type,
+                                      parent_id=parent_id,
+                                      has_children=has_children)
 
         else:
-            for x in list_of_ids_to_mark_as_completed:
+            for x in list_of_ids_to_mark:
                 active_dictionary, completed_dictionary = \
-                    self.mark_one_task_as_completed(id_to_mark_as_completed=x,
-                                                    active_dictionary=active_dictionary,
-                                                    completed_dictionary=completed_dictionary,
-                                                    task_type=task_type,
-                                                    completed_task_type=completed_task_type,
-                                                    parent_id=parent_id,
-                                                    has_children=has_children)
+                    self.mark_one_task(id_to_mark=x,
+                                       active_dictionary=active_dictionary,
+                                       completed_dictionary=completed_dictionary,
+                                       task_type=task_type,
+                                       completed_task_type=completed_task_type,
+                                       parent_id=parent_id,
+                                       has_children=has_children)
 
             return active_dictionary, completed_dictionary
 
@@ -125,32 +126,35 @@ class TaskFunctions:
     # FIXME: implement parent-child relationships, because they are clearly
     #        not working
     # TODO: allow multiple tasks to be marked as completed in one function call
-    def mark_one_task_as_completed(self,
-                                   active_dictionary: StringDict,
-                                   completed_dictionary: StringDict,
-                                   task_type: str,
-                                   completed_task_type: str,
-                                   id_to_mark_as_completed: int = -1,
-                                   parent_id: int = -1,
-                                   has_children: bool = False) -> [StringDict, StringDict]:
+    def mark_one_task(self,
+                      active_dictionary: StringDict,
+                      completed_dictionary: StringDict,
+                      task_type: str,
+                      completed_task_type: str,
+                      id_to_mark: int = -1,
+                      parent_id: int = -1,
+                      has_children: bool = False) -> [StringDict, StringDict]:
 
-        id_to_mark_as_completed = str(id_to_mark_as_completed)
+        id_to_mark = str(id_to_mark)
 
-        if id_to_mark_as_completed not in active_dictionary:
-            raise KeyError
+        try:
+            if id_to_mark not in active_dictionary:
+                raise KeyError
 
-        unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=completed_task_type,
-                                                                        parent_id=parent_id,
-                                                                        has_children=has_children)
+            unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=completed_task_type,
+                                                                            parent_id=parent_id,
+                                                                            has_children=has_children)
 
-        completed_dictionary[str(unique_id)] = active_dictionary[id_to_mark_as_completed]
+            completed_dictionary[str(unique_id)] = active_dictionary[id_to_mark]
 
-        self.DataInputOperations.mark_id_as_available(task_type=task_type,
-                                                      parent_id=parent_id,
-                                                      has_children=has_children,
-                                                      id_to_mark_as_available=id_to_mark_as_completed)
+            self.DataInputOperations.mark_id_as_available(task_type=task_type,
+                                                          parent_id=parent_id,
+                                                          has_children=has_children,
+                                                          id_to_mark_as_available=id_to_mark)
 
-        del active_dictionary[id_to_mark_as_completed]
+            del active_dictionary[id_to_mark]
+        except KeyError as e:
+            sys.exit(f"{id_to_mark} for {task_type} does not exist")
 
         return active_dictionary, completed_dictionary
 

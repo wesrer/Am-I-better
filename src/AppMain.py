@@ -55,19 +55,25 @@ class App:
     def initialize_main_one_time_tasks_object(self):
         completed_one_time_tasks = self.DataInputOperations.get_tasks(task_status='completed',
                                                                       task_type='oneTimeTasks')
+
         active_one_time_tasks = self.DataInputOperations.get_tasks(task_status='active',
                                                                    task_type='oneTimeTasks')
+
+        inactive_one_time_tasks = self.DataInputOperations.get_tasks(task_status='inactive',
+                                                                     task_type='oneTimeTasks')
 
         return OneTimeTasks(data_input_operations_object=self.DataInputOperations,
                             data_output_operations_object=self.DataOutputOperations,
                             task_functions_object=self.TaskFunctions,
                             active_one_time_tasks=active_one_time_tasks,
-                            completed_one_time_tasks=completed_one_time_tasks)
+                            completed_one_time_tasks=completed_one_time_tasks,
+                            inactive_one_time_tasks=inactive_one_time_tasks)
 
     def on_close_operations(self):
         # TODO: have to do this for all the kinds of operations
         self.MainOneTimeTasks.save_active_one_time_tasks()
         self.MainOneTimeTasks.save_completed_one_time_tasks()
+        self.MainOneTimeTasks.save_inactive_one_time_tasks()
 
         self.Habits.save_active_habits()
         self.Habits.save_inactive_habits()

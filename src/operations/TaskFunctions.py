@@ -213,19 +213,21 @@ class TaskFunctions:
                      task_type: str,
                      parent_id: int = -1,
                      has_children: bool = False) -> StringDict:
+        try:
+            for id_to_delete in list_of_ids_to_delete:
+                id_to_delete = str(id_to_delete)
 
-        for id_to_delete in list_of_ids_to_delete:
-            id_to_delete = str(id_to_delete)
+                if id_to_delete not in active_dictionary:
+                    raise KeyError
 
-            if id_to_delete not in active_dictionary:
-                raise KeyError(f"{id_to_delete} not found")
+                del active_dictionary[id_to_delete]
 
-            del active_dictionary[id_to_delete]
-
-            self.DataInputOperations.mark_id_as_available(task_type=task_type,
-                                                          id_to_mark_as_available=id_to_delete,
-                                                          has_children=has_children,
-                                                          parent_id=parent_id)
+                self.DataInputOperations.mark_id_as_available(task_type=task_type,
+                                                              id_to_mark_as_available=id_to_delete,
+                                                              has_children=has_children,
+                                                              parent_id=parent_id)
+        except KeyError as e:
+            sys.exit(f"No {task_type} correspond to id {id_to_delete}")
 
         return active_dictionary
 

@@ -23,9 +23,7 @@
         "next": "1"
     },
     "inactiveOneTimeTasks": {
-        "available": [
-            "2"
-        ],
+        "available": [],
         "next": "4"
     },
     "longTermProjects": {
@@ -35,6 +33,7 @@
     "longTermProjectsSubTasks": {},
     "oneTimeTasks": {
         "available": [
+            "2",
             "4",
             "10",
             "11",

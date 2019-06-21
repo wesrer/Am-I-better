@@ -23,27 +23,27 @@ class Actions:
 
     def delete(self, task_id: str, args, task_object, task_type) -> None:
 
-        if not (task_id == "completed" or task_id == "inactive"):
-            ids_to_mark = self.UserInputParser.generate_list_of_ids(args=args)
-            task_object.delete_active(list_of_ids_to_delete=ids_to_mark)
-        else:
-            if args[1] == "all":
-                if task_type == "task":
-                    task_object.clear_all_completed_tasks()
-                elif task_type == "habit":
-                    task_object.clear_all_inactive_tasks()
+        try:
+            if not (task_id == "completed" or task_id == "inactive"):
+                ids_to_mark = self.UserInputParser.generate_list_of_ids(args=args)
+                task_object.delete_active(list_of_ids_to_delete=ids_to_mark)
             else:
-                ids_to_delete = self.UserInputParser.generate_list_of_ids(args[1:])
-                if task_id == "completed":
+                if args[1] == "all":
                     if task_type == "task":
-                        task_object.delete_completed(list_of_ids_to_delete=ids_to_delete)
+                        task_object.clear_all_completed_tasks()
                     elif task_type == "habit":
+                        task_object.clear_all_inactive_tasks()
+                else:
+                    ids_to_delete = self.UserInputParser.generate_list_of_ids(args[1:])
+
+                    if task_id == "completed":
                         task_object.delete_completed(list_of_ids_to_delete=ids_to_delete)
-                elif task_id == "inactive":
-                    if task_type == "habit":
+                    elif task_id == "inactive":
                         task_object.delete_inactive(list_of_ids_to_delete=ids_to_delete)
                     else:
-                        raise ValueError(f"The {task_id} action is not available on {task_type}")
+                        raise ValueError
+        except ValueError as e:
+            sys.exit(f"The {task_id} action is not available on {task_type}")
 
     def update(self, args, task_object) -> None:
         # TODO: implement updating priorities / weight / dates

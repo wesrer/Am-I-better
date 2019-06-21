@@ -55,7 +55,7 @@ def perform_actions(task_type,
             print(UserInputParser.generate_task_string(args=args))
             return
 
-        if action_type == "add":
+        if "add" in action_type:
             task_string = UserInputParser.generate_task_string(args=args)
             obj.add(task_string=task_string)
 
@@ -83,10 +83,10 @@ def perform_actions(task_type,
                            task_type=task_type)
 
         elif "mark" in action_type:
-           Actions.mark(task_type=task_type,
-                        action_type=action_type,
-                        args=args,
-                        task_object=obj,)
+            Actions.mark(task_type=task_type,
+                         action_type=action_type,
+                         args=args,
+                         task_object=obj)
 
         # TODO: implement unmarking inactive habits
         elif action_type == "unmark":

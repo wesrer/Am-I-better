@@ -1,7 +1,6 @@
 {
     "completedHabits": {
         "available": [
-            "0",
             "8",
             "9"
         ],
@@ -14,6 +13,7 @@
     },
     "habits": {
         "available": [
+            "5",
             "7"
         ],
         "next": "6"

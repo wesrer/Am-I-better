@@ -12,6 +12,10 @@
         "available": [],
         "next": "0"
     },
+    "inactiveOneTimeTasks":  {
+        "available": [],
+        "next": "0"
+    },
     "longTermProjects": {
         "available": [],
         "next": "0"

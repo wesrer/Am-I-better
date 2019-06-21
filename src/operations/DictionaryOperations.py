@@ -80,6 +80,7 @@ class DictionaryOperations:
         doesnt_affect_equality = ["assignedOn", "completeBy", "scheduledStart"]
 
         if not len(dict1) == len(dict2):
+            print("length unequal")
             return False
 
         for key, value in dict1.items():

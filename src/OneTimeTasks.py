@@ -33,23 +33,32 @@ class OneTimeTasks:
             task_string: str,
             priority: int = 0,
             weight: int = 3,
-            complete_by: str = "defaultValue") -> None:
+            complete_by: str = "defaultValue",
+            queue: str = "active") -> None:
+
+        if queue == "active":
+            id_string = "oneTimeTasks"
+            dedicated_dict = self.active_one_time_tasks
+
+            if complete_by == "defaultValue":
+                complete_by = self.default_time_values
+            else:
+                complete_by = self.taskFunctions.convert_time_string_to_dictionary(complete_by)
+
+        elif queue == "inactive":
+            id_string = "inactiveOneTimeTasks"
+            complete_by = "N/A"
+            dedicated_dict = self.inactive_one_time_tasks
 
         unique_id = self.DataInputOperations.get_new_unique_id_for_task('oneTimeTasks')
         unique_id = str(unique_id)  # for easier JSON conversion
+        dedicated_dict[unique_id] = self.taskFunctions.add_tasks(task_string=task_string,
+                                                                 task_type=id_string,
+                                                                 priority=priority,
+                                                                 weight=weight,
+                                                                 complete_by=complete_by)
 
-        if complete_by == "defaultValue":
-            complete_by = self.default_time_values
-        else:
-            complete_by = self.taskFunctions.convert_time_string_to_dictionary(complete_by)
-
-        self.active_one_time_tasks[unique_id] = self.taskFunctions.add_tasks(task_string=task_string,
-                                                                             task_type="oneTimeTasks",
-                                                                             priority=priority,
-                                                                             weight=weight,
-                                                                             complete_by=complete_by)
-
-        print(f"Successfully added task {unique_id}")
+        print(f"Successfully added task {unique_id} to {queue} tasks.")
 
     def update(self,
                id_to_update: int,

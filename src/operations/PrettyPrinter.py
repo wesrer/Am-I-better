@@ -19,10 +19,17 @@ class PrettyPrinter:
 
     @staticmethod
     def pprint(task_dict: Dict[str, str],
-               task_type: str):
+               task_type: str,
+               queue: str = "active",
+               default_behavior_exit: bool = True):
 
         if len(task_dict) == 0:
-            sys.exit("No items to display.")
+            if default_behavior_exit:
+                sys.exit("No items to display.")
+            else:
+                print("No items to display.")
+                return
+
 
         # loading the dictionary as a DataFrame
         task_dataframe = pd.DataFrame(task_dict)
@@ -32,19 +39,28 @@ class PrettyPrinter:
         task_dataframe = task_dataframe.T
         task_dataframe['id'] = task_dataframe.index
 
-        date_headers = ['assignedOn', 'scheduledStart']
+        date_headers = []
+        columns_to_print = task_dataframe
+        sort_by = []
 
         if task_type == "task":
-            date_headers.append('completeBy')
-            colums_to_print = task_dataframe[['taskString', 'completeBy','priority', 'weight']]
-            sort_by = ['completeBy', 'priority', 'weight']
+            if queue == "active":
+                date_headers = ['assignedOn', 'scheduledStart', 'completeBy']
+                columns_to_print = task_dataframe[['taskString', 'completeBy','priority', 'weight']]
+                sort_by = ['completeBy', 'priority', 'weight']
+            elif queue == "inactive":
+                date_headers = ['assignedOn', 'scheduledStart']
+                columns_to_print = task_dataframe[['taskString', 'scheduledStart', 'priority', 'weight']]
+                sort_by = ['priority', 'weight', 'scheduledStart']
+
         elif task_type == "habit":
-            colums_to_print = task_dataframe[['taskString', 'priority', 'weight', 'refreshRate']]
+            date_headers = ['assignedOn', 'scheduledStart']
+            columns_to_print = task_dataframe[['taskString', 'priority', 'weight', 'refreshRate']]
             sort_by = ['priority', 'weight']
 
         for x in date_headers:
             task_dataframe[x] = pd.to_datetime(task_dataframe[x])
 
         # FIXME: longTermTasks not implemented
-        print(colums_to_print.sort_values(sort_by))
+        print(columns_to_print.sort_values(sort_by))
 

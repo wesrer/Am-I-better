@@ -22,5 +22,13 @@
         "scheduledStart": "Fri Jun 21 19:48:48 2019",
         "taskString": "get your mobile screen protector replaced",
         "weight": "3"
+    },
+    "4": {
+        "assignedOn": "Fri Jun  7 17:19:17 2019",
+        "completeBy": "Sat Jun  8 17:19:17 2019",
+        "priority": "0",
+        "scheduledStart": "Fri Jun  7 17:19:17 2019",
+        "taskString": "clean up debugging prints",
+        "weight": "3"
     }
 }

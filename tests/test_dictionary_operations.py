@@ -32,6 +32,15 @@ class TestDictionaryOperations:
 
         assert dictionary_operations.check_task_dictionary_equality(dict1, dict2)
 
+    def test_task_equality_when_assigned_on_and_scheduled_start_is_unmatched(self):
+        dict1 = deepcopy(template_dict)
+        dict2 = deepcopy(template_dict)
+
+        dict1["scheduledStart"] = "unMatchedAndWrecked"
+        dict1["assignedOn"] = "thisIsAlsoUnmatched"
+        dict2["scheduledStart"] = "thisWillNotMatch"
+        dict2["assignedOn"] = "flySoloFam"
+
     def test_task_equality_unmatched_values_negative_case(self):
         dict1 = deepcopy(template_dict)
         dict2 = deepcopy(template_dict)

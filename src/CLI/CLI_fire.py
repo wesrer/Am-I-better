@@ -33,48 +33,57 @@ def parse_cli(task_type,
 def perform_actions(task_type,
                     action_type,
                     args,
-                    weight=3):
+                    weight=3,
+                    default_behavior_exit: bool = True):
 
     try:
         if task_type not in ["all", "test", "pandas"]:
             obj = parse_task(task_type=task_type)
 
-        elif task_type == "pandas":
-            app.get_pandas().print_active()
-            return
-
-        elif action_type in ["list", "view", "active"]:
+        elif action_type in ["list", "view", "active", "list:active", "view:active"]:
             PrettyPrinter.print_header("habits")
-            perform_actions(task_type="habit", action_type="list", args=[])
+            perform_actions(task_type="habit", action_type="list", args=[], default_behavior_exit=False)
 
             PrettyPrinter.print_header("tasks")
-            perform_actions(task_type="task", action_type="list", args=[])
+            perform_actions(task_type="task", action_type="list", args=[], default_behavior_exit=False)
             return
 
-        elif task_type == "test":
-            print(UserInputParser.generate_task_string(args=args))
+        elif action_type in ["inactive", "list:inactive", "view:inactive"]:
+            PrettyPrinter.print_header("habits")
+            perform_actions(task_type="habit", action_type="inactive", args=[], default_behavior_exit=False)
+
+            PrettyPrinter.print_header("tasks")
+            perform_actions(task_type="task", action_type="inactive", args=[], default_behavior_exit=False)
             return
 
         if "add" in action_type:
-            task_string = UserInputParser.generate_task_string(args=args)
-            obj.add(task_string=task_string)
+            Actions.add(args=args,
+                        task_object=obj)
 
         elif action_type in ['update', 'edit']:
             Actions.update(args=args,
                            task_object=obj)
 
         elif action_type in ["active", "list", "view"]:
-            PrettyPrinter.pprint(task_dict=obj.get_active(), task_type=task_type)
+            PrettyPrinter.pprint(task_dict=obj.get_active(),
+                                 task_type=task_type,
+                                 default_behavior_exit=default_behavior_exit)
 
         elif action_type == "completed":
             if len(args) == 0:
-                PrettyPrinter.pprint(task_dict=obj.get_completed(), task_type=task_type)
+                PrettyPrinter.pprint(task_dict=obj.get_completed(),
+                                     task_type=task_type,
+                                     default_behavior_exit=default_behavior_exit)
 
         elif action_type == "inactive":
             if len(args) == 0:
-                PrettyPrinter.pprint(task_dict=obj.get_inactive(), task_type=task_type)
+                PrettyPrinter.pprint(task_dict=obj.get_inactive(),
+                                     task_type=task_type,
+                                     default_behavior_exit=default_behavior_exit)
 
         elif action_type == "delete" or action_type == "del":
+            # TODO: implement flexible positioning of the id and the queue identifier
+            #       Right now task_id = args[0], and ids = everything else
             task_id = args[0]
 
             Actions.delete(task_id=task_id,
@@ -98,6 +107,8 @@ def perform_actions(task_type,
             raise ValueError
     except ValueError:
         sys.exit(f"{action_type} is not a valid action on {task_type}")
+    except NotImplementedError:
+        sys.exit(f"Viewing all inactive")
 
 
 def parse_task(task_type: str):

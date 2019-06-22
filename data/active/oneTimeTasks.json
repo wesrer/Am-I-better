@@ -1,12 +1,4 @@
 {
-    "0": {
-        "assignedOn": "Tue Jun  4 20:58:38 2019",
-        "completeBy": "Wed Jun  5 20:58:38 2019",
-        "priority": "0",
-        "scheduledStart": "Tue Jun  4 20:58:38 2019",
-        "taskString": "finish adding multiple links in jquery-submenu",
-        "weight": "3"
-    },
     "1": {
         "assignedOn": "Fri Jun 14 22:43:28 2019",
         "completeBy": "Sat Jun 15 22:43:28 2019",
@@ -56,11 +48,11 @@
         "weight": "3"
     },
     "2": {
-        "assignedOn": "Thu Jun 20 19:47:12 2019",
-        "completeBy": "Fri Jun 21 19:47:12 2019",
+        "assignedOn": "Sat Jun 22 14:29:03 2019",
+        "completeBy": "Sun Jun 23 14:29:03 2019",
         "priority": "0",
-        "scheduledStart": "Thu Jun 20 19:47:12 2019",
-        "taskString": "delete taskwarrior from the 123stores laptop",
+        "scheduledStart": "Sat Jun 22 14:29:03 2019",
+        "taskString": "send your picture and blood test id number to KPG law",
         "weight": "3"
     },
     "20": {
@@ -77,6 +69,14 @@
         "priority": "0",
         "scheduledStart": "Wed Jun 19 19:39:48 2019",
         "taskString": "delete everything personal from the 123stores laptop",
+        "weight": "3"
+    },
+    "4": {
+        "assignedOn": "Sat Jun 22 14:30:59 2019",
+        "completeBy": "Sun Jun 23 14:30:59 2019",
+        "priority": "0",
+        "scheduledStart": "Sat Jun 22 14:30:59 2019",
+        "taskString": "send an email to KPG law asking them about processing status",
         "weight": "3"
     },
     "5": {
@@ -109,14 +109,6 @@
         "priority": "0",
         "scheduledStart": "Wed Jun  5 18:46:03 2019",
         "taskString": "send your CV to LINE",
-        "weight": "3"
-    },
-    "9": {
-        "assignedOn": "Fri Jun  7 17:19:17 2019",
-        "completeBy": "Sat Jun  8 17:19:17 2019",
-        "priority": "0",
-        "scheduledStart": "Fri Jun  7 17:19:17 2019",
-        "taskString": "clean up debugging prints",
         "weight": "3"
     }
 }

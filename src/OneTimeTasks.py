@@ -128,38 +128,68 @@ class OneTimeTasks:
                                           task_type="oneTimeTasks",
                                           completed_task_type="inactiveOneTimeTasks")
 
+    def unmark(self,
+               list_of_ids_to_unmark: List[int],
+               unmark_from_queue: str,
+               unmark_to_queue: str = "active"):
+        try:
+            if unmark_from_queue in ["active"]:
+                raise KeyError
+            unmark_from_queue = self.get_queue(queue=unmark_from_queue)
+            unmark_to_queue = self.get_queue(queue=unmark_to_queue)
+
+            # FIXME: this can be simplified if we maintained a consistent naming scheme
+            #        so for instance, "activeOneTimeTasks" instead of "oneTimeTasks"
+            #        REFACTOR THIS LATER.
+            unmark_to_task_type = ""
+            if unmark_to_queue in ["active"]:
+                unmark_to_task_type = "oneTimeTasks"
+            else:
+                unmark_to_task_type = f"{unmark_to_queue}OneTimeTasks"
+
+
+            unmark_to_queue, unmark_from_queue = self.taskFunctions.unmark(list_of_ids_to_unmark=list_of_ids_to_unmark,
+                                                                           unmark_to=unmark_to_queue,
+                                                                           unmark_from=unmark_from_queue,
+                                                                           task_type=unmark_to_task_type,
+                                                                           completed_task_type=un)
+
+        except KeyError as e:
+            sys.exit("Cannot unmark from active queue.")
+
     def unmark_completed(self, list_of_ids_to_unmark: List[int]) -> None:
 
         self.active_tasks, self.completed_tasks = \
-            self.taskFunctions.unmark_completed_tasks(list_of_ids_to_unmark=list_of_ids_to_unmark,
-                                                      active_dictionary=self.active_tasks,
-                                                      completed_dictionary=self.completed_tasks,
-                                                      task_type="oneTimeTasks",
-                                                      completed_task_type="completedOneTimeTasks")
+            self.taskFunctions.unmark(list_of_ids_to_unmark=list_of_ids_to_unmark,
+                                      unmark_to=self.active_tasks,
+                                      unmark_from=self.completed_tasks,
+                                      task_type="oneTimeTasks",
+                                      completed_task_type="completedOneTimeTasks")
 
     def delete_from_queue(self,
                           queue: str,
                           list_of_ids_to_delete: List[int]) -> None:
-        if queue == "active":
-            self.active_tasks = self.taskFunctions.delete_tasks(
-                list_of_ids_to_delete=list_of_ids_to_delete,
-                active_dictionary=self.active_tasks,
-                task_type='oneTimeTasks')
+        try:
+            if queue == "active":
+                queue_dict = self.active_tasks
 
-        elif queue == "inactive":
-            self.inactive_tasks = self.taskFunctions.delete_tasks(
-                list_of_ids_to_delete=list_of_ids_to_delete,
-                active_dictionary=self.inactive_tasks,
-                task_type='oneTimeTasks')
+            elif queue == "inactive":
+                queue_dict = self.inactive_tasks
 
-        elif queue == "completed":
-            self.completed_tasks = self.taskFunctions.delete_tasks(
-                list_of_ids_to_delete=list_of_ids_to_delete,
-                active_dictionary=self.completed_tasks,
-                task_type='oneTimeTasks')
+            elif queue == "completed":
+                queue_dict = self.completed_tasks
+            else:
+                raise ValueError
 
-        id_string = ', '.join([str(x) for x in list_of_ids_to_delete])
-        print(f"Successfully deleted {queue} tasks {id_string}")
+            queue_dict = self.taskFunctions.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
+                                                         active_dictionary=queue_dict,
+                                                         task_type='oneTimeTasks')
+
+            id_string = ', '.join([str(x) for x in list_of_ids_to_delete])
+            print(f"Successfully deleted {queue} tasks {id_string}")
+
+        except ValueError as e:
+            sys.exit(f"{queue} is not a valid task queue")
 
     def delete_active(self, list_of_ids_to_delete: List[int]) -> None:
 
@@ -232,8 +262,17 @@ class OneTimeTasks:
         pass
         # return sorted_by_priority
 
+    @staticmethod
+    def get_task_type(queue: str):
+        if queue in ["active"]:
+            return "oneTimeTasks"
+        elif queue in ["inactive", "completed"]:
+            return f"{queue}OneTimeTasks"
+        else:
+            sys.exit(f"{queue} is not a recognized queue for tasks")
+
     def get_queue(self,
-                  queue:str):
+                  queue: str):
         queue = queue.lower()
         if queue in ["active"]:
             return self.active_tasks

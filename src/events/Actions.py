@@ -27,24 +27,22 @@ class Actions:
         task_string = self.UserInputParser.generate_task_string(args=args)
         task_object.add(task_string=task_string)
 
+    # FIXME:
     def delete(self,
                task_id: str,
                args,
+               queue: str,
                task_object,
                task_type) -> None:
         try:
-            if task_id not in ["completed", "inactive", "active"]:
-                raise ValueError
-
-            if args[1] == "all":
-                task_object.clear_all_tasks_from_queue(queue=task_id)
-
-            ids_to_delete = self.UserInputParser.generate_list_of_ids(args=args)
-            task_object.delete_from_queue(queue=task_id,
-                                          list_of_ids_to_delete=ids_to_delete)
+            if not (task_id == "completed" or task_id == "inactive"):
+                ids_to_delete = self.UserInputParser.generate_list_of_ids(args=args)
+                task_object.delete_from_queue(queue=queue,
+                                              list_of_ids_to_delete=ids_to_delete)
+            else:
                 if args[1] == "all":
                     if task_type == "task":
-                        task_object.
+                        task_object.clear_all_completed_tasks()
                     elif task_type == "habit":
                         task_object.clear_all_inactive_tasks()
                 else:

@@ -77,23 +77,24 @@ class Habits:
         except ValueError as e:
             sys.exit(f"{option_to_update} is not a recognized property and cannot be updated")
 
-    def delete_active(self,
-                      list_of_ids_to_delete: List[int]) -> None:
-        self.activeHabits = self.TaskFunctions.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
-                                                            active_dictionary=self.activeHabits,
-                                                            task_type="habits")
+    def delete_from_queue(self,
+                          queue: str,
+                          list_of_ids_to_delete: List[int]) -> None:
+        try:
+            if queue in ["active"]:
+                queue_dict = self.activeHabits
+            elif queue in ["inactive"]:
+                queue_dict = self.inactiveHabits
+            elif queue in ["completed"]:
+                queue_dict = self.completedHabits
+            else:
+                raise ValueError
 
-    def delete_completed(self,
-                         list_of_ids_to_delete: List[int]) -> None:
-        self.completedHabits = self.TaskFunctions.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
-                                                               active_dictionary=self.completedHabits,
-                                                               task_type="habits")
-
-    def delete_inactive(self,
-                        list_of_ids_to_delete: int) -> None:
-        self.activeHabits = self.TaskFunctions.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
-                                                            active_dictionary=self.inactiveHabits,
-                                                            task_type="habits")
+            queue_dict = self.TaskFunctions.delete_tasks(list_of_ids_to_delete=list_of_ids_to_delete,
+                                                         active_dictionary=queue_dict,
+                                                         task_type="habits")
+        except ValueError as e:
+            sys.exit(f"{queue} is not a recognized Habit queue")
 
     def mark_as_completed(self,
                           list_of_ids_to_mark_as_completed: List[int]) -> None:
@@ -125,21 +126,34 @@ class Habits:
                 habits_to_unmark.append(key)
 
         if len(habits_to_unmark) != 0:
-            self.unmark_completed(list_of_ids_to_unmark=habits_to_unmark)
+            self.unmark(list_of_ids_to_unmark=habits_to_unmark,
+                        unmark_to_queue="active",
+                        unmark_from_queue="completed")
 
     def find_next_refresh_on(self) -> datetime:
         pass
 
     def unmark(self,
                list_of_ids_to_unmark: List[int],
-               dictionary_to_unmark_from) -> None:
+               unmark_from_queue: str,
+               unmark_to_queue: str = "active") -> None:
 
-        self.activeHabits, self.completedHabits = \
-            self.TaskFunctions.unmark_completed_tasks(list_of_ids_to_unmark=list_of_ids_to_unmark,
-                                                      active_dictionary=self.activeHabits,
-                                                      completed_dictionary=dictionary_to_unmark_from,
-                                                      task_type="habits",
-                                                      completed_task_type="completedHabits")
+        try:
+            if unmark_from_queue in ["active"]:
+                raise KeyError
+
+            unmark_from_queue = self.get_queue(queue=unmark_from_queue)
+            unmark_to_queue = self.get_queue(queue=unmark_to_queue)
+
+
+            unmark_to_queue, unmark_from_queue = \
+                self.TaskFunctions.unmark(list_of_ids_to_unmark=list_of_ids_to_unmark,
+                                          unmark_to=unmark_to_queue,
+                                          unmark_from=unmark_from_queue,
+                                          task_type="habits",
+                                          completed_task_type="completedHabits")
+        except KeyError as e:
+            sys.exit(f"Cannot unmark from active queue.")
 
     def unmark_inactive(self,
                         list_of_ids_to_unmark: List[int]) -> None:

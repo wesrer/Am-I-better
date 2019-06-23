@@ -81,7 +81,7 @@ def perform_actions(task_type,
                                      task_type=task_type,
                                      default_behavior_exit=default_behavior_exit)
             else:
-
+                pass # FIXME: implement this
 
         elif action_type == "delete" or action_type == "del":
             # TODO: implement flexible positioning of the id and the queue identifier

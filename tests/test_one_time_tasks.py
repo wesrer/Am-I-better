@@ -69,7 +69,7 @@ class TestOneTimeTasks:
         sample_one_time_task_object = self.sample_tasks_1(self.initialize_one_time_task_object()[0],
                                                           queue="active")
 
-        returned_output = sample_one_time_task_object.get_active()
+        returned_output = sample_one_time_task_object.get_queue(queue="active")
         expected_output = self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_addition.json')
 
         assert dictionary_operations.check_equality_of_dicts_with_nested_task_dicts(returned_output,
@@ -79,7 +79,7 @@ class TestOneTimeTasks:
         sample_one_time_task_object = self.sample_tasks_1(self.initialize_one_time_task_object()[0],
                                                           queue="inactive")
 
-        returned_output = sample_one_time_task_object.get_inactive()
+        returned_output = sample_one_time_task_object.get_queue(queue="inactive")
         expected_output = self.read_test_data(test_data_path / 'inactive' / 'oneTimeTasks_simple_addition.json')
         print(returned_output)
 
@@ -92,7 +92,7 @@ class TestOneTimeTasks:
         initialized_one_time_tasks_object.add("Fix This Shit Bug", priority=8, weight=3)
         initialized_one_time_tasks_object.add("Fix This Shit Bug", priority=8, weight=3)
 
-        returned_output = initialized_one_time_tasks_object.get_active()
+        returned_output = initialized_one_time_tasks_object.get_queue(queue="active")
         expected_output = self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_simple_duplicates.json')
 
         assert dictionary_operations.check_equality_of_dicts_with_nested_task_dicts(returned_output,
@@ -107,8 +107,8 @@ class TestOneTimeTasks:
                                         priority=4,
                                         weight=3)
 
-        returned_active_output = sample_one_time_task_object.get_active()
-        returned_completed_output = sample_one_time_task_object.get_completed()
+        returned_active_output = sample_one_time_task_object.get_queue(queue="active")
+        returned_completed_output = sample_one_time_task_object.get_queue(queue="completed")
 
         expected_active_output = self.read_test_data(
             test_data_path / 'active' / 'oneTimeTasks_simple_mark_as_complete.json')
@@ -131,8 +131,8 @@ class TestOneTimeTasks:
                                         priority=4,
                                         weight=3)
 
-        returned_active_output = sample_one_time_task_object.get_active()
-        returned_inactive_output = sample_one_time_task_object.get_inactive()
+        returned_active_output = sample_one_time_task_object.get_queue(queue="active")
+        returned_inactive_output = sample_one_time_task_object.get_queue(queue="inactive")
 
         expected_active_output = self.read_test_data(
             test_data_path / 'active' / 'oneTimeTasks_simple_mark_as_complete.json')
@@ -183,8 +183,8 @@ class TestOneTimeTasks:
 
         sample_one_time_task_object.mark_as_completed(list_of_ids_to_mark_as_completed=[0, 1])
 
-        returned_active_output = sample_one_time_task_object.get_active()
-        returned_completed_output = sample_one_time_task_object.get_completed()
+        returned_active_output = sample_one_time_task_object.get_queue(queue="active")
+        returned_completed_output = sample_one_time_task_object.get_queue(queue="completed")
 
         expected_active_output = self.read_test_data(
             test_data_path / 'active' / 'oneTimeTasks_marking_multiple_as_complete.json')
@@ -211,8 +211,8 @@ class TestOneTimeTasks:
 
         sample_one_time_task_object.mark_as_inactive(list_of_ids_to_mark_as_inactive=[0, 1])
 
-        returned_active_output = sample_one_time_task_object.get_active()
-        returned_completed_output = sample_one_time_task_object.get_inactive()
+        returned_active_output = sample_one_time_task_object.get_queue(queue="active")
+        returned_completed_output = sample_one_time_task_object.get_queue(queue="inactive")
 
         expected_active_output = self.read_test_data(
             test_data_path / 'active' / 'oneTimeTasks_marking_multiple_as_complete.json')
@@ -237,8 +237,8 @@ class TestOneTimeTasks:
 
         sample_one_time_task_object = self.sample_tasks_1(initialized_one_time_object)
 
-        sample_one_time_task_object.delete_active(list_of_ids_to_delete='1')
-        returned_active_output = sample_one_time_task_object.get_active()
+        sample_one_time_task_object.delete_from_queue(list_of_ids_to_delete=[1], queue="active")
+        returned_active_output = sample_one_time_task_object.get_queue(queue="active")
 
         expected_active_output = self.read_test_data(
             test_data_path / 'active' / 'oneTimeTasks_simple_deletion.json')
@@ -264,8 +264,8 @@ class TestOneTimeTasks:
         sample_one_time_task_object.mark_as_completed(list_of_ids_to_mark_as_completed=[1])
         sample_one_time_task_object.unmark_completed(list_of_ids_to_unmark=[0])
 
-        returned_active_output = sample_one_time_task_object.get_active()
-        returned_completed_output = sample_one_time_task_object.get_completed()
+        returned_active_output = sample_one_time_task_object.get_queue(queue="active")
+        returned_completed_output = sample_one_time_task_object.get_queue(queue="completed")
 
         expected_active_output = self.read_test_data(
             test_data_path / 'active' / 'oneTimeTasks_simple_addition.json')
@@ -289,8 +289,8 @@ class TestOneTimeTasks:
         # unmarking tasks out of order, so that their position is reversed in the active tasks dictionary
         sample_one_time_task_object.unmark_completed(list_of_ids_to_unmark=[1, 0])
 
-        returned_active_output = sample_one_time_task_object.get_active()
-        returned_completed_output = sample_one_time_task_object.get_completed()
+        returned_active_output = sample_one_time_task_object.get_queue(queue="active")
+        returned_completed_output = sample_one_time_task_object.get_queue(queue="completed")
 
         expected_active_output = \
             self.read_test_data(test_data_path / 'active' / 'oneTimeTasks_unmarking_out_of_order.json')
@@ -324,7 +324,8 @@ class TestOneTimeTasks:
         initialized_one_time_task_object = self.initialize_one_time_task_object()[0]
 
         with pytest.raises(SystemExit) as e:
-            initialized_one_time_task_object.delete_active([0])
+            initialized_one_time_task_object.delete_from_queue(list_of_ids_to_delete=[0],
+                                                               queue="active")
 
         # checks the error message
         assert e.type == SystemExit
@@ -336,10 +337,10 @@ class TestOneTimeTasks:
 
         sample_one_time_task_object.mark_as_completed(list_of_ids_to_mark_as_completed=[0, 1])
 
-        sample_one_time_task_object.delete_all_completed_tasks()
+        sample_one_time_task_object.clear_all_tasks_from_queue(queue="completed")
 
         assert initialized_data_input_operations_object.get_new_unique_id_for_task("completedOneTimeTasks") == 0
-        assert len(sample_one_time_task_object.get_completed()) == 0
+        assert len(sample_one_time_task_object.get_queue(queue="completed")) == 0
 
     # TODO: implement deleting completed tasks
     # TODO: implement requesting more than one unqiue ids

@@ -71,13 +71,9 @@ class App:
 
     def on_close_operations(self):
         # TODO: have to do this for all the kinds of operations
-        self.MainOneTimeTasks.save_active_one_time_tasks()
-        self.MainOneTimeTasks.save_completed_one_time_tasks()
-        self.MainOneTimeTasks.save_inactive_one_time_tasks()
+        self.MainOneTimeTasks.save_task_queues()
 
-        self.Habits.save_active_habits()
-        self.Habits.save_inactive_habits()
-        self.Habits.save_completed_habits()
+        self.Habits.save_habit_queues()
 
         self.DataInputOperations.write_unique_ids()
 

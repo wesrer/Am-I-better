@@ -9,5 +9,5 @@ class PandasTest:
 
     def print_active(self):
         pd.set_option('display.expand_frame_repr', False)
-        print(pd.DataFrame(self.oneTimeTasks.get_active()).T)
+        print(pd.DataFrame(self.oneTimeTasks.get_queue(queue="active")).T)
 

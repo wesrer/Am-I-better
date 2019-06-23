@@ -151,29 +151,31 @@ class Habits:
         self.unmark(list_of_ids_to_unmark=list_of_ids_to_unmark,
                     dictionary_to_unmark_from=self.completedHabits)
 
-
-    def save_active_habits(self) -> None:
+    def save_habit_queues(self) -> None:
         self.DataOutputOperations.save_as_file(task_status='active',
                                                task_type='habits',
                                                dictionary_to_save=self.activeHabits)
 
-    def save_inactive_habits(self) -> None:
         self.DataOutputOperations.save_as_file(task_status='inactive',
                                                task_type='habits',
                                                dictionary_to_save=self.inactiveHabits)
 
-    def save_completed_habits(self) -> None:
         self.DataOutputOperations.save_as_file(task_status='completed',
                                                task_type='habits',
                                                dictionary_to_save=self.completedHabits)
 
     # GET operations
 
-    def get_active(self) -> StringDict:
-        return self.activeHabits
-
-    def get_completed(self) -> StringDict:
-        return self.completedHabits
-
-    def get_inactive(self) -> StringDict:
-        return self.inactiveHabits
+    def get_queue(self,
+                  queue:str):
+        try:
+            if queue in ["active"]:
+                return self.activeHabits
+            elif queue in ["inactive"]:
+                return self.inactiveHabits
+            elif queue in ["completed"]:
+                return self.completedHabits
+            else:
+                raise ValueError
+        except ValueError as e:
+            sys.exit(f"{queue} is not a recognized queue type for habits")

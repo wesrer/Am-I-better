@@ -21,20 +21,30 @@ class Actions:
             self.list_tasks_by_category(task_type="task")
             return
 
-
-    def add(self, args, task_object) -> None:
+    def add(self,
+            args,
+            task_object) -> None:
         task_string = self.UserInputParser.generate_task_string(args=args)
         task_object.add(task_string=task_string)
 
-    def delete(self, task_id: str, args, task_object, task_type) -> None:
+    def delete(self,
+               task_id: str,
+               args,
+               task_object,
+               task_type) -> None:
         try:
-            if not (task_id == "completed" or task_id == "inactive"):
-                ids_to_mark = self.UserInputParser.generate_list_of_ids(args=args)
-                task_object.delete_active(list_of_ids_to_delete=ids_to_mark)
-            else:
+            if task_id not in ["completed", "inactive", "active"]:
+                raise ValueError
+
+            if args[1] == "all":
+                task_object.clear_all_tasks_from_queue(queue=task_id)
+
+            ids_to_delete = self.UserInputParser.generate_list_of_ids(args=args)
+            task_object.delete_from_queue(queue=task_id,
+                                          list_of_ids_to_delete=ids_to_delete)
                 if args[1] == "all":
                     if task_type == "task":
-                        task_object.clear_all_completed_tasks()
+                        task_object.
                     elif task_type == "habit":
                         task_object.clear_all_inactive_tasks()
                 else:

@@ -65,22 +65,24 @@ def perform_actions(task_type,
                            task_object=obj)
 
         elif action_type in ["active", "list", "view"]:
-            PrettyPrinter.pprint(task_dict=obj.get_active(),
+            PrettyPrinter.pprint(task_dict=obj.get_queue(queue="active"),
                                  task_type=task_type,
                                  default_behavior_exit=default_behavior_exit)
 
         elif action_type == "completed":
             if len(args) == 0:
-                PrettyPrinter.pprint(task_dict=obj.get_completed(),
+                PrettyPrinter.pprint(task_dict=obj.get_queue(queue="completed"),
                                      task_type=task_type,
                                      default_behavior_exit=default_behavior_exit)
 
         elif action_type == "inactive":
             if len(args) == 0:
-                PrettyPrinter.pprint(task_dict=obj.get_inactive(),
+                PrettyPrinter.pprint(task_dict=obj.get_queue(queue="active"),
                                      task_type=task_type,
                                      queue="inactive",
                                      default_behavior_exit=default_behavior_exit)
+            else:
+                pass # FIXME: implement this
 
         elif action_type == "delete" or action_type == "del":
             # TODO: implement flexible positioning of the id and the queue identifier

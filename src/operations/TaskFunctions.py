@@ -160,21 +160,21 @@ class TaskFunctions:
 
     # TODO: implement parent_id and has_children functionalities
     # TODO: allow multiple ids to be unmarked in one call
-    def unmark_completed_tasks(self,
-                               list_of_ids_to_unmark: List[int],
-                               active_dictionary: StringDict,
-                               completed_dictionary: StringDict,
-                               task_type: str,
-                               completed_task_type: str,
-                               parent_id: int = -1,
-                               has_children: bool = False):
+    def unmark(self,
+               list_of_ids_to_unmark: List[int],
+               unmark_to: StringDict,
+               unmark_from: StringDict,
+               task_type: str,
+               completed_task_type: str,
+               parent_id: int = -1,
+               has_children: bool = False):
 
         try:
             for id_to_unmark in list_of_ids_to_unmark:
 
                 id_to_unmark = str(id_to_unmark)
 
-                if id_to_unmark not in completed_dictionary:
+                if id_to_unmark not in unmark_from:
                     raise KeyError
 
                 unique_id = self.DataInputOperations.get_new_unique_id_for_task(task_type=task_type,
@@ -182,18 +182,18 @@ class TaskFunctions:
                                                                                 has_children=has_children)
 
                 # pushing the string to the active_dictionary under a next available id
-                active_dictionary[str(unique_id)] = completed_dictionary[id_to_unmark]
+                unmark_to[str(unique_id)] = unmark_from[id_to_unmark]
 
                 self.DataInputOperations.mark_id_as_available(task_type=completed_task_type,
                                                               parent_id=parent_id,
                                                               has_children=has_children,
                                                               id_to_mark_as_available=id_to_unmark)
 
-                del completed_dictionary[id_to_unmark]
+                del unmark_from[id_to_unmark]
         except KeyError as e:
             sys.exit(f"Cannot unmark {id_to_unmark}. No corresponding values found.")
 
-        return active_dictionary, completed_dictionary
+        return unmark_to, unmark_from
 
     def unmark_all_completed_habits(self,
                                     active_dictionary: StringDict,

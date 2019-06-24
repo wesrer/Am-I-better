@@ -79,6 +79,7 @@ def perform_actions(task_type,
             if len(args) == 0:
                 PrettyPrinter.pprint(task_dict=obj.get_inactive(),
                                      task_type=task_type,
+                                     queue="inactive",
                                      default_behavior_exit=default_behavior_exit)
 
         elif action_type == "delete" or action_type == "del":

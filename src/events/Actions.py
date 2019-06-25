@@ -29,33 +29,26 @@ class Actions:
 
     # FIXME:
     def delete(self,
-               task_id: str,
-               args,
                queue: str,
+               args,
                task_object,
                task_type) -> None:
         try:
-            if not (task_id == "completed" or task_id == "inactive"):
-                ids_to_delete = self.UserInputParser.generate_list_of_ids(args=args)
-                task_object.delete_from_queue(queue=queue,
-                                              list_of_ids_to_delete=ids_to_delete)
-            else:
+            if queue == "completed" or queue == "inactive":
                 if args[1] == "all":
-                    if task_type == "task":
-                        task_object.clear_all_completed_tasks()
-                    elif task_type == "habit":
-                        task_object.clear_all_inactive_tasks()
+                    task_object.clear_all_tasks_from_queue(queue=queue)
                 else:
                     ids_to_delete = self.UserInputParser.generate_list_of_ids(args[1:])
 
-                    if task_id == "completed":
-                        task_object.delete_completed(list_of_ids_to_delete=ids_to_delete)
-                    elif task_id == "inactive":
-                        task_object.delete_inactive(list_of_ids_to_delete=ids_to_delete)
-                    else:
-                        raise ValueError
+                    task_object.delete_from_queue(list_of_ids_to_delete=ids_to_delete,
+                                                  queue=queue)
+            elif queue == "active":
+                ids_to_delete = self.UserInputParser.generate_list_of_ids(args=args)
+                task_object.delete_from_queue(queue=queue,
+                                              list_of_ids_to_delete=ids_to_delete)
+
         except ValueError as e:
-            sys.exit(f"The {task_id} action is not available on {task_type}")
+            sys.exit(f"The {queue} action is not available on {task_type}")
 
     def update(self, args, task_object) -> None:
         # TODO: implement updating priorities / weight / dates

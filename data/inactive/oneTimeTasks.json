@@ -15,30 +15,6 @@
         "taskString": "talk to Sal about Salary increase",
         "weight": "3"
     },
-    "10": {
-        "assignedOn": "Tue Jun 25 16:32:56 2019",
-        "completeBy": "Wed Jun 26 16:32:56 2019",
-        "priority": "0",
-        "scheduledStart": "Tue Jun 25 16:32:56 2019",
-        "taskString": "dummy task 1",
-        "weight": "3"
-    },
-    "11": {
-        "assignedOn": "Tue Jun 25 16:32:58 2019",
-        "completeBy": "Wed Jun 26 16:32:58 2019",
-        "priority": "0",
-        "scheduledStart": "Tue Jun 25 16:32:58 2019",
-        "taskString": "dummy task 2",
-        "weight": "3"
-    },
-    "12": {
-        "assignedOn": "Tue Jun 25 16:33:00 2019",
-        "completeBy": "Wed Jun 26 16:33:00 2019",
-        "priority": "0",
-        "scheduledStart": "Tue Jun 25 16:33:00 2019",
-        "taskString": "dummy task 3",
-        "weight": "3"
-    },
     "13": {
         "assignedOn": "Wed Jun 12 17:44:42 2019",
         "completeBy": "Thu Jun 13 17:44:42 2019",
@@ -53,22 +29,6 @@
         "priority": "0",
         "scheduledStart": "Tue Jun 25 17:51:37 2019",
         "taskString": "organize your hard disk folders",
-        "weight": "3"
-    },
-    "15": {
-        "assignedOn": "Tue Jun 25 16:36:34 2019",
-        "completeBy": "Wed Jun 26 16:36:34 2019",
-        "priority": "0",
-        "scheduledStart": "Tue Jun 25 16:36:34 2019",
-        "taskString": "dummy task 1",
-        "weight": "3"
-    },
-    "16": {
-        "assignedOn": "Tue Jun 25 16:36:37 2019",
-        "completeBy": "Wed Jun 26 16:36:37 2019",
-        "priority": "0",
-        "scheduledStart": "Tue Jun 25 16:36:37 2019",
-        "taskString": "dummy task",
         "weight": "3"
     },
     "17": {

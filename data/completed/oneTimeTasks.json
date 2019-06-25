@@ -127,6 +127,14 @@
         "taskString": "send your picture and blood test id number to KPG law",
         "weight": "3"
     },
+    "26": {
+        "assignedOn": "Thu Jun 20 20:18:44 2019",
+        "completeBy": "Fri Jun 21 20:18:44 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun 20 20:18:44 2019",
+        "taskString": "remove bookmarks from Google chrome and firefox for the 123stores computer",
+        "weight": "3"
+    },
     "6": {
         "assignedOn": "Wed Jun 12 17:45:06 2019",
         "completeBy": "Thu Jun 13 17:45:06 2019",

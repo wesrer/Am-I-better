@@ -88,9 +88,13 @@ def perform_actions(task_type,
         elif action_type == "delete" or action_type == "del":
             # TODO: implement flexible positioning of the id and the queue identifier
             #       Right now task_id = args[0], and ids = everything else
-            task_id = args[0]
 
-            Actions.delete(task_id=task_id,
+            if type(args[0]) is int:
+                queue = "active"
+            elif type(args[0]) is str:
+                queue = args[0]
+
+            Actions.delete(queue=queue,
                            args=args,
                            task_object=obj,
                            task_type=task_type)

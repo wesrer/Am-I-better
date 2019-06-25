@@ -165,6 +165,25 @@ class Habits:
         self.unmark(list_of_ids_to_unmark=list_of_ids_to_unmark,
                     dictionary_to_unmark_from=self.completedHabits)
 
+    def clear_all_tasks_from_queue(self,
+                                   queue: str):
+        try:
+            # TODO: issue a statment of warning about deleting all tasks
+            if queue in ["completed"]:
+                self.completedHabits = self.taskFunctions.clearing_all_tasks(task_type="completedHabits")
+            elif queue in ["inactive"]:
+                self.inactiveHabits = self.taskFunctions.clearing_all_tasks(task_type="inactiveHabits")
+            elif queue in ["active"]:
+                raise NotImplementedError
+            else:
+                raise ValueError
+
+        except ValueError as e:
+            sys.exit(f"{queue} is not a valid queue to delete")
+        except NotImplementedError as e:
+            sys.exit(f"Deleting all active habits hasn't been implemented yet, "
+                     f"because recovery options haven't been implemented either.")
+
     def save_habit_queues(self) -> None:
         self.DataOutputOperations.save_as_file(task_status='active',
                                                task_type='habits',

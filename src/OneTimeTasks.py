@@ -1,5 +1,6 @@
 from typing import List, Dict
 import sys
+from .operations.PrettyPrinter import PrettyPrinter
 
 # TODO: figure out how to Type Cast Custom Objects
 # Custom Type Hints for Type Checking
@@ -127,6 +128,9 @@ class OneTimeTasks:
                                           completed_dictionary=self.inactive_tasks,
                                           task_type="oneTimeTasks",
                                           completed_task_type="inactiveOneTimeTasks")
+
+        id_string = ', '.join([str(x) for x in list_of_ids_to_mark_as_inactive])
+        print(f"Successfully marked task {id_string} as inactive")
 
     def unmark(self,
                list_of_ids_to_unmark: List[int],

@@ -15,6 +15,102 @@
         "taskString": "talk to Sal about Salary increase",
         "weight": "3"
     },
+    "10": {
+        "assignedOn": "Tue Jun 25 16:32:56 2019",
+        "completeBy": "Wed Jun 26 16:32:56 2019",
+        "priority": "0",
+        "scheduledStart": "Tue Jun 25 16:32:56 2019",
+        "taskString": "dummy task 1",
+        "weight": "3"
+    },
+    "11": {
+        "assignedOn": "Tue Jun 25 16:32:58 2019",
+        "completeBy": "Wed Jun 26 16:32:58 2019",
+        "priority": "0",
+        "scheduledStart": "Tue Jun 25 16:32:58 2019",
+        "taskString": "dummy task 2",
+        "weight": "3"
+    },
+    "12": {
+        "assignedOn": "Tue Jun 25 16:33:00 2019",
+        "completeBy": "Wed Jun 26 16:33:00 2019",
+        "priority": "0",
+        "scheduledStart": "Tue Jun 25 16:33:00 2019",
+        "taskString": "dummy task 3",
+        "weight": "3"
+    },
+    "13": {
+        "assignedOn": "Wed Jun 12 17:44:42 2019",
+        "completeBy": "Thu Jun 13 17:44:42 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 12 17:44:42 2019",
+        "taskString": "Finish Google ML crash course",
+        "weight": "3"
+    },
+    "14": {
+        "assignedOn": "Tue Jun 25 17:51:37 2019",
+        "completeBy": "Wed Jun 26 17:51:37 2019",
+        "priority": "0",
+        "scheduledStart": "Tue Jun 25 17:51:37 2019",
+        "taskString": "organize your hard disk folders",
+        "weight": "3"
+    },
+    "15": {
+        "assignedOn": "Tue Jun 25 16:36:34 2019",
+        "completeBy": "Wed Jun 26 16:36:34 2019",
+        "priority": "0",
+        "scheduledStart": "Tue Jun 25 16:36:34 2019",
+        "taskString": "dummy task 1",
+        "weight": "3"
+    },
+    "16": {
+        "assignedOn": "Tue Jun 25 16:36:37 2019",
+        "completeBy": "Wed Jun 26 16:36:37 2019",
+        "priority": "0",
+        "scheduledStart": "Tue Jun 25 16:36:37 2019",
+        "taskString": "dummy task",
+        "weight": "3"
+    },
+    "17": {
+        "assignedOn": "Mon Jun 24 19:40:18 2019",
+        "completeBy": "Tue Jun 25 19:40:18 2019",
+        "priority": "0",
+        "scheduledStart": "Mon Jun 24 19:40:18 2019",
+        "taskString": "read the tests chapter of the Rust book",
+        "weight": "3"
+    },
+    "18": {
+        "assignedOn": "Wed Jun  5 18:46:03 2019",
+        "completeBy": "Thu Jun  6 18:46:03 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 18:46:03 2019",
+        "taskString": "send your CV to LINE",
+        "weight": "3"
+    },
+    "19": {
+        "assignedOn": "Fri Jun 14 22:43:28 2019",
+        "completeBy": "Sat Jun 15 22:43:28 2019",
+        "priority": "0",
+        "scheduledStart": "Fri Jun 14 22:43:28 2019",
+        "taskString": "schedule a meeting with DueDil",
+        "weight": "3"
+    },
+    "20": {
+        "assignedOn": "Wed Jun 12 17:44:52 2019",
+        "completeBy": "Thu Jun 13 17:44:52 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 12 17:44:52 2019",
+        "taskString": "Model Data from DB",
+        "weight": "3"
+    },
+    "21": {
+        "assignedOn": "Wed Jun 19 17:26:52 2019",
+        "completeBy": "Thu Jun 20 17:26:52 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 19 17:26:52 2019",
+        "taskString": "Start course for QML on edx",
+        "weight": "3"
+    },
     "3": {
         "assignedOn": "Fri Jun 21 19:48:48 2019",
         "completeBy": "Sat Jun 22 19:48:48 2019",
@@ -37,6 +133,38 @@
         "priority": "0",
         "scheduledStart": "Mon Jun 24 00:12:14 2019",
         "taskString": "open all your mega accounts to keep them valid",
+        "weight": "3"
+    },
+    "6": {
+        "assignedOn": "Wed Jun  5 17:24:37 2019",
+        "completeBy": "Thu Jun  6 17:24:37 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun  5 17:24:37 2019",
+        "taskString": "finish reading the rust book",
+        "weight": "3"
+    },
+    "7": {
+        "assignedOn": "Mon Jun 24 02:22:58 2019",
+        "completeBy": "Tue Jun 25 02:22:58 2019",
+        "priority": "0",
+        "scheduledStart": "Mon Jun 24 02:22:58 2019",
+        "taskString": "delete thunderbird from qomputer",
+        "weight": "3"
+    },
+    "8": {
+        "assignedOn": "Wed Jun 19 17:26:29 2019",
+        "completeBy": "Thu Jun 20 17:26:29 2019",
+        "priority": "0",
+        "scheduledStart": "Wed Jun 19 17:26:29 2019",
+        "taskString": "Start working on the Rust Quil Parser",
+        "weight": "3"
+    },
+    "9": {
+        "assignedOn": "Thu Jun 20 19:55:16 2019",
+        "completeBy": "Fri Jun 21 19:55:16 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun 20 19:55:16 2019",
+        "taskString": "fix Am-I-Better merge conflicts on the other computer",
         "weight": "3"
     }
 }

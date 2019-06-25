@@ -48,6 +48,7 @@ def perform_actions(task_type,
             perform_actions(task_type="task", action_type="list", args=[], default_behavior_exit=False)
             return
 
+        # FIXME: the logic here seems completely wrong
         elif action_type in ["inactive", "list:inactive", "view:inactive"]:
             PrettyPrinter.print_header("habits")
             perform_actions(task_type="habit", action_type="inactive", args=[], default_behavior_exit=False)
@@ -77,7 +78,7 @@ def perform_actions(task_type,
 
         elif action_type == "inactive":
             if len(args) == 0:
-                PrettyPrinter.pprint(task_dict=obj.get_queue(queue="active"),
+                PrettyPrinter.pprint(task_dict=obj.get_queue(queue="inactive"),
                                      task_type=task_type,
                                      queue="inactive",
                                      default_behavior_exit=default_behavior_exit)

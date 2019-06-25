@@ -95,6 +95,38 @@
         "taskString": "remove Elyah from your slack dashboard and log out",
         "weight": "3"
     },
+    "22": {
+        "assignedOn": "Thu Jun 13 17:44:58 2019",
+        "completeBy": "Fri Jun 14 17:44:58 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun 13 17:44:58 2019",
+        "taskString": "Read Two more chapters of the Rust book",
+        "weight": "3"
+    },
+    "23": {
+        "assignedOn": "Sat Jun 22 14:30:59 2019",
+        "completeBy": "Sun Jun 23 14:30:59 2019",
+        "priority": "0",
+        "scheduledStart": "Sat Jun 22 14:30:59 2019",
+        "taskString": "send an email to KPG law asking them about processing status",
+        "weight": "3"
+    },
+    "24": {
+        "assignedOn": "Tue Jun 25 19:50:52 2019",
+        "completeBy": "Wed Jun 26 19:50:52 2019",
+        "priority": "0",
+        "scheduledStart": "Tue Jun 25 19:50:52 2019",
+        "taskString": "book tickets",
+        "weight": "3"
+    },
+    "25": {
+        "assignedOn": "Sat Jun 22 14:29:03 2019",
+        "completeBy": "Sun Jun 23 14:29:03 2019",
+        "priority": "0",
+        "scheduledStart": "Sat Jun 22 14:29:03 2019",
+        "taskString": "send your picture and blood test id number to KPG law",
+        "weight": "3"
+    },
     "6": {
         "assignedOn": "Wed Jun 12 17:45:06 2019",
         "completeBy": "Thu Jun 13 17:45:06 2019",

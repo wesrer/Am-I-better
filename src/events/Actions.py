@@ -53,24 +53,23 @@ class Actions:
     def update(self, args, task_object) -> None:
         # TODO: implement updating priorities / weight / dates
         try:
-            if type(args[0]) is int:
-                id_to_update = int(args[0])
-                properties = self.UserInputParser.find_properties(args=args[1:])
+            ids_to_update = self.UserInputParser.generate_list_of_ids(args=args)
+            properties = self.UserInputParser.find_properties(args=args)
 
-                for key, value in properties.items():
-                    task_object.update(id_to_update=id_to_update,
-                                       option_to_update=key,
-                                       updated_value=value)
-                task_string = self.UserInputParser.generate_task_string(args[1:])
-
-                if task_string:
-                    task_object.update(id_to_update=id_to_update,
-                                       option_to_update="task_string",
-                                       updated_value=task_string)
-            elif "id" in args:
-                raise NotImplementedError
-            else:
+            if len(ids_to_update) == 0:
                 raise TypeError
+
+            for key, value in properties.items():
+                task_object.update(ids_to_update=ids_to_update,
+                                   option_to_update=key,
+                                   updated_value=value)
+
+            task_string = self.UserInputParser.generate_task_string(args)
+
+            if task_string:
+                task_object.update(ids_to_update=ids_to_update,
+                                   option_to_update="task_string",
+                                   updated_value=task_string)
         except TypeError as err:
             print(err)
             sys.exit("update needs an id to update")

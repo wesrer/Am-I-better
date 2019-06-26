@@ -44,7 +44,7 @@ class Habits:
                                          refresh_rate=refresh_rate)
 
     def update(self,
-               id_to_update: int,
+               ids_to_update: List[int],
                option_to_update: str,
                updated_value: str) -> None:
         option_to_update = option_to_update.lower()
@@ -68,10 +68,13 @@ class Habits:
             else:
                 raise ValueError
 
-            self.activeHabits = self.TaskFunctions.update_values(id_to_edit=id_to_update,
+            self.activeHabits = self.TaskFunctions.update_values(ids_to_update=ids_to_update,
                                                                  field_name=field_type,
                                                                  active_dictionary=self.activeHabits,
                                                                  updated_value=updated_value)
+
+            ids_formatted = ', '.join(ids_to_update)
+            print(f"Successfully updated habit {ids_formatted}.")
         except NotImplementedError as e:
             sys.exit("this feature hasn't been implemented yet")
         except ValueError as e:

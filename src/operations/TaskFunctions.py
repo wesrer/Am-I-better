@@ -235,15 +235,16 @@ class TaskFunctions:
         return active_dictionary
 
     @staticmethod
-    def update_values(id_to_edit: int,
+    def update_values(ids_to_update: List[int],
                       active_dictionary: StringDict,
                       updated_value: str,
                       field_name: str,
                       parent_id: int = -1,
                       has_children: bool = False):
 
-        # TODO: figure out if we need parent_id and has_children
-        active_dictionary[str(id_to_edit)][field_name] = updated_value
+        for id in ids_to_update:
+            # TODO: figure out if we need parent_id and has_children
+            active_dictionary[str(id)][field_name] = updated_value
         return active_dictionary
 
     # TODO: implement this

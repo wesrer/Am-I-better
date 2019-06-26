@@ -62,7 +62,7 @@ class OneTimeTasks:
         print(f"Successfully added task {unique_id} to {queue} tasks.")
 
     def update(self,
-               id_to_update: int,
+               ids_to_update: List[int],
                option_to_update: str,
                updated_value: str):
         option_to_update = option_to_update.lower()
@@ -83,7 +83,7 @@ class OneTimeTasks:
             else:
                 raise ValueError
 
-            self.active_tasks = self.taskFunctions.update_values(id_to_edit=id_to_update,
+            self.active_tasks = self.taskFunctions.update_values(ids_to_update=ids_to_update,
                                                                  field_name=field_type,
                                                                  active_dictionary=self.active_tasks,
                                                                  updated_value=updated_value)
@@ -92,7 +92,7 @@ class OneTimeTasks:
         except ValueError as e:
             sys.exit(f"{option_to_update} is not a recognized property and cannot be updated")
 
-        print(f"Successfully updated task {id_to_update}")
+        print(f"Successfully updated task {ids_to_update}")
 
     # TODO: refactor this to only deal with lists, because handling two cases doesn't make sense
     def mark_as_completed(self,

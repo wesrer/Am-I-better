@@ -18,6 +18,10 @@ def parse_cli(task_type,
               action_type="list",
               *args):
 
+    # print("task_type", type(task_type), task_type)
+    # print("action_type", type(action_type), action_type)
+    # print("args", type(args), args)
+
     task_type = task_type.lower()
 
     app.on_start_operations()

@@ -3,7 +3,8 @@ class UserInputParser:
         pass
 
     # makes a list of all the additional options that the user included
-    def find_properties(self, args):
+    @staticmethod
+    def find_properties(args):
         properties = dict()
 
         # first split the string into words, and make a list of the words
@@ -13,7 +14,9 @@ class UserInputParser:
         # and the right side as the property value.
         # TODO: add "=" support in the future
         # FIXME:
-        for item in [str(x).split(':') for x in args if ":" in x]:
+
+        words_with_properties = [str(x).split(':') for x in args if ":" in str(x)]
+        for item in words_with_properties:
             properties[item[0]] = item[1]
 
         return properties
@@ -26,23 +29,33 @@ class UserInputParser:
         else:
             return str(value)
 
+    # FIXME: find a better module for this to be in
+    def index_of_first_string(self, args):
+        for index, value in enumerate(args, start=0):
+            if type(value) is str:
+                return index
+
     def generate_task_string(self, args):
-        task_string = [self.tuple_to_string(x, joinwith='') for x in args if ":" not in str(x)]
+
+        index_of_first_string = self.index_of_first_string(args=args)
+        args_without_ids = args[index_of_first_string:]
+
+        task_string = [self.tuple_to_string(x, joinwith='') for x in args_without_ids if ":" not in str(x)]
         return ' '.join(task_string)
 
-    def generate_list_of_ids(self, args):
-        if len(args) == 1:
-            for item in args:
-                # case 1: when only one is given
-                if type(item) is int:
-                    return [item]
+    def generate_list_of_ids(self, args, list_of_ids=None):
+        if list_of_ids is None:
+            list_of_ids = []
 
-                # case 2: when a list of ids are given
-                elif type(item) is tuple:
-                    return [element for element in item]
-        else:
-            # FIXME: hacky approach. might fix later
-            return self.generate_task_string(args).split(' ')
+        for item in args:
+            if type(item) is int:
+                list_of_ids.append(str(item))
+            elif type(item) is tuple:
+                self.generate_list_of_ids(args=item, list_of_ids=list_of_ids)
+            elif type(item) is str:
+                return list_of_ids
+
+        return list_of_ids
 
 
 

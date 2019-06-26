@@ -1,6 +1,8 @@
 from src.operations.UserInputParser import UserInputParser
+from src.operations.DictionaryOperations import DictionaryOperations
 
 UserInputParser = UserInputParser()
+DictionaryOperations = DictionaryOperations()
 
 
 class TestUserInputParser:
@@ -86,4 +88,34 @@ class TestUserInputParser:
 
         assert UserInputParser.generate_task_string(args=user_input) == expected_output
 
+    def test_generating_task_string_with_numbers_and_properties(self):
+        user_input = (0, 'Drink', 2, 'litres', 'of', 'water', 'priority:5')
+
+        expected_output = 'Drink 2 litres of water'
+
+        assert UserInputParser.generate_task_string(args=user_input) == expected_output
+
+    def test_generating_properties_when_properties_after_string(self):
+        user_input = (0, 'Drink', 2, 'litres', 'of', 'water', 'priority:5', 'weight:6')
+
+        expected_output = {
+            'priority': '5',
+            'weight': '6'
+        }
+
+        returned_output = UserInputParser.find_properties(args=user_input)
+
+        assert DictionaryOperations.check_task_dictionary_equality(returned_output, expected_output)
+
+    def test_generating_properties_when_properties_before_and_after_string(self):
+        user_input = (0, 'priority:5', 'Drink', 2, 'litres', 'of', 'water', 'weight:6')
+
+        expected_output = {
+            'priority': '5',
+            'weight': '6'
+        }
+
+        returned_output = UserInputParser.find_properties(args=user_input)
+
+        assert DictionaryOperations.check_task_dictionary_equality(returned_output, expected_output)
 

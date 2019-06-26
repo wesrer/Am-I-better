@@ -135,6 +135,14 @@
         "taskString": "remove bookmarks from Google chrome and firefox for the 123stores computer",
         "weight": "3"
     },
+    "27": {
+        "assignedOn": "Thu Jun 20 20:06:52 2019",
+        "completeBy": "Fri Jun 21 20:06:52 2019",
+        "priority": "0",
+        "scheduledStart": "Thu Jun 20 20:06:52 2019",
+        "taskString": "fix Trilium migration bugs",
+        "weight": "3"
+    },
     "6": {
         "assignedOn": "Wed Jun 12 17:45:06 2019",
         "completeBy": "Thu Jun 13 17:45:06 2019",

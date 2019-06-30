@@ -33,6 +33,7 @@ class Habits:
     def add(self,
             task_string: str,
             priority: int = 0,
+            weight: int = 1,
             refresh_rate: int = 1) -> None:
 
         unqiue_id = self.DataInputOperationsObject.get_new_unique_id_for_task(task_type='habits')
@@ -41,7 +42,9 @@ class Habits:
             self.TaskFunctions.add_tasks(task_string=task_string,
                                          task_type="habits",
                                          priority=priority,
+                                         weight=weight,
                                          refresh_rate=refresh_rate)
+        print(f"Successfully added habit {unqiue_id}")
 
     def update(self,
                ids_to_update: List[int],

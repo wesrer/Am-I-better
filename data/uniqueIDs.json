@@ -1,6 +1,7 @@
 {
     "completedHabits": {
         "available": [
+            "0",
             "8",
             "9"
         ],
@@ -9,14 +10,11 @@
     "completedLongTermProjectsSubTasks": {},
     "completedOneTimeTasks": {
         "available": [],
-        "next": "28"
+        "next": "30"
     },
     "habits": {
-        "available": [
-            "5",
-            "7"
-        ],
-        "next": "6"
+        "available": [],
+        "next": "7"
     },
     "inactiveHabits": {
         "available": [],
@@ -33,8 +31,7 @@
     "longTermProjectsSubTasks": {},
     "oneTimeTasks": {
         "available": [
-            "1",
-            "2",
+            "3",
             "4",
             "5",
             "6",

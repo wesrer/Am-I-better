@@ -43,7 +43,8 @@ class PrettyPrinter:
         columns_to_print = task_dataframe
         sort_by = []
 
-        if task_type == "task":
+        # FIXME: these need to updated to cover custom queues
+        if task_type in ["task", "tasks"]:
             if queue == "active":
                 date_headers = ['assignedOn', 'scheduledStart', 'completeBy']
                 columns_to_print = task_dataframe[['taskString', 'completeBy','priority', 'weight']]
@@ -53,7 +54,7 @@ class PrettyPrinter:
                 columns_to_print = task_dataframe[['taskString', 'scheduledStart', 'priority', 'weight']]
                 sort_by = ['priority', 'weight', 'scheduledStart']
 
-        elif task_type == "habit":
+        elif task_type in ["habit", "habits"]:
             date_headers = ['assignedOn', 'scheduledStart']
             columns_to_print = task_dataframe[['taskString', 'priority', 'weight', 'refreshRate']]
             sort_by = ['priority', 'weight']

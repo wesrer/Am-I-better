@@ -102,8 +102,26 @@ class Habits:
         except ValueError as e:
             sys.exit(f"{queue} is not a recognized Habit queue")
 
+    # def mark(self,
+    #          mark_from_queue: str,
+    #          mark_to_queue: str,
+    #          list_of_ids_to_mark: List[int]):
+    #
+    #     mark_to_dictionary = self.get_queue(queue=mark_to_queue)
+    #     mark_from_dictionary = self.get_queue(queue=mark_from_queue)
+    #
+    #     if mark_to_queue in ["completed"]:
+    #         for x in list_of_ids_to_mark:
+    #             mark_from_dictionary[str(x)]["lastCompletedOn"] = datetime.now().strftime("%c")
+    #
+    #     mark_from_dictionary, mark_to_dictionary = self.TaskFunctions.mark_tasks(list_of_ids_to_mark=list_of_ids_to_mark,
+    #                                                                              active_dictionary=mark_from_dictionary,
+    #                                                                              completed_dictionary=mark_to_dictionary,
+    #                                                                              task_type=)
+
     def mark_as_completed(self,
-                          list_of_ids_to_mark_as_completed: List[int]) -> None:
+                          list_of_ids_to_mark_as_completed: List[int],
+                          queue: str = "active") -> None:
 
         for x in list_of_ids_to_mark_as_completed:
             self.activeHabits[str(x)]["lastCompletedOn"] = datetime.now().strftime("%c")
@@ -206,7 +224,7 @@ class Habits:
     # GET operations
 
     def get_queue(self,
-                  queue:str):
+                  queue: str):
         try:
             if queue in ["active"]:
                 return self.activeHabits

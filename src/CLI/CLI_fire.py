@@ -71,6 +71,7 @@ def perform_actions(task_type,
                 PrettyPrinter.print_header(task_type)
                 PrettyPrinter.pprint(task_dict=obj.get_queue(queue=action_type),
                                      task_type=task_type,
+                                     queue=action_type,
                                      default_behavior_exit=default_behavior_exit)
             else:
                 pass # FIXME: implement this

@@ -41,23 +41,30 @@ class PrettyPrinter:
 
         date_headers = []
         columns_to_print = task_dataframe
-        sort_by = []
+        sort_by = ['priority', 'weight']
 
         # FIXME: these need to updated to cover custom queues
         if task_type in ["task", "tasks"]:
             if queue == "active":
                 date_headers = ['assignedOn', 'scheduledStart', 'completeBy']
-                columns_to_print = task_dataframe[['taskString', 'completeBy','priority', 'weight']]
-                sort_by = ['completeBy', 'priority', 'weight']
+                columns_to_print = task_dataframe[['taskString', 'completeBy', 'priority', 'weight']]
+                sort_by.insert(0, 'completeBy')  # adding to the beginning of the list
+
             elif queue == "inactive":
                 date_headers = ['assignedOn', 'scheduledStart']
                 columns_to_print = task_dataframe[['taskString', 'scheduledStart', 'priority', 'weight']]
-                sort_by = ['priority', 'weight', 'scheduledStart']
+                sort_by.append('scheduledStart')
+
+            elif queue == "completed":
+                # FIXME: add 'completedOn' when added to the data points
+                columns_to_print = task_dataframe[['taskString', 'priority', 'weight']]
 
         elif task_type in ["habit", "habits"]:
-            date_headers = ['assignedOn', 'scheduledStart']
+            if queue == "active":
+                date_headers = ['assignedOn', 'scheduledStart']
+            elif queue == "inactive":
+                date_headers = ['assignedOn', 'lastCompletedOn']
             columns_to_print = task_dataframe[['taskString', 'priority', 'weight', 'refreshRate']]
-            sort_by = ['priority', 'weight']
 
         for x in date_headers:
             task_dataframe[x] = pd.to_datetime(task_dataframe[x])

@@ -159,6 +159,14 @@
         "taskString": "sit with Amri and finish all the exit procedures",
         "weight": "4"
     },
+    "30": {
+        "assignedOn": "Mon Jul  1 16:50:30 2019",
+        "completeBy": "Tue Jul  2 16:50:30 2019",
+        "priority": "0",
+        "scheduledStart": "Mon Jul  1 16:50:30 2019",
+        "taskString": "fix the kernel bs on qomputer",
+        "weight": "3"
+    },
     "6": {
         "assignedOn": "Wed Jun 12 17:45:06 2019",
         "completeBy": "Thu Jun 13 17:45:06 2019",
